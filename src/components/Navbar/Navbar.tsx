@@ -1,21 +1,16 @@
 import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
 import { Container } from "@mui/system";
-
-const styles = {
-  h4: {
-    color: "#dcdcdc",
-  },
-};
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   return (
     <AppBar
-      style={{ backgroundColor: "black", boxShadow: "none", opacity: "70%" }}
+      style={{ backgroundColor: "black", boxShadow: "none"}}
     >
       <Container>
         <Toolbar>
-          <Typography variant="h3" sx={{ flexGrow: 1, mt: 2 }}>
-            Befoodly
+          <Typography className={styles.logo}>
+            BeFoodly
           </Typography>
           <Box
             sx={{
