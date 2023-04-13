@@ -12,12 +12,12 @@ jobs:
  build:
 
 
-   runs-on: [ default ]
+   runs-on: ubuntu-latest
 
 
    strategy:
      matrix:
-       node-version: [14.x]
+       node-version: [18.x]
 
 
    name: Build, Lint and Test
