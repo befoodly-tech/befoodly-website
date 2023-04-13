@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "clean": "rm -rf dist",
+    "build": "tsc && vite build && npm run copy-config",
+    "copy-config": "copy config.template.js dist/config.js",
     "preview": "vite preview",
     "lint": "eslint \"**/?*.{ts,tsx,js}\"",
     "lint:fix": "eslint --fix \"**/?*.{ts,tsx,js}\"",
