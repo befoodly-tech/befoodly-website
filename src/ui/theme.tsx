@@ -1,43 +1,43 @@
-import { createTheme, Typography, withStyles } from "@mui/material";
+import { createTheme, Typography, withStyles } from '@mui/material';
 
 export const theme = createTheme({
   typography: {
     allVariants: {
-      color: "#fafafa",
-    },
+      color: '#fafafa'
+    }
   },
   status: {
-    danger: "#e53e3e",
+    danger: '#e53e3e'
   },
   palette: {
     primary: {
-      main: "#fafafa",
-      darker: "#053e85",
+      main: '#fafafa',
+      darker: '#053e85'
     },
     neutral: {
-      main: "#64748B",
-      contrastText: "#fff",
+      main: '#64748B',
+      contrastText: '#fff'
     },
     text: {
-      primary: "white",
-    },
-  },
+      primary: 'white'
+    }
+  }
 });
 
 // I have to do modulations in typescript to use these themes.
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Theme {
     status: {
-      danger: React.CSSProperties["color"];
+      danger: React.CSSProperties['color'];
     };
   }
 
   interface Palette {
-    neutral: Palette["primary"];
+    neutral: Palette['primary'];
   }
 
   interface PaletteOptions {
-    neutral: PaletteOptions["primary"];
+    neutral: PaletteOptions['primary'];
   }
 
   interface PaletteColor {
@@ -50,7 +50,7 @@ declare module "@mui/material/styles" {
 
   interface ThemeOptions {
     status: {
-      danger: React.CSSProperties["color"];
+      danger: React.CSSProperties['color'];
     };
   }
 }
