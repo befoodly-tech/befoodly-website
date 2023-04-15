@@ -1,3 +1,3 @@
 window.config = {
-    BASE_URL: 'https://befoodly.com'
-}
+  BASE_URL: 'https://befoodly.com'
+};

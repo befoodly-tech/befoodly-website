@@ -1,9 +1,9 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home";
-import { AppConfig } from "./types/AppConfig";
-import { createTheme } from "@mui/material/styles";
-import { ThemeProvider } from "@emotion/react";
+import { useState } from 'react';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home';
+import { AppConfig } from './types/AppConfig';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@emotion/react';
 
 declare global {
   interface Window {
@@ -15,7 +15,7 @@ const config = window.config ?? {};
 
 const initOptions = {
   url: config.BASE_URL
-}
+};
 
 const theme = createTheme({
   typography: {
