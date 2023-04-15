@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-undef
 module.exports = {
-    autoprefixer: {},
-    plugins: [require('postcss-import'), require('postcss-nested')]
+  autoprefixer: {},
+  // eslint-disable-next-line no-undef
+  plugins: [require('postcss-import'), require('postcss-nested')]
 };

@@ -1,9 +1,10 @@
 .logo {
   font-size: 24px !important;
   font-family: Cabin;
+  color: #fafafa;
   font-weight: 500;
 
   .create {
-    color: #ffffff;
+    color: #974040;
   }
 }

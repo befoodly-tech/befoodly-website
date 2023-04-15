@@ -2,9 +2,7 @@ import { createTheme, Typography, withStyles } from '@mui/material';
 
 export const theme = createTheme({
   typography: {
-    allVariants: {
-      color: '#fafafa'
-    }
+    fontFamily: 'Cabin, Roboto, serif, Times New Roman'
   },
   status: {
     danger: '#e53e3e'
@@ -18,9 +16,7 @@ export const theme = createTheme({
       main: '#64748B',
       contrastText: '#fff'
     },
-    text: {
-      primary: 'white'
-    }
+    text: {}
   }
 });
 
