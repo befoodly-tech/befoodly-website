@@ -31,7 +31,14 @@
           "extensions": [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
         },
         "typescript": {}
-      }
+      },
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "parser": "flow"
+        }
+      ]
     },
     "rules": {
       "react/react-in-jsx-scope": "off",
