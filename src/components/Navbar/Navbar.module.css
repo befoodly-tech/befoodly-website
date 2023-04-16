@@ -1,10 +1,18 @@
-.logo {
-  font-size: 24px !important;
-  font-family: Cabin;
-  color: #fafafa;
-  font-weight: 500;
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-  .create {
-    color: #974040;
+  .logo {
+    font-family: Cabin;
+    color: #fafafa;
+    font-weight: 500;
+
+    .create {
+      color: #974040;
+    }
+  }
+
+  .options {
   }
 }
