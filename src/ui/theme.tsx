@@ -1,6 +1,6 @@
-import { createTheme, Typography, withStyles } from '@mui/material';
+import { createTheme, Typography, withStyles, responsiveFontSizes } from '@mui/material';
 
-export const theme = createTheme({
+export let theme = createTheme({
   typography: {
     fontFamily: 'Cabin, Roboto, serif, Times New Roman'
   },
@@ -19,6 +19,9 @@ export const theme = createTheme({
     text: {}
   }
 });
+
+// Add responsiveness to fonts
+theme = responsiveFontSizes(theme);
 
 // I have to do modulations in typescript to use these themes.
 declare module '@mui/material/styles' {
