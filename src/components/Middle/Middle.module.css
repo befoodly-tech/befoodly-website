@@ -1,0 +1,44 @@
+.midGaurd {
+  padding: 35px 20px;
+  display: flex;
+  align-items: center;
+
+  .gridItem {
+    padding: 10px;
+
+    .frame {
+      width: 40vw;
+    }
+
+    .textFrame1 {
+      text-align: center;
+      padding-bottom: 15px;
+      font-family: Roboto-Light;
+      font-weight: 400;
+      font-size: 22px;
+      color: rgb(27, 27, 27);
+    }
+
+    .textFrame2 {
+      text-align: center;
+      padding: 5px 20px;
+      font-family: Roboto-Light;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgb(94, 94, 94);
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .midGaurd {
+    .gridItem {
+      .frame {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+      }
+    }
+  }
+}
