@@ -2,24 +2,22 @@ import { AppBar, Toolbar, Typography, Box, Button } from '@mui/material';
 import { Container } from '@mui/system';
 import styles from './Navbar.module.css';
 
+const options = ['Home', 'About', 'Blog'];
+
 const Navbar = () => {
   return (
-    <AppBar style={{ backgroundColor: 'black', boxShadow: 'none' }}>
+    <AppBar sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
       <Container>
-        <Toolbar>
-          <Typography className={styles.logo}>BeFoodly</Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'flex-end',
-              gap: '10px'
-            }}
-          >
-            <Button sx={{ color: 'white' }}>Home</Button>
-            <Button sx={{ color: 'white' }}>About</Button>
-            <Button sx={{ color: 'white' }}>Blog</Button>
+        <Toolbar className={styles.toolbar}>
+          <Box>
+            <Typography variant="h4" className={styles.logo}>
+              BeFoodly
+            </Typography>
+          </Box>
+          <Box className={styles.options}>
+            {options.map((option, index) => {
+              return <Button key={index}>{option}</Button>;
+            })}
           </Box>
         </Toolbar>
       </Container>
