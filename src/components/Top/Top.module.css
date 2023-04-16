@@ -1,0 +1,25 @@
+.topImage {
+  width: 100vw;
+  height: 80vh;
+  filter: blur(2px);
+}
+
+.intro {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+
+  .main {
+    color: white;
+    text-align: center;
+  }
+}
+
+.base {
+  text-align: center;
+  .baseText {
+    color: rgb(161, 151, 37);
+    height: 100%;
+    padding-top: 50px;
+  }
+}
