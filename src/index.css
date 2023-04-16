@@ -9,5 +9,12 @@ body {
   font-family: 'Cabin';
   font-style: normal;
   font-weight: 500;
-  src: local('Cabin'), url(./assets/fonts/Cabin-Medium.ttf) format('truetype');
+  src: local('Cabin'), url(./assets/fonts/Cabin/Cabin-Medium.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto-Light'), url(./assets/fonts/Roboto/Roboto-Light.ttf) format('truetype');
 }
