@@ -1,0 +1,39 @@
+.intro {
+  background-color: #f3e32b;
+  text-align: center;
+  padding: 10px;
+  height: 400px;
+
+  /* .seprator {
+    width: 50px;
+  } */
+
+  .mid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80%;
+
+    .midblock {
+      text-align: left;
+      padding: 10px;
+
+      .launch {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .subtext {
+          opacity: 70%;
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .mid {
+    flex-direction: column;
+  }
+}
