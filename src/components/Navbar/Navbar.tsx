@@ -24,7 +24,14 @@ window.addEventListener('scroll', function (event) {
 
 const Navbar = () => {
   return (
-    <AppBar id="appbar" sx={{ backgroundColor: 'transparent', boxShadow: 'none', opacity: '100%' }}>
+    <AppBar
+      id="appbar"
+      sx={{
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        opacity: '100%'
+      }}
+    >
       <Container>
         <Toolbar className={styles.toolbar}>
           <Box>

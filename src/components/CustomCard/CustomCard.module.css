@@ -1,0 +1,26 @@
+.cardBlock {
+  max-width: 250px;
+  box-shadow: none;
+  .cardImg {
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  .title {
+    color: rgb(27, 27, 27);
+  }
+
+  .description {
+    color: rgb(94, 94, 94);
+  }
+  .author {
+    color: rgb(94, 94, 94);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cardBlock {
+    max-width: 500px;
+    height: 500px;
+  }
+}
