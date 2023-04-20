@@ -1,6 +1,8 @@
 .cardBlock {
   max-width: 250px;
   box-shadow: none;
+  font-family: Roboto-Regular;
+
   .cardImg {
     height: 200px;
     border-radius: 50%;
@@ -8,13 +10,17 @@
 
   .title {
     color: rgb(27, 27, 27);
+    font-size: 22px;
+    font-weight: 400;
   }
 
   .description {
     color: rgb(94, 94, 94);
+    font-size: 16px;
   }
   .author {
     color: rgb(94, 94, 94);
+    font-size: 16px;
   }
 }
 
@@ -22,5 +28,9 @@
   .cardBlock {
     max-width: 500px;
     height: 500px;
+    padding: 10px;
+    .cardImg {
+      height: 300px;
+    }
   }
 }

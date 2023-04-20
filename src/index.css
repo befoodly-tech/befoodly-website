@@ -18,3 +18,10 @@ body {
   font-weight: 400;
   src: local('Roboto-Light'), url(./assets/fonts/Roboto/Roboto-Light.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto-Regular'), url(./assets/fonts/Roboto/Roboto-Regular.ttf) format('truetype');
+}

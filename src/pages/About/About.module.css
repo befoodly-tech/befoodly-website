@@ -14,6 +14,11 @@
     margin-bottom: 30px;
     font-weight: 400;
   }
+
+  .seprator {
+    width: 30px;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 900px) {

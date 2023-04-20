@@ -5,8 +5,9 @@ import CustomCard from '../../components/CustomCard/CustomCard';
 import IndianFood from '../../assets/images/delicious-indian-food-tray.jpg';
 import GroupEatingFood from '../../assets/images/GroupEatingFood.jpg';
 import Chef from '../../assets/images/Chef.jpg';
+import { CustomCardProps } from '../../types/AppConfig';
 
-const allCards = [
+const allCards: CustomCardProps[] = [
   {
     title: 'Welcome to Our Kitchen!',
     photoUrl: IndianFood,
@@ -42,9 +43,12 @@ const About = () => {
             About Us
           </Typography>
         </Box>
+        <Box className={styles.seprator}>
+          <hr></hr>
+        </Box>
         <Box className={styles.cardList}>
-          {allCards.map(card => {
-            return <CustomCard key={card.title} {...card} />;
+          {allCards.map((card, index) => {
+            return <CustomCard key={index} {...card} />;
           })}
         </Box>
       </Container>
