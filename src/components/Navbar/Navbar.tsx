@@ -41,7 +41,11 @@ const Navbar = () => {
           </Box>
           <Box className={styles.options}>
             {options.map((option, index) => {
-              return <Button key={index}>{option}</Button>;
+              return (
+                <Button href={option} key={index}>
+                  {option}
+                </Button>
+              );
             })}
           </Box>
         </Toolbar>
