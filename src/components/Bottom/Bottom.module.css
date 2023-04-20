@@ -33,7 +33,10 @@
 }
 
 @media screen and (max-width: 900px) {
-  .mid {
-    flex-direction: column;
+  .intro {
+    .mid {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 }
