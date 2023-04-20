@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import KitchenChef from '../../assets/images/kitchen-chef.jpg';
 import Vegetable from '../../assets/images/vegetables.jpg';
 import Cook from '../../assets/images/cook.jpg';
