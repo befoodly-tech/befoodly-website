@@ -1,0 +1,26 @@
+.about {
+  position: relative;
+  text-align: center;
+
+  .cardList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .aboutHeading {
+    color: rgb(161, 151, 37);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .about {
+    .cardList {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

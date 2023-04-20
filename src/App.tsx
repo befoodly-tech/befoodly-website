@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Navbar from './components/Navbar/Navbar';
-import Home from './pages/Home';
 import { AppConfig } from './types/AppConfig';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './ui/theme';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/routes';
 
 declare global {
   interface Window {
@@ -20,8 +20,7 @@ const initOptions = {
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Navbar />
-      <Home />
+      <RouterProvider router={router}></RouterProvider>
     </ThemeProvider>
   );
 }
