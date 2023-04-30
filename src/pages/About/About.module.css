@@ -1,24 +1,34 @@
 .about {
-  position: relative;
   text-align: center;
 
   .cardList {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 32px 0;
   }
 
   .aboutHeading {
     color: rgb(161, 151, 37);
-    margin-top: 30px;
-    margin-bottom: 30px;
+    font-family: Roboto-Black;
+    margin-top: 32px;
+    margin-bottom: 20px;
     font-weight: 400;
   }
+}
 
-  .seprator {
-    width: 30px;
-    margin: auto;
+.ourTeam {
+  text-align: center;
+  padding: 32px 0;
+
+  .ourTeamHeading {
+    font-family: Roboto-Bold;
   }
+
+  .teamCards {
+    display: flex;
+  }
+
 }
 
 @media screen and (max-width: 900px) {

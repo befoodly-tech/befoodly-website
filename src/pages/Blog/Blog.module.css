@@ -1,23 +1,21 @@
 .blog {
   text-align: center;
   padding-bottom: 20px;
+
   .blogHeading {
     color: rgb(161, 151, 37);
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-weight: 400;
+    font-family: Roboto-Black;
+    margin-top: 32px;
+    margin-bottom: 20px;
   }
-  .seprator {
-    width: 30px;
-    margin: auto;
-  }
+
   .post {
-    width: 60%;
-    height: 40px;
-    padding-top: 10px;
+    width: 80%;
+    height: 50vh;
+    margin: 24px auto;
     background-color: rgb(246, 246, 246);
-    margin: auto;
     color: rgb(82, 82, 82);
     font-family: Roboto-Medium;
+    padding-top: 20px;
   }
 }

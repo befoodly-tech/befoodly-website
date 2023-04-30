@@ -8,3 +8,11 @@ export interface CustomCardProps {
   photoUrl: string;
   author: string;
 }
+
+export interface TeamCardProps {
+  photoUrl: string;
+  name: string;
+  title: string;
+  description: string;
+  linkedinLink: string;
+}
