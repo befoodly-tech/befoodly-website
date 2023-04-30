@@ -31,11 +31,7 @@
 
 @media screen and (max-width: 900px) {
   .cardBlock {
-    max-width: 500px;
-    height: 500px;
-    padding: 10px;
     .cardImg {
-      height: 300px;
     }
   }
 }

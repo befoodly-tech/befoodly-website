@@ -44,11 +44,19 @@
 @media screen and (max-width: 900px) {
   .midGaurd {
     .gridItem {
+      padding: 12px;
+
       .frame {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+      }
+
+      .textFrame1 {
+        font-size: 20px;
+        padding-bottom: 8px;
+      }
+      .textFrame2 {
+        padding-bottom: 32px;
+        font-size: 14px;
+        border-bottom: rgb(179, 177, 177) 1px solid;
       }
     }
   }

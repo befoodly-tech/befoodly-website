@@ -1,7 +1,7 @@
-import { AppBar, Toolbar, Typography, Box, Button } from '@mui/material';
+import { AppBar, Toolbar, Typography, Box, Button, useTheme, useMediaQuery } from '@mui/material';
 import { Container } from '@mui/system';
-import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
+import NavDrawer from '../Common/NavDrawer';
 
 const options = ['Home', 'About', 'Blog'];
 
@@ -29,8 +29,8 @@ window.addEventListener('scroll', function (event) {
 
 const Navbar = (props: NavbarProps) => {
   const { bgColor = 'transparent' } = props;
-  const navigate = useNavigate();
-  const onLogoClick = () => navigate(options[0]);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <AppBar
@@ -44,19 +44,25 @@ const Navbar = (props: NavbarProps) => {
       <Container className={styles.navContainer}>
         <Toolbar className={styles.toolbar}>
           <Box>
-            <Typography className={styles.logo} onClick={onLogoClick}>
+            <Button variant="text" className={styles.logo} href="\">
               BeFoodly
-            </Typography>
+            </Button>
           </Box>
-          <Box>
-            {options.map((option, index) => {
-              return (
-                <Button className={styles.navButtom} href={option} key={index}>
-                  {option}
-                </Button>
-              );
-            })}
-          </Box>
+          {isMobile ? (
+            <Box>
+              <NavDrawer options={options} />
+            </Box>
+          ) : (
+            <Box>
+              {options.map((option, index) => {
+                return (
+                  <Button className={styles.navButtom} href={option} key={index}>
+                    {option}
+                  </Button>
+                );
+              })}
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

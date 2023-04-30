@@ -37,4 +37,12 @@
       align-items: center;
     }
   }
+
+  .ourTeam {
+    padding: 0;
+
+    .teamCards {
+      flex-wrap: wrap;
+    }
+  }
 }

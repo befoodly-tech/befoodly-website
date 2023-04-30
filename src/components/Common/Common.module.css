@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   margin: 24px;
-  flex-wrap: wrap;
 
   .memberImg {
     width: 200px;
@@ -44,8 +43,47 @@
     }
 
     .memberLinkedList {
-      width: 24px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
       color: #0077b5;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .teamContainer {
+    flex-wrap: wrap;
+
+    .memberImg {
+      margin: auto;
+      width: 240px;
+      height: 240px;
+    }
+  }
+}
+
+.drawerContainer {
+  .drawerList {
+    padding: 0;
+
+    .drawerListItem {
+      padding: 0;
+
+      .drawerListItemLink {
+        color: #fafafa;
+        font-family: Roboto-Medium;
+        padding: 24px 0;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.drawerMenu {
+  color: #fafafa !important;
+
+  .menuIcon {
+    font-size: 2rem !important;
   }
 }
