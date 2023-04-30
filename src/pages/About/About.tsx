@@ -57,7 +57,7 @@ const allTeamMembers: TeamCardProps[] = [
 const About = () => {
   return (
     <>
-      <AppBar sx={{ zIndex: 1, backgroundColor: 'black', padding: '16px 0', position: 'relative' }}>
+      <AppBar sx={{ zIndex: 1, backgroundColor: 'black', padding: '24px 0', position: 'relative' }}>
         <Toolbar />
       </AppBar>
       <Container className={styles.about}>
