@@ -40,16 +40,16 @@ const router = createBrowserRouter([
             <Blog />
           </>
         )
-      },
-      {
-        path: '/comingsoon',
-        element: (
-          <>
-            <ComingSoon />
-          </>
-        )
       }
     ]
+  },
+  {
+    path: '/comingsoon',
+    element: (
+      <>
+        <ComingSoon />
+      </>
+    )
   }
 ]);
 

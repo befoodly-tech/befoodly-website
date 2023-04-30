@@ -17,8 +17,13 @@
     }
   }
 
-  .description {
-    color: rgb(94, 94, 94);
-    margin-top: 8px;
+  .contentBox {
+    display: flex;
+    flex-direction: column;
+
+    .description {
+      color: rgb(94, 94, 94);
+      margin-top: 8px;
+    }
   }
 }
