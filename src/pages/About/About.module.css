@@ -28,7 +28,6 @@
   .teamCards {
     display: flex;
   }
-
 }
 
 @media screen and (max-width: 900px) {
