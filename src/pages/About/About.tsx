@@ -41,7 +41,7 @@ const allTeamMembers: TeamCardProps[] = [
     photoUrl: DeepakImg,
     description:
       'A Food and Tech Lover, trying to build a food tech. Through Befoodly, we want to make it easy for people to order homemade healthy food at very affordable prices.',
-    title: 'The Creater',
+    title: 'The Creator',
     linkedinLink: 'https://www.linkedin.com/in/deepak8504/'
   },
   {
@@ -49,7 +49,7 @@ const allTeamMembers: TeamCardProps[] = [
     photoUrl: PiyushImg,
     description:
       'A Passionate Foodie, trying to fill a gap in the F&B marketplace. To empower, small and medium food service providers to deliver homemade food to our customers.',
-    title: 'The Creater',
+    title: 'The Creator',
     linkedinLink: 'https://www.linkedin.com/in/piyush-chouhan-041050130/'
   }
 ];
