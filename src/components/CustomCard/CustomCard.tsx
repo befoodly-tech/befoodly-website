@@ -14,7 +14,7 @@ const CustomCard = (props: CustomCardProps) => {
         <Typography gutterBottom className={styles.description}>
           {props.description}
         </Typography>
-        <Typography className={styles.author}>-{props.author}</Typography>
+        <Typography className={styles.author}>- {props.author}</Typography>
       </CardContent>
     </Card>
   );

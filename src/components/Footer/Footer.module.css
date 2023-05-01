@@ -2,16 +2,15 @@
   background-color: black;
   color: rgb(169, 169, 169);
   text-align: center;
-  padding: 160px;
+  padding: 50px;
 
   .copyright {
     font-size: 14px;
     font-weight: 400;
-  }
-}
 
-@media screen and (max-width: 900px) {
-  .footer {
-    text-align: center;
+    .companyName {
+      font-family: Roboto-Medium;
+      color: #f3e32b;
+    }
   }
 }

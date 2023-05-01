@@ -2,7 +2,7 @@ import { createTheme, Typography, withStyles, responsiveFontSizes } from '@mui/m
 
 export let theme = createTheme({
   typography: {
-    fontFamily: 'Cabin, Roboto, serif, Times New Roman'
+    fontFamily: 'Roboto-Regular, serif, Times New Roman'
   },
   status: {
     danger: '#e53e3e'

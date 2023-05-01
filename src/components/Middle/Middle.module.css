@@ -1,30 +1,41 @@
+.base {
+  text-align: center;
+  width: 100%;
+
+  .baseText {
+    font-family: Roboto-Black;
+    color: rgb(161, 151, 37);
+    height: 100%;
+    margin-top: 50px;
+  }
+}
 .midGaurd {
-  padding: 35px 20px;
+  padding: 32px 24px;
   display: flex;
   align-items: center;
 
   .gridItem {
-    padding: 10px;
+    padding: 12px 28px;
 
     .frame {
-      width: 40vw;
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
     }
 
     .textFrame1 {
       text-align: center;
-      padding-bottom: 15px;
-      font-family: Roboto-Light;
-      font-weight: 400;
+      padding-bottom: 16px;
+      font-family: Roboto-Medium;
       font-size: 22px;
       color: rgb(27, 27, 27);
     }
 
     .textFrame2 {
       text-align: center;
-      padding: 5px 20px;
-      font-family: Roboto-Light;
+      padding: 6px 20px;
+      font-family: Roboto-Regular;
       font-size: 16px;
-      font-weight: 400;
       color: rgb(94, 94, 94);
     }
   }
@@ -33,11 +44,19 @@
 @media screen and (max-width: 900px) {
   .midGaurd {
     .gridItem {
+      padding: 12px;
+
       .frame {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 50%;
+      }
+
+      .textFrame1 {
+        font-size: 20px;
+        padding-bottom: 8px;
+      }
+      .textFrame2 {
+        padding-bottom: 32px;
+        font-size: 14px;
+        border-bottom: rgb(179, 177, 177) 1px solid;
       }
     }
   }

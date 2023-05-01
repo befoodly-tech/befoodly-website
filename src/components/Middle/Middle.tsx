@@ -1,18 +1,24 @@
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
-import KitchenChef from '../../assets/images/kitchen-chef.jpg';
-import Vegetable from '../../assets/images/vegetables.jpg';
-import Cook from '../../assets/images/cook.jpg';
+import HomeChef from '../../assets/images/home-chef.jpg';
+import Vegetable from '../../assets/images/fresh-veggies.jpg';
+import Delivery from '../../assets/images/delivery-partner.jpg';
 import styles from './Middle.module.css';
 import { Box } from '@mui/system';
+import Separator from '../Common/Separator';
 
 const Middle = () => {
   return (
-    <Box>
-      {/* Part 1 */}
+    <Box className={styles.middleContainer}>
+      <Box className={styles.base}>
+        <Typography className={styles.baseText} variant="h3">
+          Hello There!
+        </Typography>
+        <Separator />
+      </Box>
       <Grid container className={styles.midGaurd}>
         <Grid item xs={12} md={6} className={styles.gridItem}>
-          <Box component="img" className={styles.frame} src={KitchenChef} alt="Chef"></Box>
+          <Box component="img" className={styles.frame} src={HomeChef} alt="Chef"></Box>
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem}>
           <Typography variant="h5" className={styles.textFrame1}>
@@ -24,30 +30,30 @@ const Middle = () => {
           </Typography>
         </Grid>
         {/* Part 2 */}
-        <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 4, md: 3 }}>
+        <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 4, md: 4 }}>
           <Typography variant="h5" className={styles.textFrame1}>
             Fear Of Quality And Hygiene?
           </Typography>
           <Typography className={styles.textFrame2}>
             All the kitchens are verified as per govt. regulations, and as per our terms &
             conditions. Every home-chef cleans the kitchen before cooking any meal, we trust into
-            using instamart to get fresh veggies and fruits.
+            using fresh veggies and fruits.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 3, md: 4 }}>
-          <Box component="img" className={styles.frame} src={Vegetable} alt="Vegetables"></Box>
+          <Box component="img" className={styles.frame} src={Vegetable} alt="Vegetables Img"></Box>
         </Grid>
         {/* Part 3 */}
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 5, md: 6 }}>
-          <Box component="img" className={styles.frame} src={Cook} alt="Cook"></Box>
+          <Box component="img" className={styles.frame} src={Delivery} alt="Delivery Img"></Box>
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 5, md: 6 }}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Not a Great Cook?
+            Want Home Delivery?
           </Typography>
           <Typography className={styles.textFrame2}>
-            It&quot;s okay, we can connect you with very talented and experienced cook. The cook
-            will come to your home and cook a delicious meal for you. Must try experience.
+            Yes, you can place food order with your favourite home chef. Once the food is prepared,
+            we will assign a delivery partner to pick your order and deliver on time at your home.
           </Typography>
         </Grid>
       </Grid>

@@ -1,34 +1,103 @@
 .topImage {
-  width: 100vw;
-  height: 80vh;
-  filter: blur(2px);
-}
-
-.intro {
-  position: absolute;
-  top: 40%;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: auto;
+  min-height: 85vh;
+  background-image: linear-gradient(to bottom, rgba(53, 3, 3, 0.3) 20%, rgba(53, 3, 3, 0.3) 100%),
+    url(../../assets/images/food-banner-img.jpg);
+  background-blend-mode: initial;
+  background-position: top;
+  object-fit: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
 
-  .main {
-    color: white;
-    text-align: center;
-    padding: 5px;
-  }
+  .intro {
+    position: absolute;
+    top: 10rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Roboto;
 
-  .exploreBtn {
-    background-color: rgb(242, 228, 65);
-    margin-top: 30px;
+    .headingMain {
+      font-family: Roboto-Black;
+      text-align: center;
+      font-size: 56px;
+      letter-spacing: 1.5px;
+      color: rgb(247, 247, 247);
+    }
+
+    .detailsMain {
+      font-family: Roboto-Regular;
+      margin-top: 8px;
+      font-size: 22px;
+      color: rgb(247, 247, 247);
+      text-align: center;
+    }
+
+    .exploreBtn {
+      background-color: rgb(242, 228, 65);
+      font-size: 14px;
+      margin-top: 32px;
+      font-family: Roboto-Bold;
+      color: rgb(26, 26, 24);
+      border-radius: 4px;
+      min-height: 56px;
+      padding: 8px 32px;
+      text-align: center;
+      letter-spacing: 0.071em;
+
+      &:hover {
+        background-color: rgb(247, 247, 247);
+      }
+    }
   }
 }
 
-.base {
-  text-align: center;
-  .baseText {
-    color: rgb(161, 151, 37);
-    height: 100%;
-    padding-top: 50px;
+@media screen and (max-width: 900px) {
+  .topImage {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(53, 3, 3, 0.3) 20%, rgba(53, 3, 3, 0.3) 100%),
+      url(../../assets/images/food-banner-img-mobile.jpg);
+
+    .intro {
+      top: 8rem;
+
+      .headingMain {
+        font-size: 48px;
+        letter-spacing: 1px;
+        padding: 0 12px;
+      }
+
+      .exploreBtn {
+        min-height: 48px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topImage {
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(53, 3, 3, 0.3) 20%, rgba(53, 3, 3, 0.3) 100%),
+      url(../../assets/images/food-banner-img-mobile.jpg);
+
+    .intro {
+      top: 8rem;
+
+      .headingMain {
+        font-size: 40px;
+        letter-spacing: 1px;
+        padding: 0 12px;
+      }
+
+      .detailsMain {
+        font-size: 20px;
+      }
+
+      .exploreBtn {
+        min-height: 48px;
+      }
+    }
   }
 }

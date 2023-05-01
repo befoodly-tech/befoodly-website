@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Box className={styles.footer}>
       <Typography className={styles.copyright}>
-        Copyright © 2023 BeFoodly - All Rights Reserved.
+        Copyright © 2023 <span className={styles.companyName}>BeFoodly</span> - All Rights Reserved.
       </Typography>
     </Box>
   );

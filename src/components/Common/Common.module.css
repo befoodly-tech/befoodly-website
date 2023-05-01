@@ -1,0 +1,89 @@
+.separator {
+  width: 50px;
+  margin-top: 24px;
+  border: 0;
+  border-bottom-width: 2px;
+  border-style: solid;
+  border-color: rgb(226, 226, 226);
+}
+
+.teamContainer {
+  display: flex;
+  align-items: center;
+  margin: 24px;
+
+  .memberImg {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  .memberInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .memberName {
+      font-family: Roboto-Medium;
+      font-size: 20px;
+    }
+
+    .memberTitle {
+      font-size: 16px;
+      color: rgb(94, 94, 94);
+      margin-bottom: 8px;
+    }
+
+    .memberDescription {
+      font-size: 14px;
+      text-align: left;
+      margin: 8px 0;
+    }
+
+    .memberLinkedList {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      color: #0077b5;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .teamContainer {
+    flex-wrap: wrap;
+
+    .memberImg {
+      margin: auto;
+      width: 240px;
+      height: 240px;
+    }
+  }
+}
+
+.drawerContainer {
+  .drawerList {
+    padding: 0;
+
+    .drawerListItem {
+      padding: 0;
+
+      .drawerListItemLink {
+        color: #fafafa;
+        font-family: Roboto-Medium;
+        padding: 24px 0;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.drawerMenu {
+  color: #fafafa !important;
+
+  .menuIcon {
+    font-size: 2rem !important;
+  }
+}
