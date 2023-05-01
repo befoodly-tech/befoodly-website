@@ -25,12 +25,13 @@ const Contact = () => {
             color: 'white',
             backgroundColor: 'red',
             display: 'flex',
+            alignItems: 'center',
             margin: 'auto',
             marginTop: '20px',
             padding: '8px'
           }}
         >
-          <WorkIcon color="primary" /> Send us an email, if you are want to join our founding team
+          <WorkIcon color="primary" /> Interested in joining our founding team? Send us an email
         </Typography>
       </Box>
     </Box>
