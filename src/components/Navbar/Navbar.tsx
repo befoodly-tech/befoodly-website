@@ -1,4 +1,5 @@
-import { AppBar, Toolbar, Typography, Box, Button, useTheme, useMediaQuery } from '@mui/material';
+import { AppBar, Toolbar, Box, Button, useTheme, useMediaQuery } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { Container } from '@mui/system';
 import styles from './Navbar.module.css';
 import NavDrawer from '../Common/NavDrawer';
@@ -31,6 +32,9 @@ const Navbar = (props: NavbarProps) => {
   const { bgColor = 'transparent' } = props;
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const navigate = useNavigate();
+
+  const onTabSwitch = (url: string) => navigate(url);
 
   return (
     <AppBar
@@ -44,7 +48,7 @@ const Navbar = (props: NavbarProps) => {
       <Container className={styles.navContainer}>
         <Toolbar className={styles.toolbar}>
           <Box>
-            <Button variant="text" className={styles.logo} href="\">
+            <Button variant="text" className={styles.logo} href={options[0]}>
               BeFoodly
             </Button>
           </Box>
@@ -56,7 +60,11 @@ const Navbar = (props: NavbarProps) => {
             <Box>
               {options.map((option, index) => {
                 return (
-                  <Button className={styles.navButtom} href={option} key={index}>
+                  <Button
+                    onClick={() => onTabSwitch(option)}
+                    className={styles.navButtom}
+                    key={index}
+                  >
                     {option}
                   </Button>
                 );
