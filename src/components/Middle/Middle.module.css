@@ -11,6 +11,8 @@
 }
 .midGaurd {
   padding: 32px 24px;
+  max-width: 1224px;
+  margin: auto;
   display: flex;
   align-items: center;
 
