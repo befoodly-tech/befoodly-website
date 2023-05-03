@@ -4,7 +4,7 @@ import { Container } from '@mui/system';
 import styles from './Navbar.module.css';
 import NavDrawer from '../Common/NavDrawer';
 
-const options = ['home', 'about', 'blog'];
+const options = ['Home', 'About', 'Blog'];
 
 interface NavbarProps {
   bgColor?: string;
