@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { AppConfig } from './types/AppConfig';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './ui/theme';
