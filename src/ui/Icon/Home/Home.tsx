@@ -1,5 +1,5 @@
 import * as React from 'react';
-const Home = (props: React.SVGProps<SVGElement>) => (
+const Home = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={19} height={18} fill="none" {...props}>
     <path
       fill="#FFDB81"

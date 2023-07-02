@@ -1,5 +1,5 @@
 import * as React from 'react';
-const SvgSearch = (props: React.SVGProps<SVGElement>) => (
+const SvgSearch = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={19} height={18} fill="none" {...props}>
     <path
       fill="#828282"

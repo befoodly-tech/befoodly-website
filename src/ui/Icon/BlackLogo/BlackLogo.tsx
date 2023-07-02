@@ -1,5 +1,5 @@
 import * as React from 'react';
-const SvgLogoBlack = (props: React.SVGProps<SVGElement>) => (
+const SvgLogoBlack = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={117} height={50} fill="none" {...props}>
     <path
       fill="#FEBA10"
