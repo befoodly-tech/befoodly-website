@@ -2,7 +2,10 @@ import { createTheme, Typography, withStyles, responsiveFontSizes } from '@mui/m
 
 export let theme = createTheme({
   typography: {
-    fontFamily: 'Roboto-Regular, serif, Times New Roman'
+    fontFamily: 'Roboto-Regular, serif, Times New Roman',
+    button: {
+      textTransform: 'none'
+    }
   },
   status: {
     danger: '#e53e3e'

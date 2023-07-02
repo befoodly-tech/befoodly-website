@@ -38,23 +38,18 @@
           flex-direction: column;
           align-items: flex-start;
           text-align: left;
+          border-radius: 0.5rem;
 
           .placeName {
             color: #191919;
             font-size: 0.875rem;
-            font-family: Outfit;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
+            font-family: Outfit-SemiBold;
           }
 
           .placeArea {
             color: #757575;
             font-size: 0.875rem;
             font-family: Outfit;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
           }
         }
       }

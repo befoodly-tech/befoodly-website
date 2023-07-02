@@ -9,20 +9,10 @@ import {
 } from '@mui/material';
 import styles from './NavbarApp.module.css';
 import BefoodlyLogo from '../../assets/svgs/LogoBlack.svg';
-import Search from '../../ui/Icon/Search/Search';
-import HomeIcon from '../../ui/Icon/Home/Home';
+import Search from '../../ui/Icon/Search';
+import HomeIcon from '../../ui/Icon/Home';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-// import { styled } from '@mui/material/styles';
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   color: theme.palette.text.secondary,
-//   height: '3.375rem',
-//   width: '44rem',
-//   lineHeight: '60px',
-//   paddingLeft: '16px',
-//   paddingRight: '16px'
-// }));
 const NavbarApp = () => {
   return (
     <Box className={styles.head}>
@@ -38,7 +28,9 @@ const NavbarApp = () => {
           >
             <Box className={styles.place}>
               <Typography className={styles.placeName}>Home</Typography>
-              <Typography className={styles.placeArea}>Bellandure, Bangalore</Typography>
+              <Typography noWrap className={styles.placeArea}>
+                Bellandure, Bangalore
+              </Typography>
             </Box>
           </Button>
           <Box className={styles.inputField}>

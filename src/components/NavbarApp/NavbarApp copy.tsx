@@ -11,9 +11,9 @@ import Divider from '@mui/material/Divider';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import HomeIcon from '../../ui/Icon/Home/Home';
+import HomeIcon from '../../ui/Icon/Home';
 import InputAdornment from '@mui/material/InputAdornment';
-import Search from '../../ui/Icon/Search/Search';
+import Search from '../../ui/Icon/Search';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,

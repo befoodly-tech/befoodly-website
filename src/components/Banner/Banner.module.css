@@ -1,0 +1,64 @@
+.bar {
+  display: flex;
+  width: 68.75rem;
+  height: 5.5625rem;
+  flex-shrink: 0;
+  padding-left: 12rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+
+  .delivery {
+    display: inline-flex;
+    padding: 0.1875rem 0rem 0.0625rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6875rem;
+
+    .deliveryText {
+      color: #feba10;
+      font-size: 1.25rem;
+      font-family: Helvetica;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.875rem;
+    }
+
+    .divider {
+      width: 11.63375rem;
+      height: 0.125rem;
+      border-radius: 0.4375rem;
+      background: #ffdb81;
+    }
+  }
+  .bookCook {
+    display: inline-flex;
+    padding: 0.1875rem 0rem 0.0625rem 0rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6875rem;
+
+    .bookCookText {
+      color: #757575;
+      font-size: 1.25rem;
+      font-family: Outfit;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.875rem;
+    }
+  }
+
+  .cart {
+    display: flex;
+    padding: 1rem 1.5rem;
+    align-items: center;
+    gap: 0.25rem;
+
+    border-radius: 12.5rem;
+    border: 1px solid #ffc943;
+    background: #fceec0;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
+    justify-self: flex-end;
+  }
+}

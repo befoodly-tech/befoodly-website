@@ -68,3 +68,17 @@ body {
   font-weight: 900;
   src: local('Roboto-Black'), url(./assets/fonts/Roboto/Roboto-Black.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Outfit-SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Outfit-SemiBold'), url(./assets/fonts/Outfit/Outfit-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Outfit'), url(./assets/fonts/Outfit/Outfit-Regular.ttf) format('truetype');
+}
