@@ -1,9 +1,8 @@
 .head {
   display: flex;
   height: 5.25rem;
-  padding: 0.9375rem 36.9375rem 0.9375rem 36.6875rem;
+  padding: 0.9375rem 12rem 0.9375rem 12rem;
   align-items: center;
-  flex-shrink: 0;
   background: #f6f6f6;
   .main {
     display: flex;
@@ -26,7 +25,6 @@
       .placeBtn {
         width: 15rem;
         height: 3.25rem;
-        flex-shrink: 0;
 
         .placeLogo {
           width: 1.125rem;
@@ -62,7 +60,6 @@
         justify-content: flex-end;
         align-items: center;
         gap: 0.745rem;
-        flex-shrink: 0;
       }
     }
 
