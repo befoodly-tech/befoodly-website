@@ -1,24 +1,35 @@
-import { Container, Box, Button, Typography } from '@mui/material';
+import { Container, Box, Button, Typography, ButtonGroup } from '@mui/material';
 import styles from './Banner.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
 import SvgChefCap from '../../ui/Icon/ChefCap';
 
+const bannerOptions = [
+  {
+    optionName: 'Delivery',
+    svgImg: <SvgDeliveryScooter circleFill="#FCEEC0" logoFill="#FEBA10" />,
+    active: true
+  },
+  {
+    optionName: 'Book a Cook',
+    svgImg: <SvgChefCap circleFill="#F8F8F8" logoFill="#757575" />,
+    active: false
+  }
+];
+
 const Banner = () => {
   return (
     <Box className={styles.bar}>
-      <Box>
-        <Box className={styles.delivery}>
-          <Button startIcon={<SvgDeliveryScooter />}>
-            <Typography className={styles.deliveryText}>Delivery</Typography>
+      <ButtonGroup>
+        {bannerOptions.map(option => (
+          <Button key={option.optionName} className={styles.optionMain}>
+            <Box className={styles.option}>
+              {option.svgImg}
+              <Typography className={styles.optionText}>{option.optionName}</Typography>
+            </Box>
+            <Box className={styles.divider} />
           </Button>
-          <Box className={styles.divider} />
-        </Box>
-        <Box className={styles.bookCook}>
-          <Button startIcon={<SvgChefCap />}>
-            <Typography className={styles.bookCookText}>Book a Cook</Typography>
-          </Button>
-        </Box>
-      </Box>
+        ))}
+      </ButtonGroup>
       <Button variant="contained" className={styles.cart}>
         View Cart
       </Button>
