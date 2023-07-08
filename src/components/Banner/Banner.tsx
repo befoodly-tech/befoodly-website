@@ -2,6 +2,7 @@ import { Container, Box, Button, Typography, ButtonGroup } from '@mui/material';
 import styles from './Banner.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
 import SvgChefCap from '../../ui/Icon/ChefCap';
+import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 
 const bannerOptions = [
   {
@@ -30,7 +31,7 @@ const Banner = () => {
           </Button>
         ))}
       </ButtonGroup>
-      <Button variant="contained" className={styles.cart}>
+      <Button variant="contained" startIcon={<SvgShoppingCart />} className={styles.cart}>
         View Cart
       </Button>
     </Box>
