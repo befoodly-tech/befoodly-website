@@ -82,3 +82,10 @@ body {
   font-weight: 400;
   src: local('Outfit'), url(./assets/fonts/Outfit/Outfit-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lobster'), url(./assets/fonts/Lobster/Lobster-Regular.ttf) format('truetype');
+}
