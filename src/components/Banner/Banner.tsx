@@ -1,7 +1,7 @@
 import { Box, Button, Typography, ButtonGroup } from '@mui/material';
 import styles from './Banner.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
-import SvgChefCap from '../../ui/Icon/ChefCap';
+//import SvgChefCap from '../../ui/Icon/ChefCap';
 import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 
 const bannerOptions = [
@@ -9,12 +9,12 @@ const bannerOptions = [
     optionName: 'Delivery',
     svgImg: <SvgDeliveryScooter circleFill="#FCEEC0" logoFill="#FEBA10" />,
     active: true
-  },
-  {
-    optionName: 'Book a Cook',
-    svgImg: <SvgChefCap circleFill="#F8F8F8" logoFill="#757575" />,
-    active: false
   }
+  // {
+  //   optionName: 'Book a Cook',
+  //   svgImg: <SvgChefCap circleFill="#F8F8F8" logoFill="#757575" />,
+  //   active: false
+  // }
 ];
 
 const Banner = () => {

@@ -1,0 +1,45 @@
+.cardOuter {
+  display: flex;
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  flex-direction: column;
+  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.05) inset;
+
+  .cardVal {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+
+    .cardPer {
+      color: #ffffff;
+      text-align: center;
+      font-family: Lobster;
+      font-size: 2.7rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%; /* 3.24rem */
+    }
+
+    .cardDesc {
+      color: #ffffff;
+      font-family: Outfit;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 120%; /* 2.16rem */
+    }
+  }
+
+  .cardRule {
+    color: #feba10;
+    font-family: Outfit;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 1.08rem */
+    text-align: left;
+  }
+}

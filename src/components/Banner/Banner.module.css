@@ -1,7 +1,6 @@
 .bar {
   display: flex;
-  height: 5.5625rem;
-  padding: 1rem 12rem;
+  padding: 0rem 12rem;
   justify-content: space-between;
   align-items: center;
 
