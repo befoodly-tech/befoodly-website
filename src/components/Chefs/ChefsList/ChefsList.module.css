@@ -1,0 +1,6 @@
+.chefsList {
+  display: flex;
+  width: 67.6875rem;
+  align-items: flex-start;
+  padding: 2rem;
+}
