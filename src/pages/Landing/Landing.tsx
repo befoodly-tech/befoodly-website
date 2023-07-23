@@ -9,7 +9,7 @@ const Landing = () => {
   return (
     <Box className={styles.main}>
       <NavbarApp />
-      {/* <Banner /> */}
+      <Banner />
       <Offer />
       <Chefs />
     </Box>
