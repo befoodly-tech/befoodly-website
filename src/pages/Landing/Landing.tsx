@@ -4,6 +4,7 @@ import NavbarApp from '../../components/NavbarApp/NavbarApp';
 import Banner from '../../components/Banner/Banner';
 import Offer from '../../components/Offer/Offer';
 import Chefs from '../../components/Chefs/Chefs';
+import Filters from '../../components/Filters/Filters';
 
 const Landing = () => {
   return (
@@ -12,6 +13,7 @@ const Landing = () => {
       <Banner />
       <Offer />
       <Chefs />
+      <Filters />
     </Box>
   );
 };

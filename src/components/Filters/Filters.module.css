@@ -1,0 +1,85 @@
+.filters {
+  display: flex;
+  flex-direction: row;
+  height: 89px;
+  padding: 20px 0px 20px 0px;
+  justify-content: space-around;
+  align-items: center;
+  gap: 260.49px;
+  flex-shrink: 0;
+
+  .filterPrimary {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .filterPrimaryBtn {
+    display: flex;
+    height: 38px;
+    padding: 11px 11.94px 10px 9px;
+    align-items: flex-start;
+    margin-left: 14px;
+
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
+  }
+
+  .filterPrimaryBtnActive {
+    display: flex;
+    padding: 8px 12px;
+    flex-direction: row;
+    gap: 10px;
+    margin-left: 14px;
+    border-radius: 8px;
+    border: 1px solid #fdc126;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
+  }
+
+  .filterPrimarytext {
+    color: #9c9c9c;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 124%; /* 17.36px */
+  }
+
+  .filterPrimarytextActive {
+    color: #393939;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .secondaryFilters {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    .filterSecondaryBtn {
+      display: flex;
+      padding: 8px 12px;
+      flex-direction: row;
+      gap: 10px;
+
+      border-radius: 8px;
+      border: 1px solid #f0f0f0;
+      background: #fff;
+    }
+
+    .filterSecondaryTxt {
+      color: #292929;
+      text-align: center;
+      font-family: Outfit;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
