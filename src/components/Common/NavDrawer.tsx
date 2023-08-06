@@ -6,6 +6,7 @@ import styles from './Common.module.css';
 
 interface NavDrawerProps {
   options: string[];
+  lightTheme?: boolean;
 }
 
 const NavDrawer = (props: NavDrawerProps) => {
@@ -26,7 +27,7 @@ const NavDrawer = (props: NavDrawerProps) => {
             width: '50%',
             height: 'auto',
             padding: '24px',
-            backgroundColor: 'black'
+            backgroundColor: props.lightTheme ? 'white' : 'black'
           }
         }}
       >
@@ -39,17 +40,29 @@ const NavDrawer = (props: NavDrawerProps) => {
                   key={index}
                   className={styles.drawerListItem}
                 >
-                  <Link to={option} className={styles.drawerListItemLink}>
+                  <Link
+                    to={option}
+                    className={
+                      props.lightTheme ? styles.drawerListItemLinkLight : styles.drawerListItemLink
+                    }
+                  >
                     {option}
                   </Link>
                 </ListItem>
-                {index !== 2 && <Divider sx={{ borderColor: '#fafafa', borderSize: '1px' }} />}
+                {index !== 2 && (
+                  <Divider
+                    sx={{ borderColor: props.lightTheme ? 'black' : '#fafafa', borderSize: '1px' }}
+                  />
+                )}
               </>
             );
           })}
         </List>
       </Drawer>
-      <IconButton onClick={() => setOpenDrawer(!openDrawer)} className={styles.drawerMenu}>
+      <IconButton
+        onClick={() => setOpenDrawer(!openDrawer)}
+        className={props.lightTheme ? styles.drawerMenuLight : styles.drawerMenu}
+      >
         <MenuIcon className={styles.menuIcon} />
       </IconButton>
     </>

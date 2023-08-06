@@ -1,6 +1,5 @@
 .head {
   display: flex;
-  height: 5.25rem;
   padding: 0.9375rem 12rem 0.9375rem 12rem;
   align-items: center;
   background: #f6f6f6;
@@ -11,30 +10,21 @@
     gap: 2.25rem;
 
     .logo {
-      width: 7.3rem;
-      height: 3.06763rem;
     }
 
     .find {
       display: flex;
       width: 44rem;
       padding: 0.0625rem;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
 
       .placeBtn {
-        width: 15rem;
-        height: 3.25rem;
-
+        flex: 1;
         .placeLogo {
-          width: 1.125rem;
-          height: 1.125rem;
         }
 
         .place {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
           text-align: left;
           border-radius: 0.5rem;
 
@@ -54,12 +44,10 @@
 
       .inputField {
         display: flex;
-        width: 28.75rem;
-        height: 3.25rem;
-        padding-left: 0px;
-        justify-content: flex-end;
         align-items: center;
         gap: 0.745rem;
+        flex: 2;
+        padding-right: 20px;
       }
     }
 
@@ -73,4 +61,7 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 600px) {
 }
