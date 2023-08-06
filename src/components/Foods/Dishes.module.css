@@ -1,0 +1,21 @@
+.FoodGallery {
+  background-color: #f0f0f0;
+
+  display: flex;
+  padding: 36px 0px 10px 0px;
+  /* justify-content: center; */
+  align-items: center;
+
+  .FoodDisplay {
+    padding-top: 24px;
+  }
+
+  .FoodGalleryHeading {
+    color: #1c1c1c;
+    font-family: Outfit;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; /* 120% */
+  }
+}

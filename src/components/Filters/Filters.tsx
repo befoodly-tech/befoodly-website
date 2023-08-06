@@ -55,7 +55,7 @@ const secondaryFilterOptions: SecondaryFilterOption[] = [
 ];
 
 const Filters = () => {
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string | null>('Rating 4.0+');
 
   function handleFilterClick(filterName: string): void {
     setActiveFilter(filterName);

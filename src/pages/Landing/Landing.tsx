@@ -5,6 +5,7 @@ import Banner from '../../components/Banner/Banner';
 import Offer from '../../components/Offer/Offer';
 import Chefs from '../../components/Chefs/Chefs';
 import Filters from '../../components/Filters/Filters';
+import Dishes from '../../components/Foods/Dishes';
 
 const Landing = () => {
   return (
@@ -14,6 +15,7 @@ const Landing = () => {
       <Offer />
       <Chefs />
       <Filters />
+      <Dishes />
     </Box>
   );
 };

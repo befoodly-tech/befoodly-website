@@ -18,18 +18,13 @@
       text-align: center;
       font-family: Lobster;
       font-size: 2.7rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 120%; /* 3.24rem */
     }
 
     .cardDesc {
       color: #ffffff;
       font-family: Outfit;
       font-size: 1.8rem;
-      font-style: normal;
       font-weight: 600;
-      line-height: 120%; /* 2.16rem */
     }
   }
 
@@ -41,5 +36,12 @@
     font-weight: 600;
     line-height: 120%; /* 1.08rem */
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .cardOuter {
+    margin-top: 0.45rem;
+    margin-bottom: 0.45rem;
   }
 }

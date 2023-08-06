@@ -76,6 +76,13 @@
         padding: 24px 0;
         text-decoration: none;
       }
+
+      .drawerListItemLinkLight {
+        color: #000000;
+        font-family: Roboto-Medium;
+        padding: 24px 0;
+        text-decoration: none;
+      }
     }
   }
 }
@@ -83,6 +90,12 @@
 .drawerMenu {
   color: #fafafa !important;
 
+  .menuIcon {
+    font-size: 2rem !important;
+  }
+}
+
+.drawerMenuLight {
   .menuIcon {
     font-size: 2rem !important;
   }

@@ -1,6 +1,6 @@
 .mainSection {
   display: flex;
-  padding: 2.5rem 25.625rem;
+  padding: 2.5rem;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -8,15 +8,10 @@
   background: #ececec;
 
   .chefsBox {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-
     .popular {
       color: #191919;
       font-family: Outfit;
       font-size: 1.875rem;
-      /* font-style: normal; */
       font-weight: 600;
       line-height: 120%;
     }

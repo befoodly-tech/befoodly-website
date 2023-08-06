@@ -1,8 +1,13 @@
 .outerBox {
   display: flex;
-  padding: 0rem 25.625rem;
   justify-content: center;
   align-items: center;
   background: #f6f6f6;
   gap: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .outerBox {
+    flex-direction: column;
+  }
 }
