@@ -63,5 +63,13 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1400px) {
+  .head {
+    .main {
+      .find {
+        flex-direction: column;
+        width: auto;
+      }
+    }
+  }
 }

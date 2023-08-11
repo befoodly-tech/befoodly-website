@@ -7,7 +7,7 @@ import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 const bannerOptions = [
   {
     optionName: 'Delivery',
-    svgImg: <SvgDeliveryScooter circleFill="#FCEEC0" logoFill="#FEBA10" />,
+    svgImg: <SvgDeliveryScooter />,
     active: true
   }
   // {

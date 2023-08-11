@@ -1,5 +1,5 @@
 // createBrowserRouter,
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import ComingSoon from '../pages/ComingSoon';
 import Layout from '../components/Layout/Layout';
 import About from '../pages/About/About';
@@ -58,7 +58,17 @@ const router = createBrowserRouter([
       <>
         <Landing />
       </>
-    )
+    ),
+    children: [
+      {
+        path: '/menu/Login',
+        element: <Navigate to="/menu"></Navigate>
+      },
+      {
+        path: '/menu/SignUp',
+        element: <Navigate to="/menu"></Navigate>
+      }
+    ]
   }
 ]);
 
