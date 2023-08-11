@@ -31,7 +31,7 @@ const NavDrawer = (props: NavDrawerProps) => {
           }
         }}
       >
-        <List className={styles.drawerList}>
+        <List key="navbarList" className={styles.drawerList}>
           {options.map((option, index) => {
             return (
               <>

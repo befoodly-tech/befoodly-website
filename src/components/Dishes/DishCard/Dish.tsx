@@ -13,8 +13,25 @@ import styles from './Dish.module.css';
 import Clock from '../../../ui/Icon/Clock';
 import Calendar from '../../../ui/Icon/Calendar';
 import { CurrencyRupee } from '@mui/icons-material';
+import { addToCart } from '../../../features/cart/cartSlice';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
-const Dish = () => {
+export interface DishProp {
+  id: number;
+  kitchen: string;
+  dishName: string;
+  rating: number;
+  closeTime: string;
+  date: string;
+  dishCost: number;
+}
+
+const Dish = (props: DishProp) => {
+  const dispatch = useAppDispatch();
+  function handleAddCart(id: number): void {
+    dispatch(addToCart(id));
+  }
+
   return (
     <Card>
       <CardActionArea>
@@ -23,23 +40,23 @@ const Dish = () => {
       <CardContent className={styles.CardContentArea}>
         <Box className={styles.CardContentLeft}>
           <Box>
-            <Typography className={styles.CardAddress}>Befoodly Kitchen</Typography>
+            <Typography className={styles.CardAddress}>{props.kitchen}</Typography>
           </Box>
           <Box className={styles.CardItem}>
-            <Typography className={styles.CardFood}>Rajma Chawal</Typography>
+            <Typography className={styles.CardFood}>{props.dishName}</Typography>
             <Typography className={styles.CardRating}>
               <Star />
-              4.3 (10)
+              {props.rating} (10)
             </Typography>
           </Box>
           <Box className={styles.CardTiming}>
             <Typography className={styles.CardClock}>
               <Clock />
-              Accepting Till 11:00 AM
+              Accepting Till {props.closeTime}
             </Typography>
             <Typography className={styles.CardClock}>
               <Calendar />
-              29 May
+              {props.date}
             </Typography>
           </Box>
         </Box>
@@ -47,11 +64,13 @@ const Dish = () => {
           <Box className={styles.CardValue}>
             <Typography className={styles.CardPrice}>
               <CurrencyRupee />
-              129Rs
+              {props.dishCost}Rs
             </Typography>
             <Typography className={styles.CardAverage}>avg. meal price</Typography>
           </Box>
-          <Button className={styles.CardButton}>Add to Cart</Button>
+          <Button onClick={() => handleAddCart(props.id)} className={styles.CardButton}>
+            Add to Cart
+          </Button>
         </Box>
       </CardContent>
     </Card>

@@ -3,7 +3,7 @@
   padding: 2.5rem;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
   color: #feba10;
   background: #ececec;
 
@@ -15,5 +15,11 @@
       font-weight: 600;
       line-height: 120%;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mainSection {
+    flex-direction: column;
   }
 }
