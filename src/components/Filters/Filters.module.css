@@ -3,10 +3,8 @@
   flex-direction: row;
   height: 89px;
   padding: 20px 0px 20px 0px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 260.49px;
-  flex-shrink: 0;
 
   .filterPrimary {
     display: flex;
@@ -19,7 +17,6 @@
     padding: 11px 11.94px 10px 9px;
     align-items: flex-start;
     margin-left: 14px;
-
     border-radius: 8px;
     border: 1px solid #cfcfcf;
     background: #fff;
@@ -81,5 +78,11 @@
       font-weight: 500;
       line-height: normal;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .filters {
+    flex-direction: column;
   }
 }
