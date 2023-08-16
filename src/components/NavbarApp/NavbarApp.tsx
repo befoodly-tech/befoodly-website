@@ -118,7 +118,9 @@ const NavbarApp = () => {
   return (
     <Box className={styles.head}>
       <Container className={styles.main}>
-        <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
+        <Button onClick={() => navigate('/menu')}>
+          <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
+        </Button>
         <Paper className={styles.find}>
           <Button
             color="primary"

@@ -52,7 +52,7 @@ const Dishes = () => {
         <Box className={styles.FoodDisplay}>
           <Grid container className={styles.FoodGrid} rowSpacing={2.5} columnSpacing={2}>
             {dishes.map(dish => (
-              <Grid key={dish.id} item xs={4}>
+              <Grid key={dish.id} item md={4} sm={6} xs={12}>
                 <Dish {...dish} />
               </Grid>
             ))}
