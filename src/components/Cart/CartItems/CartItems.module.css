@@ -1,0 +1,10 @@
+.cartList {
+  /* display: flex;
+  flex-direction: row; */
+  .cartListItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

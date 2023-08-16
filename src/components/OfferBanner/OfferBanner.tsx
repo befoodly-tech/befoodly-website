@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import styles from './Offer.module.css';
+import styles from './OfferBanner.module.css';
 import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
 import SvgDiet from '../../ui/Icon/Diet';
 

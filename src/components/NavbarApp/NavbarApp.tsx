@@ -20,8 +20,10 @@ import Search from '../../ui/Icon/Search';
 import HomeIcon from '../../ui/Icon/Home';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { useState } from 'react';
-import NavDrawer from '../Common/NavDrawer';
 import LoginModal from '../Modal/LoginModal/LoginModal';
+import SignupModal from '../Modal/SignupModal/SignupModal';
+import Panda from '../../assets/images/Panda.png';
+import { useNavigate } from 'react-router-dom';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -79,8 +81,8 @@ const NavbarApp = () => {
   const open = Boolean(anchorEl);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -97,12 +99,20 @@ const NavbarApp = () => {
     setOpenLoginModal(false);
   }
 
-  function handleOnRegistering(button: string): void {
+  function handleSignupModalClose(): void {
+    setOpenSignUpModal(false);
+  }
+
+  function handleOnOpen(button: string): void {
     if (button == 'Login') {
       setOpenLoginModal(true);
     } else if (button == 'SignUp') {
       setOpenSignUpModal(true);
     }
+  }
+
+  function onProfileClicked(): void {
+    navigate('/profile');
   }
 
   return (
@@ -164,16 +174,23 @@ const NavbarApp = () => {
             ></TextField>
           </Box>
         </Paper>
-        {isMobile ? (
-          <Box>
-            <NavDrawer options={buttons} lightTheme />
-          </Box>
+        {isLoggedIn ? (
+          // UserProfile
+          <Button onClick={onProfileClicked}>
+            <Box
+              component={'img'}
+              className={styles.profileImg}
+              src={Panda}
+              alt="Profile Image"
+            ></Box>
+            <Typography color={'#696969'}>Foodie</Typography>
+          </Button>
         ) : (
           <Box className={styles.checkin}>
-            {buttons.map((button, index) => (
+            {buttons.map(button => (
               <Button
-                key={index}
-                onClick={() => handleOnRegistering(button)}
+                key={button}
+                onClick={() => handleOnOpen(button)}
                 className={styles.checkinBtn}
                 color="primary"
               >
@@ -184,6 +201,7 @@ const NavbarApp = () => {
         )}
       </Container>
       <LoginModal open={openLoginModal} handleClose={handleLoginModalClose} />
+      <SignupModal open={openSignUpModal} handleClose={handleSignupModalClose} />
     </Box>
   );
 };
