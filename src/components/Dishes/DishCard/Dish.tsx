@@ -13,8 +13,10 @@ import styles from './Dish.module.css';
 import Clock from '../../../ui/Icon/Clock';
 import Calendar from '../../../ui/Icon/Calendar';
 import { CurrencyRupee } from '@mui/icons-material';
-import { addToCart } from '../../../features/cart/cartSlice';
-import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+import { addToCart, removeFromCart } from '../../../features/cart/cartSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import CartButton from '../../Common/CartButton';
+import { Cart } from '../../Cart/Cart';
 
 export interface DishProp {
   id: number;
@@ -28,9 +30,19 @@ export interface DishProp {
 
 const Dish = (props: DishProp) => {
   const dispatch = useAppDispatch();
-  function handleAddCart(id: number): void {
-    dispatch(addToCart(id));
+  const cartItems = useAppSelector(state => state.cart);
+  const quantity = cartItems.find(x => x.id === props.id)?.quantity;
+
+  function handleAddCart(id: number, dishName: string, price: number): void {
+    dispatch(addToCart({ id, dishName, price }));
   }
+
+  const cart: Cart = {
+    id: props.id,
+    dishName: props.dishName,
+    price: props.dishCost,
+    quantity: quantity || 0
+  };
 
   return (
     <Card>
@@ -68,9 +80,16 @@ const Dish = (props: DishProp) => {
             </Typography>
             <Typography className={styles.CardAverage}>avg. meal price</Typography>
           </Box>
-          <Button onClick={() => handleAddCart(props.id)} className={styles.CardButton}>
-            Add to Cart
-          </Button>
+          {quantity ? (
+            <CartButton {...cart} />
+          ) : (
+            <Button
+              onClick={() => handleAddCart(props.id, props.dishName, props.dishCost)}
+              className={styles.CardButton}
+            >
+              Add to Cart
+            </Button>
+          )}
         </Box>
       </CardContent>
     </Card>

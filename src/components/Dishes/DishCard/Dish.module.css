@@ -98,5 +98,16 @@
       background: linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),
         linear-gradient(136deg, #4e96ff 0%, #4d8bff 88.81%), #fff;
     }
+
+    .cartBtn {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 2px 0px;
+      background: #fff;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    }
   }
 }

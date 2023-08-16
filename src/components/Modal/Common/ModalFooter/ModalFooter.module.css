@@ -1,0 +1,26 @@
+.slogan {
+  padding: 20px 0px;
+  .letsEat {
+    color: #393939;
+    font-family: Outfit;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    opacity: 0.6;
+  }
+  .homely {
+    display: flex;
+    flex-direction: row;
+    .sloganColored {
+      color: #feba10;
+      font-family: Outfit;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 120%;
+
+      opacity: 0.6;
+    }
+  }
+}

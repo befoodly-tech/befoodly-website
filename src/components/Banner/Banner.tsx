@@ -3,6 +3,10 @@ import styles from './Banner.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
 //import SvgChefCap from '../../ui/Icon/ChefCap';
 import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
+import { useAppDispatch } from '../../app/hooks';
+import { openCart } from '../../features/cart/cartStateSlice';
+import { Navigate, useNavigate } from 'react-router-dom';
+// import { openCart } from '../../features/cart/cartStateSlice';
 
 const bannerOptions = [
   {
@@ -18,6 +22,8 @@ const bannerOptions = [
 ];
 
 const Banner = () => {
+  //const dispact = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <Box className={styles.bar}>
       <ButtonGroup>
@@ -31,7 +37,12 @@ const Banner = () => {
           </Button>
         ))}
       </ButtonGroup>
-      <Button variant="contained" startIcon={<SvgShoppingCart />} className={styles.cart}>
+      <Button
+        variant="contained"
+        onClick={() => navigate('/checkout')}
+        startIcon={<SvgShoppingCart />}
+        className={styles.cart}
+      >
         View Cart
       </Button>
     </Box>

@@ -1,0 +1,28 @@
+.cartContainer {
+  padding: 8px;
+  .cart {
+    color: #feba10;
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 124%;
+  }
+
+  .items {
+    color: #191919;
+    font-family: Outfit;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 124%; /* 24.8px */
+  }
+
+  .checkoutBtn {
+    background: #feba10;
+
+    &:hover {
+      background: #75a057;
+    }
+  }
+}

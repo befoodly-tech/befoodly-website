@@ -7,6 +7,8 @@ import Blog from '../pages/Blog/Blog';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing/Landing';
+import Profile from '../pages/Profile/Profile';
+import Checkout from '../pages/Checkout/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +71,14 @@ const router = createBrowserRouter([
         element: <Navigate to="/menu"></Navigate>
       }
     ]
+  },
+  {
+    path: '/profile',
+    element: <Profile />
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />
   }
 ]);
 
