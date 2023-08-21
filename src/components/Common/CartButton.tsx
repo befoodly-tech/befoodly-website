@@ -1,5 +1,5 @@
 import { Button, Paper, Typography } from '@mui/material';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch } from '../../store/hooks';
 import { addToCart, removeFromCart } from '../../features/cart/cartSlice';
 import { Cart } from '../Cart/Cart';
 import styles from './Common.module.css';

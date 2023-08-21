@@ -14,7 +14,7 @@ import Clock from '../../../ui/Icon/Clock';
 import Calendar from '../../../ui/Icon/Calendar';
 import { CurrencyRupee } from '@mui/icons-material';
 import { addToCart, removeFromCart } from '../../../features/cart/cartSlice';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import CartButton from '../../Common/CartButton';
 import { Cart } from '../../Cart/Cart';
 

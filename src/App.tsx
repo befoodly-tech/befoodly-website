@@ -3,7 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from './ui/theme';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes/routes';
-import state from './app/store';
+import state from './store/store';
 import { Provider } from 'react-redux';
 
 declare global {
