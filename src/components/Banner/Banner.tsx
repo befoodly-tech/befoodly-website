@@ -1,12 +1,8 @@
-import { Box, Button, Typography, ButtonGroup } from '@mui/material';
+import { Box, Button, Typography, ButtonGroup, Container } from '@mui/material';
 import styles from './Banner.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
-//import SvgChefCap from '../../ui/Icon/ChefCap';
 import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
-import { useAppDispatch } from '../../app/hooks';
-import { openCart } from '../../features/cart/cartStateSlice';
-import { Navigate, useNavigate } from 'react-router-dom';
-// import { openCart } from '../../features/cart/cartStateSlice';
+import { useNavigate } from 'react-router-dom';
 
 const bannerOptions = [
   {
@@ -22,30 +18,31 @@ const bannerOptions = [
 ];
 
 const Banner = () => {
-  //const dispact = useAppDispatch();
   const navigate = useNavigate();
   return (
-    <Box className={styles.bar}>
-      <ButtonGroup>
-        {bannerOptions.map(option => (
-          <Button key={option.optionName} className={styles.optionMain}>
-            <Box className={styles.option}>
-              {option.svgImg}
-              <Typography className={styles.optionText}>{option.optionName}</Typography>
-            </Box>
-            <Box className={styles.divider} />
-          </Button>
-        ))}
-      </ButtonGroup>
-      <Button
-        variant="contained"
-        onClick={() => navigate('/checkout')}
-        startIcon={<SvgShoppingCart />}
-        className={styles.cart}
-      >
-        View Cart
-      </Button>
-    </Box>
+    <Container>
+      <Box className={styles.bar}>
+        <ButtonGroup>
+          {bannerOptions.map(option => (
+            <Button key={option.optionName} className={styles.optionMain}>
+              <Box className={styles.option}>
+                {option.svgImg}
+                <Typography className={styles.optionText}>{option.optionName}</Typography>
+              </Box>
+              <Box className={styles.divider} />
+            </Button>
+          ))}
+        </ButtonGroup>
+        <Button
+          variant="contained"
+          onClick={() => navigate('/checkout')}
+          startIcon={<SvgShoppingCart />}
+          className={styles.cart}
+        >
+          View Cart
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
