@@ -1,8 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Pagination, useMediaQuery } from '@mui/material';
 import styles from './OfferBanner.module.css';
 import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
 import { DeliveryDiningTwoTone } from '@mui/icons-material';
 import SvgDiet from '../../ui/Icon/Diet';
+import { theme } from '../../ui/theme';
+import { useState } from 'react';
 
 const offerCards: OfferCardProps[] = [
   {
@@ -31,11 +33,28 @@ const offerCards: OfferCardProps[] = [
 ];
 
 const Offer = () => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [page, setPage] = useState(0);
+
+  const handleOnChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    value = value - 1;
+    setPage(value);
+  };
+
   return (
-    <Box className={styles.outerBox}>
-      {offerCards.map((offerCard, index) => (
-        <OfferCard key={index} {...offerCard} />
-      ))}
+    <Box>
+      {isMobile ? (
+        <Box className={styles.outerBox}>
+          <OfferCard {...offerCards[page]} />
+          <Pagination count={3} page={page + 1} onChange={handleOnChange} />
+        </Box>
+      ) : (
+        <Box className={styles.outerBox}>
+          {offerCards.map((offerCard, index) => (
+            <OfferCard key={index} {...offerCard} />
+          ))}
+        </Box>
+      )}
     </Box>
   );
 };
