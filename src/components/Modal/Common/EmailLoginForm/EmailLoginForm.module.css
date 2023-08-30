@@ -1,0 +1,38 @@
+.loginForm {
+    width: fit-content;
+    .phoneInput {
+      display: flex;
+      padding-top: 46px;
+      width: 25rem;
+      .phoneInputArea {
+        display: flex;
+        flex-direction: row;
+        .sendOtp {
+          display: flex;
+          padding: 24px;
+          justify-content: center;
+          align-items: center;
+          /* gap: 4px; */
+  
+          border-radius: 8px;
+          background: #feba10;
+  
+          /* shadow yellow */
+          box-shadow: 0px 4px 20px 0px rgba(255, 202, 32, 0.25);
+        }
+  
+        .otpInput {
+          width: 270px;
+          padding: 8px;
+          .MuiOtpInput-TextField {
+            background-color: #f6f6f6;
+          }
+        }
+      }
+  
+      .errors {
+        color: red;
+        font-size: smaller;
+      }
+    }
+  }

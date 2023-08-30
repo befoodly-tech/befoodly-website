@@ -1,4 +1,4 @@
-import { createTheme, Typography, withStyles, responsiveFontSizes } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material';
 
 export let theme = createTheme({
   typography: {

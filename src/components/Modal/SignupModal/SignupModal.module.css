@@ -11,47 +11,11 @@
     display: flex;
     justify-content: space-between;
 
-    .signupLable {
+    .signupLabel {
       color: #393939;
       font-family: Outfit;
       font-size: 30px;
       font-weight: 600;
-    }
-  }
-
-  .signUpDescription {
-    .enterTitle {
-      display: flex;
-      flex-direction: column;
-      padding: 16px;
-
-      .enterLable {
-        color: #696969;
-        font-family: Outfit;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 124%; /* 19.84px */
-      }
-
-      .enterInput {
-        border-radius: 8px;
-        background: #f6f6f6;
-      }
-    }
-    .createBtn {
-      display: flex;
-      /* width: 500px; */
-      padding: 16px 24px;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-
-      border-radius: 8px;
-      background: #feba10;
-
-      /* shadow yellow */
-      box-shadow: 0px 4px 20px 0px rgba(255, 202, 32, 0.25);
     }
   }
 

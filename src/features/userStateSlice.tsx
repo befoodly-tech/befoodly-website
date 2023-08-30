@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { healthCheckApi } from '../actions/LoginActions';
 
 const initialState = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  data: {}
 };
 
-export const userStateSlice = createSlice({
-  name: 'login',
+const userStateSlice = createSlice({
+  name: 'user',
   initialState: initialState,
   reducers: {
     logIn: state => {
@@ -14,6 +16,11 @@ export const userStateSlice = createSlice({
     logOut: state => {
       state.isLoggedIn = false;
     }
+  },
+  extraReducers(builder) {
+    builder.addCase(healthCheckApi.fulfilled, (state, action) => {
+      state.data = action.payload;
+    });
   }
 });
 

@@ -1,9 +1,9 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Cart } from '../../components/Cart/Cart';
+import { Cart } from '../components/Cart/Cart';
 
 const initialState: Cart[] = [];
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: 'cart',
   initialState: initialState,
   reducers: {

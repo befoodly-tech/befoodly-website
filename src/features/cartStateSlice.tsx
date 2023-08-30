@@ -4,7 +4,7 @@ const initialState = {
   isOpen: false
 };
 
-export const cartStateSlice = createSlice({
+const cartStateSlice = createSlice({
   name: 'cartState',
   initialState: initialState,
   reducers: {

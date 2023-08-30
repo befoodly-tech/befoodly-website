@@ -10,9 +10,7 @@ import {
   MenuProps,
   Menu,
   alpha,
-  MenuItem,
-  useTheme,
-  useMediaQuery
+  MenuItem
 } from '@mui/material';
 import styles from './NavbarApp.module.css';
 import BefoodlyLogo from '../../assets/svgs/LogoBlack.svg';
