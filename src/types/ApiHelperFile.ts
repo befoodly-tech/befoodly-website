@@ -1,6 +1,6 @@
 export interface ParamData {
   key: string;
-  value: string;
+  value: any;
 }
 
 export enum MethodType {

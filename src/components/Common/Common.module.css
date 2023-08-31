@@ -120,9 +120,8 @@
 }
 
 .loadingBar {
-  color: rgb(2, 104, 2) !important;
+  color: rgb(2, 104, 2);
   margin: auto;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: auto;
 }

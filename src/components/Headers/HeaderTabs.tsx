@@ -1,10 +1,14 @@
 import { Box, Button, Typography, ButtonGroup, Container } from '@mui/material';
-import styles from './Banner.module.css';
+import styles from './HeaderTabs.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
 import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 
-const bannerOptions = [
+interface HeaderTabsProps {
+  customerId: string;
+}
+
+const headerTabsOptions = [
   {
     optionName: 'Delivery',
     svgImg: <SvgDeliveryScooter />,
@@ -17,13 +21,13 @@ const bannerOptions = [
   // }
 ];
 
-const Banner = () => {
+const HeaderTabs = (props: HeaderTabsProps) => {
   const navigate = useNavigate();
   return (
     <Container>
       <Box className={styles.bar}>
         <ButtonGroup>
-          {bannerOptions.map(option => (
+          {headerTabsOptions.map(option => (
             <Button key={option.optionName} className={styles.optionMain}>
               <Box className={styles.option}>
                 {option.svgImg}
@@ -46,4 +50,4 @@ const Banner = () => {
   );
 };
 
-export default Banner;
+export default HeaderTabs;

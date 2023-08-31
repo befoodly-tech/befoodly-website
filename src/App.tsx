@@ -10,12 +10,6 @@ declare global {
   }
 }
 
-const config = window.config ?? {};
-
-const initOptions = {
-  url: config.BASE_URL
-};
-
 function App() {
   return (
     <ThemeProvider theme={theme}>

@@ -8,7 +8,8 @@ export const API_URLS = {
   SIGN_UP_USER: '/v1/signup',
   VERIFY_OTP: '/v1/otp-verify',
   EDIT_CUSTOMER: '/v1/customer/edit',
-  FETCH_CUSTOMER_DATA: '/v1/customer'
+  FETCH_CUSTOMER_DATA: '/v1/customer',
+  FETCH_COOK_DATA: '/v1/cook/fetch/popular'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {
