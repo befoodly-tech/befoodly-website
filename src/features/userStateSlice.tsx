@@ -1,29 +1,56 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { healthCheckApi } from '../actions/LoginActions';
+import { editCustomerDataApi, fetchCustomerDataApi } from '../actions/CustomerActions';
+import { isApiStatusSuccess } from '../utils/GenericApiResponse';
+import { GenericApiResponse } from '../types/ApiActions';
 
-const initialState = {
+interface UserStateProps {
+  isLoggedIn: boolean;
+  customerData: GenericApiResponse;
+  isLoading: boolean;
+  isError: boolean;
+}
+
+const initialState: UserStateProps = {
   isLoggedIn: false,
-  data: {}
+  customerData: {},
+  isLoading: false,
+  isError: false
 };
 
 const userStateSlice = createSlice({
   name: 'user',
   initialState: initialState,
-  reducers: {
-    logIn: state => {
-      state.isLoggedIn = true;
-    },
-    logOut: state => {
-      state.isLoggedIn = false;
-    }
-  },
+  reducers: {},
   extraReducers(builder) {
-    builder.addCase(healthCheckApi.fulfilled, (state, action) => {
-      state.data = action.payload;
+    builder.addCase(editCustomerDataApi.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(fetchCustomerDataApi.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(editCustomerDataApi.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.customerData = action.payload;
+      state.isError = !isApiStatusSuccess(action.payload);
+      state.isLoggedIn = isApiStatusSuccess(action.payload);
+    });
+    builder.addCase(fetchCustomerDataApi.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.customerData = action.payload;
+      state.isError = !isApiStatusSuccess(action.payload);
+      state.isLoggedIn = isApiStatusSuccess(action.payload);
+    });
+    builder.addCase(editCustomerDataApi.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(fetchCustomerDataApi.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
     });
   }
 });
-
-export const { logIn, logOut } = userStateSlice.actions;
 
 export default userStateSlice.reducer;

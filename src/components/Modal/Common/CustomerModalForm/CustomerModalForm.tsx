@@ -33,7 +33,16 @@ const CustomerModalForm = (props: CustomerModalFormProps) => {
         <label htmlFor="enterEmail" className={styles.enterLabel}>
           Enter email
         </label>
-        <TextField className={styles.enterInput} id="enterEmail" {...register('email')}></TextField>
+        <TextField
+          className={styles.enterInput}
+          id="enterEmail"
+          {...register('email', {
+            required: {
+              value: true,
+              message: 'Email is required'
+            }
+          })}
+        ></TextField>
       </Box>
       <Button type="submit" className={styles.createBtn} fullWidth>
         Create Account

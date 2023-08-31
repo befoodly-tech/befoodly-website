@@ -6,7 +6,9 @@ export const API_URLS = {
   HEALTH_CHECK: '/ping',
   LOGIN_USER: '/v1/login',
   SIGN_UP_USER: '/v1/signup',
-  VERIFY_OTP: '/v1/otp-verify'
+  VERIFY_OTP: '/v1/otp-verify',
+  EDIT_CUSTOMER: '/v1/customer/edit',
+  FETCH_CUSTOMER_DATA: '/v1/customer'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {

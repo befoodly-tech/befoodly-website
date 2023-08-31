@@ -1,4 +1,4 @@
-import { AppConfig } from './types/AppConfig';
+import { AppConfig } from './types/CommonType';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './ui/theme';
 import { RouterProvider } from 'react-router-dom';

@@ -16,3 +16,9 @@ export interface TeamCardProps {
   description: string;
   linkedinLink: string;
 }
+
+export interface Location {
+  id: number;
+  title: string;
+  address: string;
+}

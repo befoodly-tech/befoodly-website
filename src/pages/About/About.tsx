@@ -7,7 +7,7 @@ import HomeKitchen from '../../assets/images/home-kitchen.jpg';
 import HomeChef from '../../assets/images/home-chef2.jpg';
 import PiyushImg from '../../assets/images/Piyush.jpg';
 import DeepakImg from '../../assets/images/deepak.jpg';
-import { CustomCardProps, TeamCardProps } from '../../types/AppConfig';
+import { CustomCardProps, TeamCardProps } from '../../types/CommonType';
 import Separator from '../../components/Common/Separator';
 import TeamCard from '../../components/Common/TeamCard';
 

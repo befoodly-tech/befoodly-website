@@ -3,17 +3,19 @@ import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import styles from './EmailLoginForm.module.css';
-import { OtpRequest } from '../../../../types/ApiActions';
+import { GenericApiResponse, OtpRequest } from '../../../../types/ApiActions';
+import ApiErrorMessage from '../../../Common/ApiErrorMessage';
 
 interface EmailLoginFormProps {
+  sessionData: GenericApiResponse;
+  loginData: GenericApiResponse;
   handleOnSendOtp: (email: string) => void;
   handleOnVerify: (data: OtpRequest) => void;
 }
 
 const EmailLoginForm = (props: EmailLoginFormProps) => {
   const form = useForm<OtpRequest>();
-  const { control, formState, handleSubmit } = form;
-  const { errors } = formState;
+  const { control, handleSubmit } = form;
   const [email, setEmail] = useState('');
 
   return (
@@ -32,7 +34,9 @@ const EmailLoginForm = (props: EmailLoginFormProps) => {
             Send OTP
           </Button>
         </Box>
-        {/* <Typography className={styles.errors}>{errors.phoneNumber?.message}</Typography> */}
+        {props.sessionData?.errorMessage && (
+          <ApiErrorMessage message={props.sessionData?.errorMessage} />
+        )}
       </FormControl>
       <FormControl className={styles.phoneInput} defaultValue={''} required>
         <Typography>Enter OTP</Typography>
@@ -54,6 +58,9 @@ const EmailLoginForm = (props: EmailLoginFormProps) => {
             Verify
           </Button>
         </Box>
+        {props.loginData?.errorMessage && (
+          <ApiErrorMessage message={props.loginData?.errorMessage} />
+        )}
       </FormControl>
     </form>
   );

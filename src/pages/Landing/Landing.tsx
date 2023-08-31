@@ -7,11 +7,16 @@ import Chefs from '../../components/Chefs/Chefs';
 import Filters from '../../components/Filters/Filters';
 import Dishes from '../../components/Dishes/Dishes';
 import Footer from '../../components/Footer/Footer';
+import { getCookie } from '../../utils/CookieHelper';
 
 const Landing = () => {
+  const phoneNumber = getCookie('phone');
+  const sessionToken = getCookie('session');
+  const customerId = getCookie('customerId');
+
   return (
     <Box className={styles.main}>
-      <NavbarApp />
+      <NavbarApp customerId={customerId} session={sessionToken} />
       <Banner />
       <OfferBanner />
       <Chefs />

@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { logInUserApi, signUpUserApi, verifyOtpApi } from '../actions/LoginActions';
 import { GenericApiResponse, LoginResponse } from '../types/ApiActions';
 import { isApiStatusSuccess } from '../utils/GenericApiResponse';
+import { setCookie } from '../utils/CookieHelper';
 
 interface LoginSliceProp {
   isLoading: boolean;
@@ -38,16 +39,30 @@ const loginSlice = createSlice({
       state.isLoading = false;
       state.sessionData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
+
+      if (action.payload?.data) {
+        setCookie('session', action.payload?.data?.sessionToken, 30);
+        setCookie('phone', action.payload?.data?.phoneNumber, 30);
+      }
     });
     builder.addCase(logInUserApi.fulfilled, (state, action) => {
       state.isLoading = false;
       state.sessionData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
+
+      if (action.payload?.data) {
+        setCookie('session', action.payload?.data?.sessionToken, 30);
+        setCookie('phone', action.payload?.data?.phoneNumber, 30);
+      }
     });
     builder.addCase(verifyOtpApi.fulfilled, (state, action) => {
       state.isLoading = false;
       state.loginData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
+
+      if (action.payload?.data) {
+        setCookie('customerId', action.payload?.data?.customerData?.referenceId, 30);
+      }
     });
     builder.addCase(signUpUserApi.rejected, state => {
       state.isLoading = false;

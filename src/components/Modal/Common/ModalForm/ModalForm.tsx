@@ -3,9 +3,12 @@ import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import styles from './ModalForm.module.css';
-import { OtpRequest } from '../../../../types/ApiActions';
+import { GenericApiResponse, OtpRequest } from '../../../../types/ApiActions';
+import ApiErrorMessage from '../../../Common/ApiErrorMessage';
 
 interface ModalFormProps {
+  sessionData: GenericApiResponse;
+  loginData: GenericApiResponse;
   handleOnSendOtp: (data: string) => void;
   handleOnVerify: (data: OtpRequest) => void;
 }
@@ -20,7 +23,7 @@ const ModalForm = (props: ModalFormProps) => {
   const handleOnSendOTP = () => {
     props.handleOnSendOtp(phoneNumber);
     setShowOtp(true);
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(props.handleOnVerify)} className={styles.loginForm}>
@@ -52,9 +55,11 @@ const ModalForm = (props: ModalFormProps) => {
             Send OTP
           </Button>
         </Box>
-        <Typography className={styles.errors}>{errors.phoneNumber?.message}</Typography>
+        {props.sessionData?.errorMessage && (
+          <ApiErrorMessage message={props.sessionData?.errorMessage} />
+        )}
       </FormControl>
-      {showOtp && (
+      {showOtp && props.sessionData?.data && (
         <FormControl className={styles.phoneInput} defaultValue={''} required>
           <Typography>Enter OTP</Typography>
           <Box className={styles.phoneInputArea}>
@@ -75,6 +80,9 @@ const ModalForm = (props: ModalFormProps) => {
               Verify
             </Button>
           </Box>
+          {props.loginData?.errorMessage && (
+            <ApiErrorMessage message={props.loginData?.errorMessage} />
+          )}
         </FormControl>
       )}
     </form>
