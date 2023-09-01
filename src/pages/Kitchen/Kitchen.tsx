@@ -1,6 +1,6 @@
 import NavbarApp from '../../components/NavbarApp/NavbarApp';
 const Kitchen = () => {
-  return <NavbarApp />;
+  return <div />;
 };
 
 export default Kitchen;
