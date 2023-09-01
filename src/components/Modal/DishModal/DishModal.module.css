@@ -1,0 +1,61 @@
+.modalBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px;
+  border-radius: 1.5rem;
+  background: #fff;
+  flex-shrink: 0;
+
+  .foodModalTitle {
+    display: flex;
+    justify-content: space-between;
+
+    .foodLable {
+      color: #393939;
+      font-family: Outfit;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+
+  .modalDescription {
+    width: 36.375rem;
+    padding-top: 1.94rem;
+
+    .modalDescriptionTitle {
+      color: #393939;
+      font-family: Outfit;
+      font-size: 1.375rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 124%; /* 1.705rem */
+    }
+
+    .modalDescriptionSection {
+      padding-top: 1.2rem;
+      color: #696969;
+      font-family: Outfit;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 124%;
+    }
+  }
+
+  .modalCategory {
+    display: inline-flex;
+    height: 2.375rem;
+    padding: 0rem 0.76188rem 0rem 0.5625rem;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+    margin-top: 3.34rem;
+
+    border-radius: 0.5rem;
+    border: 1px solid #fdc126;
+    background: #fff;
+    box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
+  }
+}

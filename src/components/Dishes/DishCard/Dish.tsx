@@ -12,7 +12,7 @@ import styles from './Dish.module.css';
 import Clock from '../../../ui/Icon/Clock';
 import Calendar from '../../../ui/Icon/Calendar';
 import { CurrencyRupee } from '@mui/icons-material';
-import { addToCart, removeFromCart } from '../../../features/cartSlice';
+import { addToCart } from '../../../features/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import CartButton from '../../Common/CartButton';
 import { Cart } from '../../Cart/Cart';
@@ -22,6 +22,8 @@ import {
   formatStringToDate,
   formatStringToTime
 } from '../../../utils/CommonUtils';
+import DishModal from '../../Modal/DishModal/DishModal';
+import { useState } from 'react';
 
 export interface DishProp {
   itemData: ProductData;
@@ -33,6 +35,12 @@ const Dish = (props: DishProp) => {
   const cartItems = useAppSelector(state => state.cart);
   const { itemData, bucketUrl } = props;
   const quantity = cartItems.find(x => x.id === itemData?.id)?.quantity;
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function handleModalClose() {
+    setModalOpen(false);
+  }
 
   function handleAddCart(id: number, dishName: string, price: number): void {
     dispatch(addToCart({ id, dishName, price }));
@@ -46,11 +54,11 @@ const Dish = (props: DishProp) => {
   };
 
   return (
-    <Card>
-      <CardActionArea>
+    <Card className={styles.dishCard}>
+      <CardActionArea onClick={() => setModalOpen(true)}>
         <CardMedia
           component="img"
-          height="350"
+          className={styles.cardMedia}
           src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
         ></CardMedia>
       </CardActionArea>
@@ -98,6 +106,13 @@ const Dish = (props: DishProp) => {
           )}
         </Box>
       </CardContent>
+      <DishModal
+        dishName={itemData?.title}
+        dishDescription={itemData?.description}
+        dishCategory={'Veg'}
+        open={modalOpen}
+        onClose={handleModalClose}
+      />
     </Card>
   );
 };

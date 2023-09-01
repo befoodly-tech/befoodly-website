@@ -10,7 +10,6 @@ interface CartItemsProp {
 }
 
 const CartItems = (props: CartItemsProp) => {
-  const dispact = useAppDispatch();
   return (
     <List className={styles.cartList}>
       {props.cartItems.map(cart => (

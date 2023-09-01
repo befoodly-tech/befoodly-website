@@ -14,13 +14,19 @@
   .filterPrimaryBtn {
     display: flex;
     height: 38px;
-    padding: 11px 11.94px 10px 9px;
-    align-items: flex-start;
+    padding: 8px 12px;
     margin-left: 14px;
     border-radius: 8px;
     border: 1px solid #cfcfcf;
     background: #fff;
     box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
+
+    color: #9c9c9c;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 124%;
   }
 
   .filterPrimaryBtnActive {
@@ -33,18 +39,7 @@
     border: 1px solid #fdc126;
     background: #fff;
     box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
-  }
 
-  .filterPrimarytext {
-    color: #9c9c9c;
-    font-family: Outfit;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 124%; /* 17.36px */
-  }
-
-  .filterPrimarytextActive {
     color: #393939;
     font-family: Outfit;
     font-size: 14px;

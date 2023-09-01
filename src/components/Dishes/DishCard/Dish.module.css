@@ -1,113 +1,118 @@
-.CardContentArea {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  .CardContentLeft {
-    padding: 12px;
-    flex: 2;
-    .CardItem {
-      display: flex;
-      flex-direction: row;
-      .CardFood {
-        color: #1a1a1a;
-        font-family: Outfit;
-        font-size: 16.8px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 25.2px; /* 150% */
-        padding: 4px;
-      }
-      .CardRating {
-        color: #1a1a1a;
-        font-family: Outfit;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 21.6px; /* 180% */
-        display: flex;
-        align-items: center;
-      }
-    }
-    .CardTiming {
-      display: flex;
-      flex-direction: row;
-
-      .CardClock {
-        color: #393939;
-        font-family: Outfit;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        display: flex;
-        align-items: center;
-        padding: 4px;
-      }
-    }
-
-    .CardAddress {
-      color: #696969;
-      font-family: Outfit;
-      font-size: 12px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: normal;
-      padding: 4px;
-    }
+.dishCard {
+  .cardMedia {
+    height: 350px;
   }
-
-  .CardContentRight {
-    flex: 1;
+  .CardContentArea {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
 
-    .CardValue {
-      padding: 8px;
-      .CardPrice {
-        color: #393939;
-        text-align: right;
-        font-family: Outfit;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
+    .CardContentLeft {
+      padding: 12px;
+      flex: 2;
+      .CardItem {
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        .CardFood {
+          color: #1a1a1a;
+          font-family: Outfit;
+          font-size: 16.8px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 25.2px; /* 150% */
+          padding: 4px;
+        }
+        .CardRating {
+          color: #1a1a1a;
+          font-family: Outfit;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 21.6px; /* 180% */
+          display: flex;
+          align-items: center;
+        }
+      }
+      .CardTiming {
+        display: flex;
+        flex-direction: row;
+
+        .CardClock {
+          color: #393939;
+          font-family: Outfit;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          display: flex;
+          align-items: center;
+          padding: 4px;
+        }
       }
 
-      .CardAverage {
-        padding-left: 5px;
-        color: #393939;
+      .CardAddress {
+        color: #696969;
         font-family: Outfit;
-        font-size: 8px;
+        font-size: 12px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        padding: 4px;
       }
     }
 
-    .CardButton {
-      display: inline-flex;
-      padding: 8px;
-      align-items: flex-start;
-      gap: 10px;
-
-      border-radius: 4px;
-      background: linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),
-        linear-gradient(136deg, #4e96ff 0%, #4d8bff 88.81%), #fff;
-    }
-
-    .cartBtn {
+    .CardContentRight {
+      flex: 1;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
 
-      padding: 2px 0px;
-      background: #fff;
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+      .CardValue {
+        padding: 8px;
+        .CardPrice {
+          color: #393939;
+          text-align: right;
+          font-family: Outfit;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          display: flex;
+          align-items: center;
+        }
+
+        .CardAverage {
+          padding-left: 5px;
+          color: #393939;
+          font-family: Outfit;
+          font-size: 8px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+
+      .CardButton {
+        display: inline-flex;
+        padding: 8px;
+        align-items: flex-start;
+        gap: 10px;
+
+        border-radius: 4px;
+        background: linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),
+          linear-gradient(136deg, #4e96ff 0%, #4d8bff 88.81%), #fff;
+      }
+
+      .cartBtn {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 2px 0px;
+        background: #fff;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+      }
     }
   }
 }

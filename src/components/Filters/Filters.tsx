@@ -76,15 +76,7 @@ const Filters = () => {
               }
               startIcon={activeFilter === filterOption.filterName ? <Ellipse /> : ''}
             >
-              <Typography
-                className={
-                  activeFilter === filterOption.filterName
-                    ? styles.filterPrimarytextActive
-                    : styles.filterPrimarytext
-                }
-              >
-                {filterOption.filterName}
-              </Typography>
+              {filterOption.filterName}
             </Button>
           ))}
         </Box>

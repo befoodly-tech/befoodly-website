@@ -7,8 +7,16 @@ import Blog from '../pages/Blog/Blog';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import Landing from '../pages/Landing/Landing';
-import Profile from '../pages/Profile/Profile';
+import Profile, { ProfileProps } from '../pages/Profile/Profile';
 import Checkout from '../pages/Checkout/Checkout';
+
+const user: ProfileProps = {
+  email: 'chouhanpiyush142@gmail.com',
+  firstName: 'Piyush',
+  lastName: 'Chouhan',
+  phoneNumber: '7415045625',
+  profilePicture: 'https://pictures-befoodly.s3.ap-south-1.amazonaws.com/profile-pictures/Panda.png'
+};
 
 const router = createBrowserRouter([
   {
@@ -74,7 +82,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/profile',
-    element: <Profile />
+    element: <Profile {...user} />
   },
   {
     path: '/checkout',
