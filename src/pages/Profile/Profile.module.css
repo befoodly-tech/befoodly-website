@@ -1,0 +1,55 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .myProfile {
+    display: flex;
+
+    .myText {
+      color: #393939;
+      font-family: Outfit;
+      font-size: 30px;
+      font-weight: 600;
+    }
+    .profileText {
+      color: #feba10;
+      font-family: Outfit;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+
+  .profileForm {
+    .Info {
+      padding: 24px 0px;
+      color: #000;
+      font-family: Outfit;
+      font-size: 1.875rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 1.5rem; /* 80% */
+    }
+
+    .formSection {
+      .flexInput {
+        display: flex;
+      }
+      .inputBoxes {
+        padding: 8px 0px;
+      }
+    }
+
+    .saveButton {
+      background-color: #feba10;
+      padding: 16px 16px;
+      margin: 16px 0px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile {
+    padding: 16px;
+  }
+}

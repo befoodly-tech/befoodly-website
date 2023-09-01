@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Container } from '@mui/material';
 import styles from './Chefs.module.css';
 import ChefsList from './ChefsList/ChefsList';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -22,12 +22,12 @@ const Chefs = (props: ChefsProps) => {
     <Box className={styles.mainSection}>
       {isLoading && <LoadingCircle />}
       {chefData?.data && (
-        <Box className={styles.chefsBox}>
+        <Container className={styles.chefsBox}>
           <Typography className={styles.popular}>Meet Our Popular Cooks!</Typography>
           <Box>
             <ChefsList chefs={chefData?.data} bucketUrl={props.bucketUrl} />
           </Box>
-        </Box>
+        </Container>
       )}
     </Box>
   );

@@ -40,9 +40,11 @@
   }
 }
 
+@media screen and (max-width: 1400px) {
+}
+
 @media screen and (max-width: 600px) {
   .cardOuter {
-    margin-top: 0.45rem;
-    margin-bottom: 0.45rem;
+    margin: 0.75rem 0.75rem;
   }
 }

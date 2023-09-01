@@ -10,14 +10,13 @@ interface CartItemsProp {
 }
 
 const CartItems = (props: CartItemsProp) => {
-  const dispact = useAppDispatch();
   return (
     <List className={styles.cartList}>
       {props.cartItems.map(cart => (
         <ListItem key={cart.id} divider className={styles.cartListItem}>
           <Box>{cart.dishName}</Box>
           <CartButton {...cart} />
-          <Typography>{cart.price * cart.quantity}</Typography>
+          <Typography>{cart.price * cart.quantity} Rs</Typography>
         </ListItem>
       ))}
     </List>

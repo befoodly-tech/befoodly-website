@@ -1,8 +1,9 @@
-import { Box, Button, Typography, ButtonGroup, Container } from '@mui/material';
+import { Box, Button, Typography, ButtonGroup, Container, useMediaQuery } from '@mui/material';
 import styles from './HeaderTabs.module.css';
-import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
-import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import { theme } from '../../ui/theme';
+import ShoppingCart from '../../assets/svgs/shopping_cart.svg';
+import DeliveryScotter from '../../assets/svgs/DeliveryScooter.svg';
 
 interface HeaderTabsProps {
   customerId: string;
@@ -11,7 +12,7 @@ interface HeaderTabsProps {
 const headerTabsOptions = [
   {
     optionName: 'Delivery',
-    svgImg: <SvgDeliveryScooter />,
+    svgImg: DeliveryScotter,
     active: true
   }
   // {
@@ -23,6 +24,7 @@ const headerTabsOptions = [
 
 const HeaderTabs = (props: HeaderTabsProps) => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Container>
       <Box className={styles.bar}>
@@ -30,20 +32,20 @@ const HeaderTabs = (props: HeaderTabsProps) => {
           {headerTabsOptions.map(option => (
             <Button key={option.optionName} className={styles.optionMain}>
               <Box className={styles.option}>
-                {option.svgImg}
-                <Typography className={styles.optionText}>{option.optionName}</Typography>
+                <img src={option.svgImg}></img>
+                {isMobile ? (
+                  ''
+                ) : (
+                  <Typography className={styles.optionText}>{option.optionName}</Typography>
+                )}
               </Box>
               <Box className={styles.divider} />
             </Button>
           ))}
         </ButtonGroup>
-        <Button
-          variant="contained"
-          onClick={() => navigate('/checkout')}
-          startIcon={<SvgShoppingCart />}
-          className={styles.cart}
-        >
-          View Cart
+        <Button variant="contained" onClick={() => navigate('/checkout')} className={styles.cart}>
+          <img src={ShoppingCart}></img>
+          {isMobile ? '' : 'View Cart'}
         </Button>
       </Box>
     </Container>

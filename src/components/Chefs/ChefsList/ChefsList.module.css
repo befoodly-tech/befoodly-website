@@ -1,6 +1,24 @@
 .chefsList {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
   padding: 2rem;
   gap: 24px;
+}
+
+.chefItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 600px) {
+  .chefItem {
+    gap: 8px;
+  }
 }

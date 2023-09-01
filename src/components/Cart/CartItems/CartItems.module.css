@@ -1,6 +1,7 @@
 .cartList {
   /* display: flex;
   flex-direction: row; */
+  width: 70%;
   .cartListItem {
     display: flex;
     flex-direction: row;

@@ -39,7 +39,7 @@ const LoginModal = (props: LoginModalProps) => {
             <Typography>or</Typography>
             <Typography>&nbsp;</Typography>
             <Button>
-              <Typography className={styles.createAccount}>Create a account</Typography>
+              <Typography className={styles.createAccount}>Create an account</Typography>
             </Button>
           </Box>
           <Box>

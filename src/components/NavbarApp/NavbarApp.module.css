@@ -1,11 +1,11 @@
 .head {
   display: flex;
-  padding: 0.9375rem 12rem 0.9375rem 12rem;
+  padding: 1rem 0rem 1rem 0rem;
   align-items: center;
   background: #f6f6f6;
   .main {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 2.25rem;
 
@@ -67,8 +67,32 @@
   .head {
     .main {
       .find {
-        flex-direction: column;
-        width: auto;
+        height: 4rem;
+        .placeBtn {
+          flex: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .head {
+    padding: 16px 0px;
+    .main {
+      flex-direction: column;
+      gap: 0rem;
+
+      .mobileFlex {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .find {
+        width: 80vw;
+        height: none;
+        flex-direction: row;
+        padding: none;
       }
     }
   }
