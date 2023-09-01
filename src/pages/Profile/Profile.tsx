@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import NavbarApp from '../../components/NavbarApp/NavbarApp';
 import Addresses from '../../components/Addresses/Addresses';
 import { AddressProp } from '../../components/Addresses/Address/Address';
+import { getCookie } from '../../utils/CookieHelper';
 // https://pictures-befoodly.s3.ap-south-1.amazonaws.com/profile-pictures/Panda.png
 
 const addresses: AddressProp[] = [
@@ -60,13 +61,15 @@ const Profile = (props: ProfileProps) => {
   });
   const { register, control, formState, handleSubmit } = form;
   const { errors } = formState;
+  const sessionToken = getCookie('session');
+  const customerId = getCookie('customerId');
 
   const onProfileSubmit = (data: ProfileProps) => {
     //console.log(data);
   };
   return (
     <>
-      <NavbarApp />
+      <NavbarApp customerId={customerId} session={sessionToken} />
       <Box className={styles.profile}>
         <Box className={styles.myProfile}>
           <Typography className={styles.myText}>My</Typography>

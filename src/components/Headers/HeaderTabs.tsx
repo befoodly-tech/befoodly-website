@@ -32,7 +32,7 @@ const HeaderTabs = (props: HeaderTabsProps) => {
           {headerTabsOptions.map(option => (
             <Button key={option.optionName} className={styles.optionMain}>
               <Box className={styles.option}>
-                {option.svgImg}
+                <img src={option.svgImg}></img>
                 {isMobile ? (
                   ''
                 ) : (
