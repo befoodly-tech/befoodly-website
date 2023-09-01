@@ -24,7 +24,7 @@ const Dishes = (props: DishesProps) => {
       {isLoading && <LoadingCircle />}
       <Container>
         <Box>
-          <Typography className={styles.FoodGalleryHeading}>Popular near you</Typography>
+          <Typography className={styles.FoodGalleryHeading}>Popular near you!</Typography>
         </Box>
         <Box className={styles.FoodDisplay}>
           <Grid container className={styles.FoodGrid} rowSpacing={2.5} columnSpacing={2}>

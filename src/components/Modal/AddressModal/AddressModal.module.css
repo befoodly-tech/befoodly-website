@@ -8,6 +8,11 @@
   background: #fff;
 
   .inputBoxes {
+    padding: 4px 0px;
+    .inputLable {
+    }
+    .inputTextField {
+    }
   }
 
   .saveAddressBtn {
@@ -28,5 +33,28 @@
 
   .flexInput {
     display: flex;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .addressModal {
+    padding: 16px;
+    top: 50%;
+
+    .addressLabel {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .inputBoxes {
+      padding: 2px 0px;
+
+      .inputLable {
+        font-size: 14px;
+      }
+
+      .inputTextField {
+      }
+    }
   }
 }

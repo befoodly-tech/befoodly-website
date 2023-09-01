@@ -1,8 +1,7 @@
 .filters {
   display: flex;
   flex-direction: row;
-  height: 89px;
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0px;
   justify-content: space-between;
   align-items: center;
 
@@ -78,6 +77,7 @@
 @media screen and (max-width: 600px) {
   .filters {
     flex-direction: column;
+    padding: 10px 0px;
 
     .filterPrimaryBtn {
       font-size: 12px;

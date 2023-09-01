@@ -1,9 +1,9 @@
 import { Box, Button, Typography, ButtonGroup, Container, useMediaQuery } from '@mui/material';
 import styles from './HeaderTabs.module.css';
-import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
-import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
 import { theme } from '../../ui/theme';
+import ShoppingCart from '../../assets/svgs/shopping_cart.svg';
+import DeliveryScotter from '../../assets/svgs/DeliveryScooter.svg';
 
 interface HeaderTabsProps {
   customerId: string;
@@ -12,7 +12,7 @@ interface HeaderTabsProps {
 const headerTabsOptions = [
   {
     optionName: 'Delivery',
-    svgImg: <SvgDeliveryScooter />,
+    svgImg: DeliveryScotter,
     active: true
   }
   // {
@@ -43,13 +43,9 @@ const HeaderTabs = (props: HeaderTabsProps) => {
             </Button>
           ))}
         </ButtonGroup>
-        <Button
-          variant="contained"
-          onClick={() => navigate('/checkout')}
-          startIcon={<SvgShoppingCart />}
-          className={styles.cart}
-        >
-          {isMobile ? 'Cart' : 'View Cart'}
+        <Button variant="contained" onClick={() => navigate('/checkout')} className={styles.cart}>
+          <img src={ShoppingCart}></img>
+          {isMobile ? '' : 'View Cart'}
         </Button>
       </Box>
     </Container>

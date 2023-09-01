@@ -8,10 +8,10 @@ import {
   Button,
   useMediaQuery
 } from '@mui/material';
-import Star from '../../../ui/Icon/Star';
+import Star from '../../../assets/svgs/star.svg';
 import styles from './Dish.module.css';
-import Clock from '../../../ui/Icon/Clock';
-import Calendar from '../../../ui/Icon/Calendar';
+import Clock from '../../../assets/svgs/clock.svg';
+import Calendar from '../../../assets/svgs/Calendar.svg';
 import { CurrencyRupee } from '@mui/icons-material';
 import { addToCart } from '../../../features/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
@@ -58,16 +58,16 @@ const Dish = (props: DishProp) => {
 
   return (
     <>
-      {isMobile ? (
-        <Card className={styles.dishCard}>
-          <CardActionArea onClick={() => setModalOpen(true)}>
-            <CardMedia
-              component="img"
-              className={styles.cardMedia}
-              src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
-            ></CardMedia>
-          </CardActionArea>
-          <CardContent className={styles.CardContentArea}>
+      <Card className={styles.dishCard}>
+        <CardActionArea onClick={() => setModalOpen(true)}>
+          <CardMedia
+            component="img"
+            className={styles.cardMedia}
+            src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
+          ></CardMedia>
+        </CardActionArea>
+        <CardContent className={styles.CardContentArea}>
+          {isMobile ? (
             <Box className={styles.CardContentLeft}>
               <Box>
                 <Typography noWrap className={styles.CardFood}>
@@ -83,42 +83,21 @@ const Dish = (props: DishProp) => {
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex' }}>
-                <Star />
+                <img src={Star}></img>
                 <Typography className={styles.CardRating}>
-                  {itemData.feedback.rating} (10)
+                  {itemData?.feedback.rating} (10)
                 </Typography>
               </Box>
-            </Box>
-            <Box className={styles.CardContentRight}>
-              <Box className={styles.CardValue}>
-                <Typography className={styles.CardPrice}>
-                  <CurrencyRupee />
-                  {itemData?.price}Rs
-                </Typography>
+              <Box className={styles.CardTiming}>
+                <Box className={styles.Timing}>
+                  <img src={Clock}></img>
+                  <Typography className={styles.CardClock}>
+                    Accepting Till {itemData?.acceptingTime}
+                  </Typography>
+                </Box>
               </Box>
-              {quantity ? (
-                <CartButton {...cart} />
-              ) : (
-                <Button
-                  onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
-                  className={styles.CardButton}
-                >
-                  Add to Cart
-                </Button>
-              )}
             </Box>
-          </CardContent>
-        </Card>
-      ) : (
-        <Card className={styles.dishCard}>
-          <CardActionArea onClick={() => setModalOpen(true)}>
-            <CardMedia
-              component="img"
-              className={styles.cardMedia}
-              src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
-            ></CardMedia>
-          </CardActionArea>
-          <CardContent className={styles.CardContentArea}>
+          ) : (
             <Box className={styles.CardContentLeft}>
               <Box>
                 <Typography className={styles.CardAddress}>
@@ -128,49 +107,56 @@ const Dish = (props: DishProp) => {
               <Box className={styles.CardItem}>
                 <Typography className={styles.CardFood}>{itemData?.title}</Typography>
                 <Typography className={styles.CardRating}>
-                  <Star />
-                  {itemData?.feedback?.rating} (5)
+                  <img src={Star}></img>
+                  {itemData?.feedback.rating} (5)
                 </Typography>
+              </Box>
+              <Box>
+                <Typography className={styles.UnitsLeft}>{itemData.orderNo} units left!</Typography>
               </Box>
               <Box className={styles.CardTiming}>
-                <Typography className={styles.CardClock}>
-                  <Clock />
-                  Accepting Till {formatStringToTime(itemData?.acceptingTime)}
-                </Typography>
-                <Typography className={styles.CardClock}>
-                  <Calendar />
-                  {formatStringToDate(itemData?.acceptingTime)}
-                </Typography>
+                <Box className={styles.Timing}>
+                  <img src={Clock}></img>
+                  <Typography className={styles.CardClock}>
+                    Accepting Till {formatStringToTime(itemData?.acceptingTime)}
+                  </Typography>
+                </Box>
+                <Box className={styles.Timing}>
+                  <img src={Calendar}></img>
+                  <Typography className={styles.CardClock}>
+                    {formatStringToDate(itemData?.acceptingTime)}
+                  </Typography>
+                </Box>
               </Box>
             </Box>
-            <Box className={styles.CardContentRight}>
-              <Box className={styles.CardValue}>
-                <Typography className={styles.CardPrice}>
-                  <CurrencyRupee />
-                  {itemData?.price}
-                </Typography>
-              </Box>
-              {quantity ? (
-                <CartButton {...cart} />
-              ) : (
-                <Button
-                  onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
-                  className={styles.CardButton}
-                >
-                  Add to Cart
-                </Button>
-              )}
+          )}
+          <Box className={styles.CardContentRight}>
+            <Box className={styles.CardValue}>
+              <Typography className={styles.CardPrice}>
+                <CurrencyRupee />
+                {itemData?.price}
+              </Typography>
             </Box>
-          </CardContent>
-          <DishModal
-            dishName={itemData?.title}
-            dishDescription={itemData?.description}
-            dishCategory={'Veg'}
-            open={modalOpen}
-            onClose={handleModalClose}
-          />
-        </Card>
-      )}
+            {quantity ? (
+              <CartButton {...cart} />
+            ) : (
+              <Button
+                onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
+                className={styles.CardButton}
+              >
+                {isMobile ? 'Add' : 'Add to cart'}
+              </Button>
+            )}
+          </Box>
+        </CardContent>
+        <DishModal
+          dishName={itemData?.title}
+          dishDescription={itemData?.description}
+          dishCategory={'Veg'}
+          open={modalOpen}
+          onClose={handleModalClose}
+        />
+      </Card>
     </>
   );
 };

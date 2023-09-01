@@ -1,4 +1,4 @@
-import { Button, Paper, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import { useAppDispatch } from '../../store/hooks';
 import { addToCart, removeFromCart } from '../../features/cartSlice';
 import { Cart } from '../Cart/Cart';
@@ -8,18 +8,18 @@ const CartButton = (props: Cart) => {
   const dispatch = useAppDispatch();
   return (
     <Paper className={styles.cartBtn}>
-      <Button color="secondary" onClick={() => dispatch(removeFromCart(props.id))}>
+      <Typography className={styles.addition} onClick={() => dispatch(removeFromCart(props.id))}>
         -
-      </Button>
+      </Typography>
       <Typography>{props.quantity}</Typography>
-      <Button
-        color="secondary"
+      <Typography
+        className={styles.addition}
         onClick={() =>
           dispatch(addToCart({ id: props.id, dishName: props.dishName, price: props.price }))
         }
       >
         +
-      </Button>
+      </Typography>
     </Paper>
   );
 };

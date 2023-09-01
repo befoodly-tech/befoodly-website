@@ -1,8 +1,7 @@
 import { Box, Grid, Pagination, useMediaQuery } from '@mui/material';
 import styles from './OfferBanner.module.css';
 import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
-import { DeliveryDiningTwoTone } from '@mui/icons-material';
-import SvgDiet from '../../ui/Icon/Diet';
+import SvgDiet from '../../assets/svgs/Diet.svg';
 import { theme } from '../../ui/theme';
 import { useState } from 'react';
 
@@ -10,7 +9,7 @@ const offerCards: OfferCardProps[] = [
   {
     disRupee: 50,
     disDescription: 'Flat Discount',
-    disIcon: <SvgDiet />,
+    disIcon: SvgDiet,
     disRule: 'On order above ₹ 199',
     background:
       'linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),linear-gradient(140deg, #4fa0ff 0%, #434bff 100%)'
@@ -18,14 +17,14 @@ const offerCards: OfferCardProps[] = [
   {
     disPercentage: 25,
     disDescription: 'Flat Discount',
-    disIcon: <SvgDiet />,
+    disIcon: SvgDiet,
     disRule: 'On order above ₹ 299',
     background: 'linear-gradient(140deg, #4FA0FF 0%, #434BFF 100%)'
   },
   {
     disRupee: 20,
     disDescription: 'Only For Delivery',
-    disIcon: <DeliveryDiningTwoTone sx={{ width: 60, height: 60, color: '#4c2614' }} />,
+    disIcon: SvgDiet,
     disRule: 'On every order, COD :)',
     background:
       'linear-gradient(136deg, #C94217 0%, #EE682F 88.81%), linear-gradient(140deg, #4FA0FF 0%, #434BFF 100%)'

@@ -1,4 +1,4 @@
-import { Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import React from 'react';
 import { useAppSelector } from '../../store/hooks';
 import CartItems from './CartItems/CartItems';
@@ -14,7 +14,7 @@ export interface Cart {
 const Cart = () => {
   const cartItems = useAppSelector(state => state.cart);
   return (
-    <Container className={styles.cartContainer}>
+    <Box className={styles.cartContainer}>
       <Typography className={styles.cart}>Cart</Typography>
       <Typography className={styles.items}>Items</Typography>
       <CartItems cartItems={cartItems} />
@@ -25,7 +25,7 @@ const Cart = () => {
           Cart is empty
         </Typography>
       )}
-    </Container>
+    </Box>
   );
 };
 

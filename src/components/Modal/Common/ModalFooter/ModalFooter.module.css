@@ -24,3 +24,16 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .slogan {
+    .letsEat {
+      font-size: 48px;
+    }
+    .homely {
+      .sloganColored {
+        font-size: 48px;
+      }
+    }
+  }
+}

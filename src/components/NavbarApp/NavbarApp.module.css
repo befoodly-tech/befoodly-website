@@ -1,6 +1,6 @@
 .head {
   display: flex;
-  padding: 0.9375rem 12rem 0.9375rem 12rem;
+  padding: 1rem 0rem 1rem 0rem;
   align-items: center;
   background: #f6f6f6;
   .main {
@@ -66,9 +66,11 @@
 @media screen and (max-width: 1400px) {
   .head {
     .main {
-      /* flex-direction: column; */
       .find {
-        flex-direction: column;
+        height: 4rem;
+        .placeBtn {
+          flex: none;
+        }
       }
     }
   }
@@ -83,11 +85,14 @@
 
       .mobileFlex {
         display: flex;
+        justify-content: space-between;
+        width: 100%;
       }
       .find {
         width: 80vw;
+        height: none;
         flex-direction: row;
-        padding: 16px 16px;
+        padding: none;
       }
     }
   }

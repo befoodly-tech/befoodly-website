@@ -66,7 +66,7 @@ const Profile = (props: ProfileProps) => {
   };
   return (
     <>
-      <NavbarApp hideSearchBar />
+      <NavbarApp />
       <Box className={styles.profile}>
         <Box className={styles.myProfile}>
           <Typography className={styles.myText}>My</Typography>
@@ -111,6 +111,7 @@ const Profile = (props: ProfileProps) => {
                     fullWidth
                     placeholder={props.email}
                     type="email"
+                    disabled
                     {...register('email', {
                       required: {
                         value: true,

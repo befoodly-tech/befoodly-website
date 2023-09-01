@@ -48,10 +48,14 @@ const AddressModal = (props: AddressModalProps) => {
               </Box>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="title">Title</InputLabel>
+              <InputLabel className={styles.inputLable} htmlFor="title">
+                Title
+              </InputLabel>
               <TextField
                 id="title"
+                className={styles.inputTextField}
                 placeholder={props.address?.title}
+                fullWidth
                 {...register('title', {
                   required: { value: true, message: 'Title is required' }
                 })}
@@ -60,10 +64,13 @@ const AddressModal = (props: AddressModalProps) => {
               ></TextField>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="firstLine">First Line</InputLabel>
+              <InputLabel htmlFor="firstLine" className={styles.inputLable}>
+                First Line
+              </InputLabel>
               <TextField
                 fullWidth
                 id="firstLine"
+                className={styles.inputTextField}
                 placeholder={props.address?.firstLine}
                 {...register('firstLine', {
                   required: { value: true, message: 'Address is required' }
@@ -73,19 +80,26 @@ const AddressModal = (props: AddressModalProps) => {
               ></TextField>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="secondLine">Second Line</InputLabel>
+              <InputLabel htmlFor="secondLine" className={styles.inputLable}>
+                Second Line
+              </InputLabel>
               <TextField
                 fullWidth
                 id="secondLine"
+                className={styles.inputTextField}
                 placeholder={props.address?.secondLine}
                 {...register('secondLine')}
               ></TextField>
             </Box>
             <Box className={styles.flexInput} sx={{ gap: 2 }}>
               <Box className={styles.inputBoxes}>
-                <InputLabel htmlFor="city">City</InputLabel>
+                <InputLabel htmlFor="city" className={styles.inputLable}>
+                  City
+                </InputLabel>
                 <TextField
                   fullWidth
+                  disabled
+                  className={styles.inputTextField}
                   placeholder={props.address?.city}
                   {...register('city', {
                     required: { value: true, message: 'City is required' }
@@ -95,9 +109,13 @@ const AddressModal = (props: AddressModalProps) => {
                 ></TextField>
               </Box>
               <Box className={styles.inputBoxes}>
-                <InputLabel htmlFor="pincode">Pincode</InputLabel>
+                <InputLabel className={styles.inputLable} htmlFor="pincode">
+                  Pincode
+                </InputLabel>
                 <TextField
                   fullWidth
+                  disabled
+                  className={styles.inputTextField}
                   placeholder={props.address?.pincode}
                   {...register('pincode', {
                     required: { value: true, message: 'Pincode is required' }
@@ -108,9 +126,13 @@ const AddressModal = (props: AddressModalProps) => {
               </Box>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="state">State</InputLabel>
+              <InputLabel className={styles.inputLable} htmlFor="state">
+                State
+              </InputLabel>
               <TextField
                 fullWidth
+                disabled
+                className={styles.inputTextField}
                 placeholder={props.address.state}
                 {...register('state', {
                   required: { value: true, message: 'State is required' }

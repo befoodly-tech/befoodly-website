@@ -1,8 +1,8 @@
 .mainSection {
   display: flex;
-  padding: 2.5rem;
+  padding: 2.5rem 2.5rem 0rem 2.5rem;
+  justify-content: center;
   align-items: center;
-  /* flex-shrink: 0; */
   color: #feba10;
   background: #ececec;
 

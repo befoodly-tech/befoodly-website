@@ -16,7 +16,7 @@ const CartItems = (props: CartItemsProp) => {
         <ListItem key={cart.id} divider className={styles.cartListItem}>
           <Box>{cart.dishName}</Box>
           <CartButton {...cart} />
-          <Typography>{cart.price * cart.quantity}</Typography>
+          <Typography>{cart.price * cart.quantity} Rs</Typography>
         </ListItem>
       ))}
     </List>

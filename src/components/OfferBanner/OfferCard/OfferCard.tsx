@@ -5,7 +5,7 @@ export interface OfferCardProps {
   disPercentage?: number;
   disRupee?: number;
   disDescription: string;
-  disIcon: JSX.Element;
+  disIcon: string;
   disRule: string;
   background: string;
 }
@@ -20,7 +20,9 @@ const OfferCard = (props: OfferCardProps) => {
           {disPercentage ? `${disPercentage}%` : `₹${disRupee}`}
         </Typography>
         <Typography className={styles.cardDesc}>{disDescription}</Typography>
-        <Box className={styles.cardIcon}>{disIcon}</Box>
+        <Box className={styles.cardIcon}>
+          <img src={disIcon}></img>
+        </Box>
       </Box>
       <Typography className={styles.cardRule}>{disRule}</Typography>
     </Box>
