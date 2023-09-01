@@ -5,7 +5,8 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  Button
+  Button,
+  useMediaQuery
 } from '@mui/material';
 import Star from '../../../ui/Icon/Star';
 import styles from './Dish.module.css';
@@ -24,6 +25,7 @@ import {
 } from '../../../utils/CommonUtils';
 import DishModal from '../../Modal/DishModal/DishModal';
 import { useState } from 'react';
+import { theme } from '../../../ui/theme';
 
 export interface DishProp {
   itemData: ProductData;
@@ -35,6 +37,7 @@ const Dish = (props: DishProp) => {
   const cartItems = useAppSelector(state => state.cart);
   const { itemData, bucketUrl } = props;
   const quantity = cartItems.find(x => x.id === itemData?.id)?.quantity;
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -54,66 +57,121 @@ const Dish = (props: DishProp) => {
   };
 
   return (
-    <Card className={styles.dishCard}>
-      <CardActionArea onClick={() => setModalOpen(true)}>
-        <CardMedia
-          component="img"
-          className={styles.cardMedia}
-          src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
-        ></CardMedia>
-      </CardActionArea>
-      <CardContent className={styles.CardContentArea}>
-        <Box className={styles.CardContentLeft}>
-          <Box>
-            <Typography className={styles.CardAddress}>
-              {itemData?.providerData?.providerName}
-            </Typography>
-          </Box>
-          <Box className={styles.CardItem}>
-            <Typography className={styles.CardFood}>{itemData?.title}</Typography>
-            <Typography className={styles.CardRating}>
-              <Star />
-              {itemData?.feedback?.rating} (5)
-            </Typography>
-          </Box>
-          <Box className={styles.CardTiming}>
-            <Typography className={styles.CardClock}>
-              <Clock />
-              Accepting Till {formatStringToTime(itemData?.acceptingTime)}
-            </Typography>
-            <Typography className={styles.CardClock}>
-              <Calendar />
-              {formatStringToDate(itemData?.acceptingTime)}
-            </Typography>
-          </Box>
-        </Box>
-        <Box className={styles.CardContentRight}>
-          <Box className={styles.CardValue}>
-            <Typography className={styles.CardPrice}>
-              <CurrencyRupee />
-              {itemData?.price}
-            </Typography>
-          </Box>
-          {quantity ? (
-            <CartButton {...cart} />
-          ) : (
-            <Button
-              onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
-              className={styles.CardButton}
-            >
-              Add to Cart
-            </Button>
-          )}
-        </Box>
-      </CardContent>
-      <DishModal
-        dishName={itemData?.title}
-        dishDescription={itemData?.description}
-        dishCategory={'Veg'}
-        open={modalOpen}
-        onClose={handleModalClose}
-      />
-    </Card>
+    <>
+      {isMobile ? (
+        <Card className={styles.dishCard}>
+          <CardActionArea onClick={() => setModalOpen(true)}>
+            <CardMedia
+              component="img"
+              className={styles.cardMedia}
+              src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
+            ></CardMedia>
+          </CardActionArea>
+          <CardContent className={styles.CardContentArea}>
+            <Box className={styles.CardContentLeft}>
+              <Box>
+                <Typography noWrap className={styles.CardFood}>
+                  {itemData?.title}
+                </Typography>
+                <Typography className={styles.CardAddress}>
+                  {itemData?.providerData.providerName}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography className={styles.UnitsLeft}>
+                  {itemData?.orderNo} units left!
+                </Typography>
+              </Box>
+              <Box sx={{ display: 'flex' }}>
+                <Star />
+                <Typography className={styles.CardRating}>
+                  {itemData.feedback.rating} (10)
+                </Typography>
+              </Box>
+            </Box>
+            <Box className={styles.CardContentRight}>
+              <Box className={styles.CardValue}>
+                <Typography className={styles.CardPrice}>
+                  <CurrencyRupee />
+                  {itemData?.price}Rs
+                </Typography>
+              </Box>
+              {quantity ? (
+                <CartButton {...cart} />
+              ) : (
+                <Button
+                  onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
+                  className={styles.CardButton}
+                >
+                  Add to Cart
+                </Button>
+              )}
+            </Box>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className={styles.dishCard}>
+          <CardActionArea onClick={() => setModalOpen(true)}>
+            <CardMedia
+              component="img"
+              className={styles.cardMedia}
+              src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
+            ></CardMedia>
+          </CardActionArea>
+          <CardContent className={styles.CardContentArea}>
+            <Box className={styles.CardContentLeft}>
+              <Box>
+                <Typography className={styles.CardAddress}>
+                  {itemData?.providerData?.providerName}
+                </Typography>
+              </Box>
+              <Box className={styles.CardItem}>
+                <Typography className={styles.CardFood}>{itemData?.title}</Typography>
+                <Typography className={styles.CardRating}>
+                  <Star />
+                  {itemData?.feedback?.rating} (5)
+                </Typography>
+              </Box>
+              <Box className={styles.CardTiming}>
+                <Typography className={styles.CardClock}>
+                  <Clock />
+                  Accepting Till {formatStringToTime(itemData?.acceptingTime)}
+                </Typography>
+                <Typography className={styles.CardClock}>
+                  <Calendar />
+                  {formatStringToDate(itemData?.acceptingTime)}
+                </Typography>
+              </Box>
+            </Box>
+            <Box className={styles.CardContentRight}>
+              <Box className={styles.CardValue}>
+                <Typography className={styles.CardPrice}>
+                  <CurrencyRupee />
+                  {itemData?.price}
+                </Typography>
+              </Box>
+              {quantity ? (
+                <CartButton {...cart} />
+              ) : (
+                <Button
+                  onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
+                  className={styles.CardButton}
+                >
+                  Add to Cart
+                </Button>
+              )}
+            </Box>
+          </CardContent>
+          <DishModal
+            dishName={itemData?.title}
+            dishDescription={itemData?.description}
+            dishCategory={'Veg'}
+            open={modalOpen}
+            onClose={handleModalClose}
+          />
+        </Card>
+      )}
+    </>
   );
 };
 

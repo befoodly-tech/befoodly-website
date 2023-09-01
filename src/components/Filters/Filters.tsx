@@ -27,7 +27,7 @@ const primaryFilterOptions: FilterOption[] = [
     active: true
   },
   {
-    filterName: 'Veg&Egg',
+    filterName: 'Egg',
     active: false
   },
   {

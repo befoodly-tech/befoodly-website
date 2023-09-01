@@ -59,3 +59,45 @@
     box-shadow: 0px 1px 2px 0px rgba(54, 54, 54, 0.06);
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .modalBox {
+    .foodModalTitle {
+      .foodLable {
+      }
+    }
+
+    .modalDescription {
+      .modalDescriptionTitle {
+      }
+
+      .modalDescriptionSection {
+      }
+    }
+
+    .modalCategory {
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modalBox {
+    .foodModalTitle {
+      .foodLable {
+      }
+    }
+
+    .modalDescription {
+      width: 20rem;
+      padding-top: 1.94rem;
+      .modalDescriptionTitle {
+      }
+
+      .modalDescriptionSection {
+      }
+    }
+
+    .modalCategory {
+    }
+  }
+}

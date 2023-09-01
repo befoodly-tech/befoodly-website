@@ -12,30 +12,42 @@
     background: url(<path-to-image>), lightgray -50.118px -893.574px / 545.455% 1212.121% no-repeat;
   }
 
-  .chefName {
-    color: #393939;
-    font-family: Outfit;
-    font-size: 1.5rem !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-
-  .review {
+  .chefInfo {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    font-family: Outfit;
-    font-size: 1.2rem !important;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-    .rating {
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    .chefName {
       color: #393939;
+      font-family: Outfit;
+      font-size: 1.5rem !important;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .review {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
       text-align: center;
-      margin-right: 4px;
+      font-family: Outfit;
+      font-size: 1.2rem !important;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      .rating {
+        color: #393939;
+        text-align: center;
+        margin-right: 4px;
+      }
     }
   }
+}
+
+@media screen and (max-width: 1400px) {
+}
+
+@media screen and (max-width: 600px) {
 }

@@ -1,4 +1,4 @@
-import { Box, Pagination, useMediaQuery } from '@mui/material';
+import { Box, Grid, Pagination, useMediaQuery } from '@mui/material';
 import styles from './OfferBanner.module.css';
 import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
 import { DeliveryDiningTwoTone } from '@mui/icons-material';
@@ -46,14 +46,16 @@ const Offer = () => {
       {isMobile ? (
         <Box className={styles.outerBox}>
           <OfferCard {...offerCards[page]} />
-          <Pagination count={3} page={page + 1} onChange={handleOnChange} />
+          <Pagination count={offerCards.length} page={page + 1} onChange={handleOnChange} />
         </Box>
       ) : (
-        <Box className={styles.outerBox}>
+        <Grid container className={styles.outerBox}>
           {offerCards.map((offerCard, index) => (
-            <OfferCard key={index} {...offerCard} />
+            <Grid item key={index}>
+              <OfferCard {...offerCard} />
+            </Grid>
           ))}
-        </Box>
+        </Grid>
       )}
     </Box>
   );
