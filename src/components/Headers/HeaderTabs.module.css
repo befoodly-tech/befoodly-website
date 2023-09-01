@@ -65,3 +65,41 @@
     justify-self: flex-end;
   }
 }
+
+@media screen and (max-width: 1400px) {
+  .bar {
+    justify-content: space-around;
+    .optionMain {
+      .option {
+        /* padding: 0px 12px; */
+      }
+
+      .optionText {
+      }
+
+      .divider {
+      }
+    }
+    .bookCook {
+      .bookCookText {
+      }
+    }
+
+    .cart {
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bar {
+    .optionMain {
+      .optionText {
+        font-size: 1rem;
+      }
+
+      .divider {
+        width: 9rem;
+      }
+    }
+  }
+}

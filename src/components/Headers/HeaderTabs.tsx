@@ -1,8 +1,9 @@
-import { Box, Button, Typography, ButtonGroup, Container } from '@mui/material';
+import { Box, Button, Typography, ButtonGroup, Container, useMediaQuery } from '@mui/material';
 import styles from './HeaderTabs.module.css';
 import SvgDeliveryScooter from '../../ui/Icon/DeliveryScooter';
 import SvgShoppingCart from '../../ui/Icon/ShoppingCart';
 import { useNavigate } from 'react-router-dom';
+import { theme } from '../../ui/theme';
 
 interface HeaderTabsProps {
   customerId: string;
@@ -23,6 +24,7 @@ const headerTabsOptions = [
 
 const HeaderTabs = (props: HeaderTabsProps) => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Container>
       <Box className={styles.bar}>
@@ -31,7 +33,11 @@ const HeaderTabs = (props: HeaderTabsProps) => {
             <Button key={option.optionName} className={styles.optionMain}>
               <Box className={styles.option}>
                 {option.svgImg}
-                <Typography className={styles.optionText}>{option.optionName}</Typography>
+                {isMobile ? (
+                  ''
+                ) : (
+                  <Typography className={styles.optionText}>{option.optionName}</Typography>
+                )}
               </Box>
               <Box className={styles.divider} />
             </Button>
@@ -43,7 +49,7 @@ const HeaderTabs = (props: HeaderTabsProps) => {
           startIcon={<SvgShoppingCart />}
           className={styles.cart}
         >
-          View Cart
+          {isMobile ? 'Cart' : 'View Cart'}
         </Button>
       </Box>
     </Container>

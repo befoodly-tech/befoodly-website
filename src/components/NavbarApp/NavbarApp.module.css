@@ -66,9 +66,28 @@
 @media screen and (max-width: 1400px) {
   .head {
     .main {
+      /* flex-direction: column; */
       .find {
         flex-direction: column;
-        width: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .head {
+    padding: 16px 0px;
+    .main {
+      flex-direction: column;
+      gap: 0rem;
+
+      .mobileFlex {
+        display: flex;
+      }
+      .find {
+        width: 80vw;
+        flex-direction: row;
+        padding: 16px 16px;
       }
     }
   }

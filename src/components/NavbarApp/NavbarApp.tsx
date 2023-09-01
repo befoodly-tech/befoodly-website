@@ -10,7 +10,8 @@ import {
   MenuProps,
   Menu,
   alpha,
-  MenuItem
+  MenuItem,
+  useMediaQuery
 } from '@mui/material';
 import styles from './NavbarApp.module.css';
 import BefoodlyLogo from '../../assets/svgs/LogoBlack.svg';
@@ -26,6 +27,7 @@ import { Location } from '../../types/CommonType';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchCustomerDataApi } from '../../actions/CustomerActions';
 import LoadingCircle from '../Common/LoadingCircle';
+import { theme } from '../../ui/theme';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -88,6 +90,7 @@ const NavbarApp = (props: NavbarAppProps) => {
       dispatch(fetchCustomerDataApi(props.customerId));
     }
   }, []);
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -119,96 +122,113 @@ const NavbarApp = (props: NavbarAppProps) => {
   function onProfileClicked(): void {
     navigate('/profile');
   }
+  const forSearchBar = (
+    <Paper className={styles.find}>
+      <Button
+        color="primary"
+        variant="text"
+        id="demo-customized-button"
+        aria-controls={open ? 'demo-customized-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        className={styles.placeBtn}
+        startIcon={<HomeIcon className={styles.placeLogo} />}
+        endIcon={<KeyboardArrowDownIcon color="secondary" />}
+      >
+        <Box className={styles.place}>
+          <Typography className={styles.placeName}>{activeOption?.title}</Typography>
+          {isMobile ? (
+            ''
+          ) : (
+            <Typography noWrap className={styles.placeArea}>
+              {activeOption?.address}
+            </Typography>
+          )}
+        </Box>
+      </Button>
+      <StyledMenu
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button'
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        {locations.map(location => (
+          <MenuItem
+            key={location.id}
+            onClick={() => handleOnOptionClicked(location.id)}
+            disableRipple
+          >
+            {location.title}
+          </MenuItem>
+        ))}
+      </StyledMenu>
+      <Box className={styles.inputField}>
+        <TextField
+          variant="standard"
+          placeholder={isMobile ? 'Search for food' : 'Search for home cooked meal'}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+            disableUnderline: true
+          }}
+          fullWidth
+        ></TextField>
+      </Box>
+    </Paper>
+  );
+
+  const forUserLoggedIn = isLoggedIn ? (
+    <Button onClick={onProfileClicked}>
+      <Box component={'img'} className={styles.profileImg} src={Panda} alt="Profile Image"></Box>
+      <Typography color={'#696969'}>
+        {customerData?.data ? customerData?.data?.name : 'Foodie'}
+      </Typography>
+    </Button>
+  ) : (
+    <Box className={styles.checkin}>
+      {buttons.map(button => (
+        <Button
+          key={button}
+          onClick={() => handleOnOpen(button)}
+          className={styles.checkinBtn}
+          color="primary"
+        >
+          {button}
+        </Button>
+      ))}
+    </Box>
+  );
+  const forMobileUser = isMobile ? (
+    <Box className={styles.main}>
+      <Box className={styles.mobileFlex}>
+        <Button onClick={() => navigate('/menu')}>
+          <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
+        </Button>
+        {forUserLoggedIn}
+      </Box>
+      {forSearchBar}
+    </Box>
+  ) : (
+    <Box className={styles.main}>
+      <Button onClick={() => navigate('/menu')}>
+        <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
+      </Button>
+      {forSearchBar}
+      {forUserLoggedIn}
+    </Box>
+  );
 
   return (
     <Box className={styles.head}>
       {isLoading && <LoadingCircle />}
-      <Container className={styles.main}>
-        <Button onClick={() => navigate('/menu')}>
-          <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
-        </Button>
-        <Paper className={styles.find}>
-          <Button
-            color="primary"
-            variant="text"
-            id="demo-customized-button"
-            aria-controls={open ? 'demo-customized-menu' : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? 'true' : undefined}
-            onClick={handleClick}
-            className={styles.placeBtn}
-            startIcon={<HomeIcon className={styles.placeLogo} />}
-            endIcon={<KeyboardArrowDownIcon color="secondary" />}
-          >
-            <Box className={styles.place}>
-              <Typography className={styles.placeName}>{activeOption?.title}</Typography>
-              <Typography noWrap className={styles.placeArea}>
-                {activeOption?.address}
-              </Typography>
-            </Box>
-          </Button>
-          <StyledMenu
-            id="demo-customized-menu"
-            MenuListProps={{
-              'aria-labelledby': 'demo-customized-button'
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-          >
-            {locations.map(location => (
-              <MenuItem
-                key={location.id}
-                onClick={() => handleOnOptionClicked(location.id)}
-                disableRipple
-              >
-                {location.title}
-              </MenuItem>
-            ))}
-          </StyledMenu>
-          <Box className={styles.inputField}>
-            <TextField
-              variant="standard"
-              placeholder="Search for home cooked food"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <Search />
-                  </InputAdornment>
-                ),
-                disableUnderline: true
-              }}
-              fullWidth
-            ></TextField>
-          </Box>
-        </Paper>
-        {isLoggedIn ? (
-          <Button onClick={onProfileClicked}>
-            <Box
-              component={'img'}
-              className={styles.profileImg}
-              src={Panda}
-              alt="Profile Image"
-            ></Box>
-            <Typography color={'#696969'}>
-              {customerData?.data ? customerData?.data?.name : 'Foodie'}
-            </Typography>
-          </Button>
-        ) : (
-          <Box className={styles.checkin}>
-            {buttons.map(button => (
-              <Button
-                key={button}
-                onClick={() => handleOnOpen(button)}
-                className={styles.checkinBtn}
-                color="primary"
-              >
-                {button}
-              </Button>
-            ))}
-          </Box>
-        )}
-      </Container>
+      <Container>{forMobileUser}</Container>
       <LoginModal open={openLoginModal} handleClose={handleLoginModalClose} />
       <SignupModal open={openSignUpModal} handleClose={handleSignupModalClose} />
     </Box>
