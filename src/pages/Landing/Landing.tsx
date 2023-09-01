@@ -23,7 +23,7 @@ const Landing = () => {
       <OfferBanner />
       <Chefs bucketUrl={S3_URL} />
       <Filters />
-      <Dishes />
+      <Dishes bucketUrl={S3_URL} />
       <Footer />
     </Box>
   );

@@ -4,6 +4,7 @@ import UserReducer from '../features/userStateSlice';
 import CartState from '../features/cartStateSlice';
 import LoginReducer from '../features/loginSlice';
 import ChefReducer from '../features/chefSlice';
+import ProductReducer from '../features/productSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
     cartState: CartState,
     user: UserReducer,
     login: LoginReducer,
-    chef: ChefReducer
+    chef: ChefReducer,
+    product: ProductReducer
   }
 });
 

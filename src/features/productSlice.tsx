@@ -1,39 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { GenericApiResponse } from '../types/ApiActions';
-import { fetchPopularCookDataApi } from '../actions/ChefActions';
 import { isApiStatusSuccess } from '../utils/GenericApiResponse';
+import { fetchActiveMenuDataApi } from '../actions/ProductItemActions';
 
-interface ChefStateProps {
-  chefData: GenericApiResponse;
+interface ProductStateProps {
+  productData: GenericApiResponse;
   isLoading: boolean;
   isError: boolean;
 }
 
-const initialState: ChefStateProps = {
-  chefData: {},
+const initialState: ProductStateProps = {
+  productData: {},
   isLoading: false,
   isError: false
 };
 
-const chefSlice = createSlice({
-  name: 'chef',
+const productSlice = createSlice({
+  name: 'product',
   initialState: initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchPopularCookDataApi.pending, state => {
+    builder.addCase(fetchActiveMenuDataApi.pending, state => {
       state.isLoading = true;
       state.isError = false;
     });
-    builder.addCase(fetchPopularCookDataApi.fulfilled, (state, action) => {
+    builder.addCase(fetchActiveMenuDataApi.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.chefData = action.payload;
+      state.productData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
     });
-    builder.addCase(fetchPopularCookDataApi.rejected, state => {
+    builder.addCase(fetchActiveMenuDataApi.rejected, state => {
       state.isLoading = false;
       state.isError = true;
     });
   }
 });
 
-export default chefSlice.reducer;
+export default productSlice.reducer;

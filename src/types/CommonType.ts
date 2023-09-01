@@ -40,3 +40,40 @@ export interface FeedbackData {
   rating: number;
   reviews: number;
 }
+
+export interface ProductData {
+  id: number;
+  referenceId: string;
+  title: string;
+  imgUrl: string;
+  description: string;
+  orderNo: number;
+  price: number;
+  acceptingTime: string;
+  deliveryTime: string;
+  feedback: FeedbackData;
+  vendorId: number;
+  providerData: VendorData;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface VendorData {
+  providerName: string;
+  location: string;
+}
+
+export const Month = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
