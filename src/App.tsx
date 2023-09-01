@@ -1,10 +1,8 @@
-import { AppConfig } from './types/AppConfig';
+import { AppConfig } from './types/CommonType';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './ui/theme';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes/routes';
-import state from './app/store';
-import { Provider } from 'react-redux';
 
 declare global {
   interface Window {
@@ -12,19 +10,11 @@ declare global {
   }
 }
 
-const config = window.config ?? {};
-
-const initOptions = {
-  url: config.BASE_URL
-};
-
 function App() {
   return (
-    <Provider store={state}>
-      <ThemeProvider theme={theme}>
-        <RouterProvider router={router}></RouterProvider>
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router}></RouterProvider>
+    </ThemeProvider>
   );
 }
 

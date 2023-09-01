@@ -1,6 +1,6 @@
 import { Button, Container, Typography } from '@mui/material';
 import React from 'react';
-import { useAppSelector } from '../../app/hooks';
+import { useAppSelector } from '../../store/hooks';
 import CartItems from './CartItems/CartItems';
 import styles from './Cart.module.css';
 

@@ -29,5 +29,10 @@
         }
       }
     }
+
+    .errors {
+      color: red;
+      font-size: smaller;
+    }
   }
 }

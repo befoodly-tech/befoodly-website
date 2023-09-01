@@ -112,3 +112,16 @@
     font-size: 2rem !important;
   }
 }
+
+.errorMessage {
+  color: rgb(255, 43, 43);
+  font-size: 12px;
+  padding-top: 4px;
+}
+
+.loadingBar {
+  color: rgb(2, 104, 2);
+  margin: auto;
+  position: absolute;
+  width: auto;
+}

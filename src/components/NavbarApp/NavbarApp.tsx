@@ -10,20 +10,22 @@ import {
   MenuProps,
   Menu,
   alpha,
-  MenuItem,
-  useTheme,
-  useMediaQuery
+  MenuItem
 } from '@mui/material';
 import styles from './NavbarApp.module.css';
 import BefoodlyLogo from '../../assets/svgs/LogoBlack.svg';
 import Search from '../../ui/Icon/Search';
 import HomeIcon from '../../ui/Icon/Home';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginModal from '../Modal/LoginModal/LoginModal';
 import SignupModal from '../Modal/SignupModal/SignupModal';
 import Panda from '../../assets/images/Panda.png';
 import { useNavigate } from 'react-router-dom';
+import { Location } from '../../types/CommonType';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { fetchCustomerDataApi } from '../../actions/CustomerActions';
+import LoadingCircle from '../Common/LoadingCircle';
 
 const StyledMenu = styled((props: MenuProps) => (
   <Menu
@@ -62,27 +64,30 @@ const StyledMenu = styled((props: MenuProps) => (
   }
 }));
 
-interface Location {
-  id: number;
-  title: string;
-  address: string;
+interface NavbarAppProps {
+  customerId: string;
+  session: string;
 }
 
-const locations: Location[] = [
-  { id: 1, title: 'Home', address: 'Bellandure, Bangalore' },
-  { id: 2, title: 'Office', address: 'Manesar, Bangalore' }
-];
+const locations: Location[] = [{ id: 1, title: 'Home', address: 'Bellandure, Bangalore' }];
 
 const buttons: string[] = ['Login', 'SignUp'];
 
-const NavbarApp = () => {
+const NavbarApp = (props: NavbarAppProps) => {
   const [activeOption, setActiveOption] = useState<Location | undefined>(locations[0]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [openLoginModal, setOpenLoginModal] = useState(false);
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { isLoggedIn, customerData, isLoading, isError } = useAppSelector(state => state.user);
+
+  useEffect(() => {
+    if (props.customerId?.length > 0) {
+      dispatch(fetchCustomerDataApi(props.customerId));
+    }
+  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -117,6 +122,7 @@ const NavbarApp = () => {
 
   return (
     <Box className={styles.head}>
+      {isLoading && <LoadingCircle />}
       <Container className={styles.main}>
         <Button onClick={() => navigate('/menu')}>
           <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
@@ -177,7 +183,6 @@ const NavbarApp = () => {
           </Box>
         </Paper>
         {isLoggedIn ? (
-          // UserProfile
           <Button onClick={onProfileClicked}>
             <Box
               component={'img'}
@@ -185,7 +190,9 @@ const NavbarApp = () => {
               src={Panda}
               alt="Profile Image"
             ></Box>
-            <Typography color={'#696969'}>Foodie</Typography>
+            <Typography color={'#696969'}>
+              {customerData?.data ? customerData?.data?.name : 'Foodie'}
+            </Typography>
           </Button>
         ) : (
           <Box className={styles.checkin}>

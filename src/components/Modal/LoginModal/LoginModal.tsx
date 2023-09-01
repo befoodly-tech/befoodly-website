@@ -2,24 +2,27 @@ import { Box, Button, Modal, Typography } from '@mui/material';
 import Cancle from '../../../ui/Icon/Cancle';
 import styles from './LoginModal.module.css';
 import ModalFooter from '../Common/ModalFooter/ModalFooter';
-import ModalForm from '../Common/ModalForm/ModalForm';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { logInUserApi, verifyOtpApi } from '../../../actions/LoginActions';
+import EmailLoginForm from '../Common/EmailLoginForm/EmailLoginForm';
+import { OtpRequest } from '../../../types/ApiActions';
 
 interface LoginModalProps {
   open: boolean;
   handleClose: () => void;
 }
 
-interface LoginFieldValues {
-  phoneNumber: string;
-  otp: string;
-}
-
 const LoginModal = (props: LoginModalProps) => {
-  function handleOnVerify(data: LoginFieldValues): void {
-    // console.log(data);
+  const dispatch = useAppDispatch();
+  const { isLoading, isError, loginData, sessionData } = useAppSelector(state => state.login);
+
+  function handleOnVerify(data: OtpRequest): void {
+    dispatch(verifyOtpApi({ phoneNumber: '8755509017', otp: data.otp }));
   }
 
-  function handleOnSendOtp(): void {}
+  function handleOnSendOtp(email: string): void {
+    dispatch(logInUserApi(email));
+  }
 
   return (
     <Modal
@@ -44,7 +47,12 @@ const LoginModal = (props: LoginModalProps) => {
           </Box>
         </Box>
         <Box id="login-modal-description">
-          <ModalForm handleOnVerify={handleOnVerify} handleOnSendOtp={handleOnSendOtp} />
+          <EmailLoginForm
+            sessionData={sessionData}
+            loginData={loginData}
+            handleOnVerify={handleOnVerify}
+            handleOnSendOtp={handleOnSendOtp}
+          />
         </Box>
         <ModalFooter />
       </Box>

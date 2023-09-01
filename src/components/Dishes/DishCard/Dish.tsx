@@ -7,68 +7,75 @@ import {
   Typography,
   Button
 } from '@mui/material';
-import FoodPlate from '../../../assets/images/FoodPlate.png';
 import Star from '../../../ui/Icon/Star';
 import styles from './Dish.module.css';
 import Clock from '../../../ui/Icon/Clock';
 import Calendar from '../../../ui/Icon/Calendar';
 import { CurrencyRupee } from '@mui/icons-material';
-import { addToCart, removeFromCart } from '../../../features/cart/cartSlice';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { addToCart, removeFromCart } from '../../../features/cartSlice';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import CartButton from '../../Common/CartButton';
 import { Cart } from '../../Cart/Cart';
+import { ProductData } from '../../../types/CommonType';
+import {
+  combineTwoStrings,
+  formatStringToDate,
+  formatStringToTime
+} from '../../../utils/CommonUtils';
 
 export interface DishProp {
-  id: number;
-  kitchen: string;
-  dishName: string;
-  rating: number;
-  closeTime: string;
-  date: string;
-  dishCost: number;
+  itemData: ProductData;
+  bucketUrl: string;
 }
 
 const Dish = (props: DishProp) => {
   const dispatch = useAppDispatch();
   const cartItems = useAppSelector(state => state.cart);
-  const quantity = cartItems.find(x => x.id === props.id)?.quantity;
+  const { itemData, bucketUrl } = props;
+  const quantity = cartItems.find(x => x.id === itemData?.id)?.quantity;
 
   function handleAddCart(id: number, dishName: string, price: number): void {
     dispatch(addToCart({ id, dishName, price }));
   }
 
   const cart: Cart = {
-    id: props.id,
-    dishName: props.dishName,
-    price: props.dishCost,
+    id: itemData?.id,
+    dishName: itemData?.title,
+    price: itemData?.price,
     quantity: quantity || 0
   };
 
   return (
     <Card>
       <CardActionArea>
-        <CardMedia component="img" height="350" src={FoodPlate}></CardMedia>
+        <CardMedia
+          component="img"
+          height="350"
+          src={combineTwoStrings(bucketUrl, itemData?.imgUrl)}
+        ></CardMedia>
       </CardActionArea>
       <CardContent className={styles.CardContentArea}>
         <Box className={styles.CardContentLeft}>
           <Box>
-            <Typography className={styles.CardAddress}>{props.kitchen}</Typography>
+            <Typography className={styles.CardAddress}>
+              {itemData?.providerData?.providerName}
+            </Typography>
           </Box>
           <Box className={styles.CardItem}>
-            <Typography className={styles.CardFood}>{props.dishName}</Typography>
+            <Typography className={styles.CardFood}>{itemData?.title}</Typography>
             <Typography className={styles.CardRating}>
               <Star />
-              {props.rating} (10)
+              {itemData?.feedback?.rating} (5)
             </Typography>
           </Box>
           <Box className={styles.CardTiming}>
             <Typography className={styles.CardClock}>
               <Clock />
-              Accepting Till {props.closeTime}
+              Accepting Till {formatStringToTime(itemData?.acceptingTime)}
             </Typography>
             <Typography className={styles.CardClock}>
               <Calendar />
-              {props.date}
+              {formatStringToDate(itemData?.acceptingTime)}
             </Typography>
           </Box>
         </Box>
@@ -76,15 +83,14 @@ const Dish = (props: DishProp) => {
           <Box className={styles.CardValue}>
             <Typography className={styles.CardPrice}>
               <CurrencyRupee />
-              {props.dishCost}Rs
+              {itemData?.price}
             </Typography>
-            <Typography className={styles.CardAverage}>avg. meal price</Typography>
           </Box>
           {quantity ? (
             <CartButton {...cart} />
           ) : (
             <Button
-              onClick={() => handleAddCart(props.id, props.dishName, props.dishCost)}
+              onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
               className={styles.CardButton}
             >
               Add to Cart

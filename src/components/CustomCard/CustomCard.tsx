@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import styles from './CustomCard.module.css';
-import { CustomCardProps } from '../../types/AppConfig';
+import { CustomCardProps } from '../../types/CommonType';
 
 const CustomCard = (props: CustomCardProps) => {
   return (

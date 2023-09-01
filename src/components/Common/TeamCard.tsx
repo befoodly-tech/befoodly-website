@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { TeamCardProps } from '../../types/AppConfig';
+import { TeamCardProps } from '../../types/CommonType';
 import styles from './Common.module.css';
 
 const TeamCard = (props: TeamCardProps) => {
