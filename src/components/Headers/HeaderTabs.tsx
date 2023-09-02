@@ -43,7 +43,11 @@ const HeaderTabs = (props: HeaderTabsProps) => {
             </Button>
           ))}
         </ButtonGroup>
-        <Button variant="contained" onClick={() => navigate('/checkout')} className={styles.cart}>
+        <Button
+          variant="contained"
+          onClick={() => navigate('/app/checkout')}
+          className={styles.cart}
+        >
           <img src={ShoppingCart}></img>
           {isMobile ? '' : 'View Cart'}
         </Button>

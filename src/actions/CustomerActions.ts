@@ -21,3 +21,12 @@ export const editCustomerDataApi = createAsyncThunk(
     return ApiHelper(url, MethodType.PUT, JSON.stringify(data.body));
   }
 );
+
+export const fetchAllAddressesApi = createAsyncThunk(
+  'fetch/allAddressData',
+  (customerId: string) => {
+    const url = getApiUrl(API_URLS.FETCH_ALL_ADDRESSES, customerId);
+
+    return ApiHelper(url, MethodType.GET);
+  }
+);

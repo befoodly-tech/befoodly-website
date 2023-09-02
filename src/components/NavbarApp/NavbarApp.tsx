@@ -71,7 +71,7 @@ interface NavbarAppProps {
   session: string;
 }
 
-const locations: Location[] = [{ id: 1, title: 'Home', address: 'Bellandure, Bangalore' }];
+const locations: Location[] = [{ id: 1, title: 'Home', address: 'Bellandur, Bangalore' }];
 
 const buttons: string[] = ['Login', 'SignUp'];
 
@@ -121,7 +121,7 @@ const NavbarApp = (props: NavbarAppProps) => {
   }
 
   function onProfileClicked(): void {
-    navigate('/profile');
+    navigate('/app/profile', { state: customerData?.data });
   }
 
   const forUserLoggedIn = isLoggedIn ? (
@@ -148,7 +148,7 @@ const NavbarApp = (props: NavbarAppProps) => {
   const forMobileUser = isMobile ? (
     <Box className={styles.main}>
       <Box className={styles.mobileFlex}>
-        <Button onClick={() => navigate('/menu')}>
+        <Button onClick={() => navigate('/app')}>
           <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
         </Button>
         {forUserLoggedIn}
@@ -215,7 +215,7 @@ const NavbarApp = (props: NavbarAppProps) => {
     </Box>
   ) : (
     <Box className={styles.main}>
-      <Button onClick={() => navigate('/menu')}>
+      <Button onClick={() => navigate('/app')}>
         <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
       </Button>
       <Paper className={styles.find}>
@@ -257,7 +257,7 @@ const NavbarApp = (props: NavbarAppProps) => {
               onClick={() => handleOnOptionClicked(location.id)}
               disableRipple
             >
-              {location.title}
+              {location?.address}
             </MenuItem>
           ))}
         </StyledMenu>
