@@ -1,32 +1,34 @@
 import { Box, Button, InputLabel, Modal, TextField, Typography } from '@mui/material';
 import styles from './AddressModal.module.css';
 import { useForm } from 'react-hook-form';
-import { AddressProp } from '../../Addresses/Address/Address';
 import ModalFooter from '../Common/ModalFooter/ModalFooter';
 import Cancle from '../../../ui/Icon/Cancle';
+import { AddressData } from '../../../types/CommonType';
 
 interface AddressModalProps {
   open: boolean;
   onClose: () => void;
-  address: AddressProp;
+  onSubmit: (data: AddressData, customerId?: string) => void;
+  address?: AddressData;
 }
 
 const AddressModal = (props: AddressModalProps) => {
-  const form = useForm<AddressProp>({
+  const form = useForm<AddressData>({
     defaultValues: {
-      title: props.address.title,
-      firstLine: props.address.firstLine,
-      secondLine: props.address.secondLine,
-      city: props.address.city,
-      pincode: props.address.pincode,
-      state: props.address.state
+      title: props?.address?.title,
+      addressFirst: props?.address?.addressFirst,
+      addressSecond: props?.address?.addressSecond,
+      city: props?.address?.city,
+      pinCode: props?.address?.pinCode,
+      state: props?.address?.state
     }
   });
   const { register, formState, handleSubmit } = form;
   const { errors } = formState;
 
-  function onFormSubmit(data: AddressProp): void {
-    //console.log(data);
+  function onFormSubmit(data: AddressData): void {
+    props.onSubmit(data, props?.address?.customerReferenceId);
+    props.onClose();
   }
 
   return (
@@ -54,41 +56,41 @@ const AddressModal = (props: AddressModalProps) => {
               <TextField
                 id="title"
                 className={styles.inputTextField}
-                placeholder={props.address?.title}
+                placeholder={props?.address?.title}
                 fullWidth
                 {...register('title', {
                   required: { value: true, message: 'Title is required' }
                 })}
-                error={!!errors?.firstLine}
-                helperText={errors?.firstLine?.message}
+                error={!!errors?.title}
+                helperText={errors?.title?.message}
               ></TextField>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="firstLine" className={styles.inputLable}>
+              <InputLabel htmlFor="addressFirst" className={styles.inputLable}>
                 First Line
               </InputLabel>
               <TextField
                 fullWidth
-                id="firstLine"
+                id="addressFirst"
                 className={styles.inputTextField}
-                placeholder={props.address?.firstLine}
-                {...register('firstLine', {
+                placeholder={props?.address?.addressFirst}
+                {...register('addressFirst', {
                   required: { value: true, message: 'Address is required' }
                 })}
-                error={!!errors?.firstLine}
-                helperText={errors?.firstLine?.message}
+                error={!!errors?.addressFirst}
+                helperText={errors?.addressFirst?.message}
               ></TextField>
             </Box>
             <Box className={styles.inputBoxes}>
-              <InputLabel htmlFor="secondLine" className={styles.inputLable}>
+              <InputLabel htmlFor="addressSecond" className={styles.inputLable}>
                 Second Line
               </InputLabel>
               <TextField
                 fullWidth
-                id="secondLine"
+                id="addressSecond"
                 className={styles.inputTextField}
-                placeholder={props.address?.secondLine}
-                {...register('secondLine')}
+                placeholder={props?.address?.addressSecond}
+                {...register('addressSecond')}
               ></TextField>
             </Box>
             <Box className={styles.flexInput} sx={{ gap: 2 }}>
@@ -100,28 +102,28 @@ const AddressModal = (props: AddressModalProps) => {
                   fullWidth
                   disabled
                   className={styles.inputTextField}
-                  placeholder={props.address?.city}
+                  placeholder={props?.address?.city}
                   {...register('city', {
+                    value: 'Bangalore',
                     required: { value: true, message: 'City is required' }
                   })}
-                  error={!!errors?.pincode}
-                  helperText={errors?.pincode?.message}
+                  error={!!errors?.city}
+                  helperText={errors?.city?.message}
                 ></TextField>
               </Box>
               <Box className={styles.inputBoxes}>
-                <InputLabel className={styles.inputLable} htmlFor="pincode">
+                <InputLabel className={styles.inputLable} htmlFor="pinCode">
                   Pincode
                 </InputLabel>
                 <TextField
                   fullWidth
-                  disabled
                   className={styles.inputTextField}
-                  placeholder={props.address?.pincode}
-                  {...register('pincode', {
+                  placeholder={props?.address?.pinCode}
+                  {...register('pinCode', {
                     required: { value: true, message: 'Pincode is required' }
                   })}
-                  error={!!errors?.pincode}
-                  helperText={errors?.pincode?.message}
+                  error={!!errors?.pinCode}
+                  helperText={errors?.pinCode?.message}
                 ></TextField>
               </Box>
             </Box>
@@ -133,8 +135,9 @@ const AddressModal = (props: AddressModalProps) => {
                 fullWidth
                 disabled
                 className={styles.inputTextField}
-                placeholder={props.address.state}
+                placeholder={props?.address?.state}
                 {...register('state', {
+                  value: 'Karnataka',
                   required: { value: true, message: 'State is required' }
                 })}
                 error={!!errors?.state}

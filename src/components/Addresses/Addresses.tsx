@@ -1,32 +1,51 @@
 import Address from './Address/Address';
-import { List, ListItem } from '@mui/material';
+import { Button, List, ListItem } from '@mui/material';
 import styles from './Addresses.module.css';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useEffect } from 'react';
-import { fetchAllAddressesApi } from '../../actions/CustomerActions';
+import { useAppDispatch } from '../../store/hooks';
+import { useState } from 'react';
+import { addAddressApi } from '../../actions/CustomerActions';
 import { AddressData } from '../../types/CommonType';
+import EmptyDataCard from '../Common/EmptyDataCard';
+import { LocationOff } from '@mui/icons-material';
+import AddressModal from '../Modal/AddressModal/AddressModal';
 
 interface AddressesProps {
-  customerId: string;
+  addressData: AddressData[];
 }
 
-const Addresses = (props: AddressesProps) => {
+const Addresses = ({ addressData }: AddressesProps) => {
   const dispatch = useAppDispatch();
-  const { addressData } = useAppSelector(state => state.user);
+  const [openAddAddressModal, setOpenAddAddressModal] = useState(false);
 
-  useEffect(() => {
-    if (!addressData?.data) {
-      dispatch(fetchAllAddressesApi(props?.customerId));
-    }
-  }, []);
+  const handleAddAddress = () => {
+    setOpenAddAddressModal(true);
+  };
+
+  const onSubmitAddAddress = (data: AddressData, customerId?: string) => {
+    dispatch(addAddressApi({ customerId: customerId ?? '', body: data }));
+  };
 
   return (
     <List disablePadding className={styles.addressList}>
-      {addressData?.data?.map((address: AddressData) => (
+      {addressData?.map((address: AddressData) => (
         <ListItem key={address.id}>
           <Address address={address} />
         </ListItem>
       ))}
+      {!addressData && (
+        <EmptyDataCard
+          message="No Address Added Yet!"
+          icon={<LocationOff sx={{ color: 'rgb(112, 112, 112)' }} />}
+        />
+      )}
+      <Button type="button" className={styles.addAddressBtn} onClick={handleAddAddress}>
+        Add Address
+      </Button>
+      <AddressModal
+        open={openAddAddressModal}
+        onClose={() => setOpenAddAddressModal(false)}
+        onSubmit={onSubmitAddAddress}
+      />
     </List>
   );
 };

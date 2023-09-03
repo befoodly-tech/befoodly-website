@@ -121,7 +121,7 @@ const NavbarApp = (props: NavbarAppProps) => {
   }
 
   function onProfileClicked(): void {
-    navigate('/app/profile', { state: customerData?.data });
+    navigate('/app/profile');
   }
 
   const forUserLoggedIn = isLoggedIn ? (

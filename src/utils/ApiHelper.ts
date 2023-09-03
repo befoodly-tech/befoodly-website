@@ -11,7 +11,9 @@ export const API_URLS = {
   FETCH_CUSTOMER_DATA: '/v1/customer',
   FETCH_COOK_DATA: '/v1/cook/fetch/popular',
   FETCH_ACTIVE_ITEMS: '/v1/product/fetch/all',
-  FETCH_ALL_ADDRESSES: '/V1/address'
+  FETCH_ALL_ADDRESSES: '/v1/address',
+  ADD_ADDRESS: '/v1/address',
+  EDIT_ADDRESS: '/v1/address/edit'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {

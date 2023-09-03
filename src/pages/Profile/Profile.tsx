@@ -1,11 +1,11 @@
 import { Box, Button, TextField, Typography, InputLabel } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import styles from './Profile.module.css';
-import Footer from '../../components/Footer/Footer';
 import Addresses from '../../components/Addresses/Addresses';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../store/hooks';
-import { editCustomerDataApi } from '../../actions/CustomerActions';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { editCustomerDataApi, fetchAllAddressesApi } from '../../actions/CustomerActions';
+import { useEffect } from 'react';
 
 interface ProfileData {
   name: string;
@@ -14,22 +14,33 @@ interface ProfileData {
 }
 
 const Profile = () => {
-  const { state } = useLocation();
   const dispatch = useAppDispatch();
+  const { customerData, addressData } = useAppSelector(state => state.user);
 
   const form = useForm<ProfileData>({
     defaultValues: {
-      name: state?.name,
-      email: state?.email,
-      phoneNumber: state?.phoneNumber
+      name: customerData?.data?.name,
+      email: customerData?.data?.email,
+      phoneNumber: customerData?.data?.phoneNumber
     }
   });
 
   const { register, formState, handleSubmit } = form;
   const { errors } = formState;
 
+  useEffect(() => {
+    if (customerData?.data) {
+      dispatch(fetchAllAddressesApi(customerData?.data?.referenceId));
+    }
+  }, [customerData]);
+
   const onProfileSubmit = (data: ProfileData) => {
-    dispatch(editCustomerDataApi({ customerId: state?.referenceId, body: data }));
+    dispatch(
+      editCustomerDataApi({
+        customerId: customerData?.data?.referenceId,
+        body: { name: data?.name }
+      })
+    );
   };
 
   return (
@@ -49,7 +60,7 @@ const Profile = () => {
                   <InputLabel htmlFor="name">Name</InputLabel>
                   <TextField
                     id="name"
-                    placeholder={state?.name}
+                    placeholder={customerData?.data?.name}
                     error={!!errors.name?.message}
                     helperText={errors.name?.message}
                     type="text"
@@ -62,10 +73,10 @@ const Profile = () => {
                   ></TextField>
                 </Box>
                 <Box className={styles.inputBoxes}>
-                  <InputLabel htmlFor="lastName">Email</InputLabel>
+                  <InputLabel>Email</InputLabel>
                   <TextField
                     fullWidth
-                    placeholder={state?.email}
+                    placeholder={customerData?.data?.email}
                     type="email"
                     disabled
                     {...register('email', {
@@ -77,8 +88,19 @@ const Profile = () => {
                   ></TextField>
                 </Box>
                 <Box className={styles.inputBoxes}>
-                  <InputLabel htmlFor="lastName">Phone Number</InputLabel>
-                  <TextField fullWidth disabled placeholder={state?.phoneNumber}></TextField>
+                  <InputLabel>Phone Number</InputLabel>
+                  <TextField
+                    fullWidth
+                    type="tel"
+                    disabled
+                    placeholder={customerData?.data?.phoneNumber}
+                    {...register('phoneNumber', {
+                      required: {
+                        value: true,
+                        message: 'Phone Number is required'
+                      }
+                    })}
+                  ></TextField>
                 </Box>
               </Box>
             </Box>
@@ -88,11 +110,10 @@ const Profile = () => {
           </form>
           <Box className={styles.formSection}>
             <Typography className={styles.Info}>Addresses</Typography>
-            <Addresses customerId={state?.referenceId} />
+            <Addresses addressData={addressData?.data} />
           </Box>
         </Box>
       </Box>
-      <Footer />
     </>
   );
 };

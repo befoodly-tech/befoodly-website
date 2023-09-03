@@ -3,18 +3,27 @@ import styles from './Address.module.css';
 import AddressModal from '../../Modal/AddressModal/AddressModal';
 import { useState } from 'react';
 import { AddressData } from '../../../types/CommonType';
+import { useAppDispatch } from '../../../store/hooks';
+import { editAddressApi } from '../../../actions/CustomerActions';
 
-export interface AddressProp {
+interface AddressProp {
   address: AddressData;
 }
 
 const Address = (props: AddressProp) => {
   const { address } = props;
   const [addressModalOpen, setAddressModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   function handleOnClose(): void {
     setAddressModalOpen(false);
   }
+
+  const onSubmitEditAddress = (data: AddressData) => {
+    dispatch(
+      editAddressApi({ customerId: address.customerReferenceId, body: data, title: address.title })
+    );
+  };
 
   return (
     <Box className={styles.addressBox}>
@@ -40,7 +49,12 @@ const Address = (props: AddressProp) => {
           Edit Address
         </Button>
       </Box>
-      <AddressModal open={addressModalOpen} onClose={handleOnClose} address={props} />
+      <AddressModal
+        open={addressModalOpen}
+        onClose={handleOnClose}
+        address={props?.address}
+        onSubmit={onSubmitEditAddress}
+      />
     </Box>
   );
 };
