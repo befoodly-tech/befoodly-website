@@ -2,15 +2,45 @@
   background-color: black;
   color: rgb(169, 169, 169);
   text-align: center;
-  padding: 50px;
+  padding: 20px;
 
   .copyright {
     font-size: 14px;
     font-weight: 400;
+    margin-top: 24px;
 
     .companyName {
       font-family: Roboto-Medium;
       color: #f3e32b;
     }
+  }
+
+  .bottomNav {
+    margin: auto;
+    padding: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .webNavConnect {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+
+      .navLink {
+        font-family: Roboto-Medium;
+        color: #f3e32b;
+        text-decoration: none;
+      }
+
+      .socialMediaConnect {
+        display: flex;
+        align-items: center;
+        font-family: Roboto-Regular;
+        font-size: 12px;
+        gap: 4px;
+      }
+    }
+
   }
 }

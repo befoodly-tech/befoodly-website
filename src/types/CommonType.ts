@@ -64,12 +64,12 @@ export interface ProductData {
   orderNo: number;
   price: number;
   acceptingTime: string;
-  deliveryTime: string;
+  deliveryTime?: string;
   feedback: FeedbackData;
   vendorId: number;
   providerData: VendorData;
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface AddressData {

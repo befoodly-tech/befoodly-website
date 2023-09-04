@@ -1,7 +1,6 @@
 .chefsList {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
   padding: 2rem;
   gap: 24px;
 }

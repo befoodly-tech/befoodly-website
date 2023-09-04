@@ -21,8 +21,8 @@
   }
 
   .modalDescription {
-    width: 36.375rem;
-    padding-top: 1.94rem;
+    width: 36rem;
+    padding: 2rem 0;
 
     .modalDescriptionTitle {
       color: #393939;
@@ -47,12 +47,11 @@
   .modalCategory {
     display: inline-flex;
     height: 2.375rem;
-    padding: 0rem 0.76188rem 0rem 0.5625rem;
+    padding: 0rem 0.5625rem;
     align-items: center;
     gap: 0.25rem;
     flex-shrink: 0;
-    margin-top: 3.34rem;
-
+    margin-top: 2rem;
     border-radius: 0.5rem;
     border: 1px solid #fdc126;
     background: #fff;

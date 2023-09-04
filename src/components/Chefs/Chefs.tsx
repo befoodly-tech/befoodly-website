@@ -23,7 +23,7 @@ const Chefs = (props: ChefsProps) => {
       {isLoading && <LoadingCircle />}
       {chefData?.data && (
         <Container className={styles.chefsBox}>
-          <Typography className={styles.popular}>Meet Our Popular Cooks!</Typography>
+          <Typography className={styles.popular}>Meet Our Popular Chefs!</Typography>
           <Box>
             <ChefsList chefs={chefData?.data} bucketUrl={props.bucketUrl} />
           </Box>

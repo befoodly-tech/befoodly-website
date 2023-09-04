@@ -1,13 +1,18 @@
-.outerBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.bannerContainer {
   background: #f6f6f6;
-  gap: 1rem;
+
+  .outerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
-  .outerBox {
-    flex-direction: column;
+  .bannerContainer {
+    .outerBox {
+      flex-direction: column;
+    }
   }
 }

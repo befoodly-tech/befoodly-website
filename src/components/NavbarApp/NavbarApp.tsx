@@ -71,7 +71,7 @@ interface NavbarAppProps {
   session: string;
 }
 
-const locations: Location[] = [{ id: 1, title: 'Home', address: 'Bellandur, Bangalore' }];
+const locations: Location[] = [{ id: 1, title: 'Green Glen', address: 'Bellandur, Bangalore' }];
 
 const buttons: string[] = ['Login', 'SignUp'];
 
@@ -91,7 +91,6 @@ const NavbarApp = (props: NavbarAppProps) => {
     }
   }, []);
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isTablet = useMediaQuery(theme.breakpoints.down(1400));
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -145,6 +144,67 @@ const NavbarApp = (props: NavbarAppProps) => {
       ))}
     </Box>
   );
+
+  const searchBarComp = (
+    <Paper className={styles.find}>
+      <Button
+        color="primary"
+        variant="text"
+        id="demo-customized-button"
+        aria-controls={open ? 'demo-customized-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        onClick={handleClick}
+        className={styles.placeBtn}
+        startIcon={<HomeIcon className={styles.placeLogo} />}
+        endIcon={<KeyboardArrowDownIcon color="secondary" />}
+      >
+        <Box className={styles.place}>
+          <Typography className={styles.placeName}>{activeOption?.title}</Typography>
+          {!isMobile && (
+            <Typography noWrap className={styles.placeArea}>
+              {activeOption?.address}
+            </Typography>
+          )}
+        </Box>
+      </Button>
+      <StyledMenu
+        id="demo-customized-menu"
+        MenuListProps={{
+          'aria-labelledby': 'demo-customized-button'
+        }}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        {locations.map(location => (
+          <MenuItem
+            key={location.id}
+            onClick={() => handleOnOptionClicked(location.id)}
+            disableRipple
+          >
+            {location.title}
+          </MenuItem>
+        ))}
+      </StyledMenu>
+      <Box className={styles.inputField}>
+        <TextField
+          variant="standard"
+          placeholder={isMobile ? 'Search for food' : 'Search for home cooked meal'}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+            disableUnderline: true
+          }}
+          fullWidth
+        ></TextField>
+      </Box>
+    </Paper>
+  );
+
   const forMobileUser = isMobile ? (
     <Box className={styles.main}>
       <Box className={styles.mobileFlex}>
@@ -153,130 +213,14 @@ const NavbarApp = (props: NavbarAppProps) => {
         </Button>
         {forUserLoggedIn}
       </Box>
-      <Paper className={styles.find}>
-        <Button
-          color="primary"
-          variant="text"
-          id="demo-customized-button"
-          aria-controls={open ? 'demo-customized-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-          className={styles.placeBtn}
-          startIcon={<HomeIcon className={styles.placeLogo} />}
-          endIcon={<KeyboardArrowDownIcon color="secondary" />}
-        >
-          <Box className={styles.place}>
-            <Typography className={styles.placeName}>{activeOption?.title}</Typography>
-            {isMobile ? (
-              ''
-            ) : (
-              <Typography noWrap className={styles.placeArea}>
-                {activeOption?.address}
-              </Typography>
-            )}
-          </Box>
-        </Button>
-        <StyledMenu
-          id="demo-customized-menu"
-          MenuListProps={{
-            'aria-labelledby': 'demo-customized-button'
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          {locations.map(location => (
-            <MenuItem
-              key={location.id}
-              onClick={() => handleOnOptionClicked(location.id)}
-              disableRipple
-            >
-              {location.title}
-            </MenuItem>
-          ))}
-        </StyledMenu>
-        <Box className={styles.inputField}>
-          <TextField
-            variant="standard"
-            placeholder={isMobile ? 'Search for food' : 'Search for home cooked meal'}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-              disableUnderline: true
-            }}
-            fullWidth
-          ></TextField>
-        </Box>
-      </Paper>
+      {searchBarComp}
     </Box>
   ) : (
     <Box className={styles.main}>
       <Button onClick={() => navigate('/app')}>
         <Box component={'img'} src={BefoodlyLogo} alt="Befoodly Logo"></Box>
       </Button>
-      <Paper className={styles.find}>
-        <Button
-          color="primary"
-          variant="text"
-          id="demo-customized-button"
-          aria-controls={open ? 'demo-customized-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          onClick={handleClick}
-          className={styles.placeBtn}
-          startIcon={<HomeIcon className={styles.placeLogo} />}
-          endIcon={<KeyboardArrowDownIcon color="secondary" />}
-        >
-          <Box className={styles.place}>
-            <Typography className={styles.placeName}>{activeOption?.title}</Typography>
-            {isMobile || isTablet ? (
-              ''
-            ) : (
-              <Typography noWrap className={styles.placeArea}>
-                {activeOption?.address}
-              </Typography>
-            )}
-          </Box>
-        </Button>
-        <StyledMenu
-          id="demo-customized-menu"
-          MenuListProps={{
-            'aria-labelledby': 'demo-customized-button'
-          }}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-        >
-          {locations.map(location => (
-            <MenuItem
-              key={location.id}
-              onClick={() => handleOnOptionClicked(location.id)}
-              disableRipple
-            >
-              {location?.address}
-            </MenuItem>
-          ))}
-        </StyledMenu>
-        <Box className={styles.inputField}>
-          <TextField
-            variant="standard"
-            placeholder={isMobile ? 'Search for food' : 'Search for home cooked meal'}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-              disableUnderline: true
-            }}
-            fullWidth
-          ></TextField>
-        </Box>
-      </Paper>
+      {searchBarComp}
       {forUserLoggedIn}
     </Box>
   );

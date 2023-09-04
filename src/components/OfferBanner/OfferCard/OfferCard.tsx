@@ -21,7 +21,7 @@ const OfferCard = (props: OfferCardProps) => {
         </Typography>
         <Typography className={styles.cardDesc}>{disDescription}</Typography>
         <Box className={styles.cardIcon}>
-          <img src={disIcon}></img>
+          <img src={disIcon} />
         </Box>
       </Box>
       <Typography className={styles.cardRule}>{disRule}</Typography>

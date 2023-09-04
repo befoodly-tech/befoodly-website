@@ -4,6 +4,7 @@ import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
 import SvgDiet from '../../assets/svgs/Diet.svg';
 import { theme } from '../../ui/theme';
 import { useState } from 'react';
+import { Container } from '@mui/system';
 
 const offerCards: OfferCardProps[] = [
   {
@@ -41,20 +42,22 @@ const Offer = () => {
   };
 
   return (
-    <Box>
+    <Box className={styles.bannerContainer}>
       {isMobile ? (
         <Box className={styles.outerBox}>
           <OfferCard {...offerCards[page]} />
           <Pagination count={offerCards.length} page={page + 1} onChange={handleOnChange} />
         </Box>
       ) : (
-        <Grid container className={styles.outerBox}>
-          {offerCards.map((offerCard, index) => (
-            <Grid item key={index}>
-              <OfferCard {...offerCard} />
-            </Grid>
-          ))}
-        </Grid>
+        <Container>
+          <Grid container className={styles.outerBox}>
+            {offerCards.map((offerCard, index) => (
+              <Grid item key={index}>
+                <OfferCard {...offerCard} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       )}
     </Box>
   );

@@ -55,7 +55,7 @@ const secondaryFilterOptions: SecondaryFilterOption[] = [
 ];
 
 const Filters = () => {
-  const [activeFilter, setActiveFilter] = useState<string | null>('Rating 4.0+');
+  const [activeFilter, setActiveFilter] = useState<string | null>('Pure Veg');
 
   function handleFilterClick(filterName: string): void {
     setActiveFilter(filterName);
@@ -69,6 +69,7 @@ const Filters = () => {
             <Button
               key={index}
               onClick={() => handleFilterClick(filterOption.filterName)}
+              disabled={!filterOption.active}
               className={
                 activeFilter === filterOption.filterName
                   ? styles.filterPrimaryBtnActive
@@ -86,6 +87,7 @@ const Filters = () => {
               key={index}
               className={styles.filterSecondaryBtn}
               startIcon={secondaryFilterOption.startIcon}
+              disabled={!secondaryFilterOption.active}
             >
               <Typography className={styles.filterSecondaryTxt}>
                 {secondaryFilterOption.filterName}
