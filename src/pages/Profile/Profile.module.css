@@ -23,7 +23,8 @@
   }
 
   .profileForm {
-    min-width: 400px;
+    max-width: 400px;
+
     .Info {
       padding: 24px 0px;
       color: #000;
@@ -40,7 +41,6 @@
       }
       .inputBoxes {
         padding: 8px 0px;
-        min-width: 50%;
       }
     }
 

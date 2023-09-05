@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { CustomerFieldValues } from '../../../../types/ApiActions';
 import { Box, Button, TextField } from '@mui/material';
 import styles from './CustomerModalForm.module.css';
+import { isValidEmail } from '../../../../utils/Validation';
 
 interface CustomerModalFormProps {
   handleOnSignUp: (data: CustomerFieldValues) => void;
@@ -10,7 +11,8 @@ interface CustomerModalFormProps {
 const CustomerModalForm = (props: CustomerModalFormProps) => {
   const { handleOnSignUp } = props;
   const form = useForm<CustomerFieldValues>();
-  const { register, handleSubmit } = form;
+  const { register, formState, handleSubmit } = form;
+  const { errors } = formState;
 
   return (
     <form onSubmit={handleSubmit(handleOnSignUp)}>
@@ -27,11 +29,13 @@ const CustomerModalForm = (props: CustomerModalFormProps) => {
               message: 'Name is required'
             }
           })}
+          error={!!errors?.name}
+          helperText={errors?.name?.message}
         ></TextField>
       </Box>
       <Box className={styles.enterTitle}>
         <label htmlFor="enterEmail" className={styles.enterLabel}>
-          Enter email
+          Enter Email (Required for login)
         </label>
         <TextField
           className={styles.enterInput}
@@ -40,13 +44,18 @@ const CustomerModalForm = (props: CustomerModalFormProps) => {
             required: {
               value: true,
               message: 'Email is required'
-            }
+            },
+            validate: v => isValidEmail(v) || 'Invalid Email entered'
           })}
+          error={!!errors?.email}
+          helperText={errors?.email?.message}
         ></TextField>
       </Box>
-      <Button type="submit" className={styles.createBtn} fullWidth>
-        Create Account
-      </Button>
+      <Box className={styles.btnContainer}>
+        <Button type="submit" className={styles.createBtn}>
+          Create Account
+        </Button>
+      </Box>
     </form>
   );
 };

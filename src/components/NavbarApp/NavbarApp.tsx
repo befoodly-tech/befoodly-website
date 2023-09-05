@@ -83,7 +83,7 @@ const NavbarApp = (props: NavbarAppProps) => {
   const [openSignUpModal, setOpenSignUpModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isLoggedIn, customerData, isLoading, isError } = useAppSelector(state => state.user);
+  const { customerData, isLoading, isError } = useAppSelector(state => state.user);
 
   useEffect(() => {
     if (props.customerId?.length > 0) {
@@ -111,6 +111,11 @@ const NavbarApp = (props: NavbarAppProps) => {
     setOpenSignUpModal(false);
   }
 
+  function handleOpenSignUpFromLogIn(): void {
+    setOpenLoginModal(false);
+    setOpenSignUpModal(true);
+  }
+
   function handleOnOpen(button: string): void {
     if (button == 'Login') {
       setOpenLoginModal(true);
@@ -123,7 +128,7 @@ const NavbarApp = (props: NavbarAppProps) => {
     navigate('/app/profile');
   }
 
-  const forUserLoggedIn = isLoggedIn ? (
+  const forUserLoggedIn = props?.customerId ? (
     <Button onClick={onProfileClicked}>
       <Box component={'img'} className={styles.profileImg} src={Panda} alt="Profile Image"></Box>
       <Typography color={'#696969'}>
@@ -227,9 +232,13 @@ const NavbarApp = (props: NavbarAppProps) => {
 
   return (
     <Box className={styles.head}>
-      {isLoading && <LoadingCircle />}
+      <LoadingCircle isLoading={isLoading} />
       <Container>{forMobileUser}</Container>
-      <LoginModal open={openLoginModal} handleClose={handleLoginModalClose} />
+      <LoginModal
+        open={openLoginModal}
+        handleClose={handleLoginModalClose}
+        hadleOpenSignUp={handleOpenSignUpFromLogIn}
+      />
       <SignupModal open={openSignUpModal} handleClose={handleSignupModalClose} />
     </Box>
   );

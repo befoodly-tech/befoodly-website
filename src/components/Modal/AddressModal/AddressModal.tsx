@@ -1,15 +1,16 @@
 import { Box, Button, InputLabel, Modal, TextField, Typography } from '@mui/material';
 import styles from './AddressModal.module.css';
 import { useForm } from 'react-hook-form';
-import ModalFooter from '../Common/ModalFooter/ModalFooter';
 import Cancle from '../../../ui/Icon/Cancle';
 import { AddressData } from '../../../types/CommonType';
+import { isValidPinCode } from '../../../utils/Validation';
 
 interface AddressModalProps {
   open: boolean;
   onClose: () => void;
   onSubmit: (data: AddressData, customerId?: string) => void;
   address?: AddressData;
+  heading?: string;
 }
 
 const AddressModal = (props: AddressModalProps) => {
@@ -43,7 +44,7 @@ const AddressModal = (props: AddressModalProps) => {
           <Box className={styles.formSection}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography variant="h5" className={styles.addressLabel}>
-                Address
+                {props?.heading} Address
               </Typography>
               <Box>
                 <Button startIcon={<Cancle />} onClick={props.onClose} />
@@ -83,7 +84,7 @@ const AddressModal = (props: AddressModalProps) => {
             </Box>
             <Box className={styles.inputBoxes}>
               <InputLabel htmlFor="addressSecond" className={styles.inputLable}>
-                Second Line
+                Second Line (optional)
               </InputLabel>
               <TextField
                 fullWidth
@@ -120,7 +121,8 @@ const AddressModal = (props: AddressModalProps) => {
                   className={styles.inputTextField}
                   placeholder={props?.address?.pinCode}
                   {...register('pinCode', {
-                    required: { value: true, message: 'Pincode is required' }
+                    required: { value: true, message: 'Pincode is required' },
+                    validate: v => isValidPinCode(v) || 'Pincode is Invalid'
                   })}
                   error={!!errors?.pinCode}
                   helperText={errors?.pinCode?.message}
@@ -149,7 +151,6 @@ const AddressModal = (props: AddressModalProps) => {
             Save Address
           </Button>
         </form>
-        <ModalFooter />
       </Box>
     </Modal>
   );

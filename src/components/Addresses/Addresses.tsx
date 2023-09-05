@@ -11,9 +11,10 @@ import AddressModal from '../Modal/AddressModal/AddressModal';
 
 interface AddressesProps {
   addressData: AddressData[];
+  customerRefId: string;
 }
 
-const Addresses = ({ addressData }: AddressesProps) => {
+const Addresses = ({ addressData, customerRefId }: AddressesProps) => {
   const dispatch = useAppDispatch();
   const [openAddAddressModal, setOpenAddAddressModal] = useState(false);
 
@@ -22,7 +23,7 @@ const Addresses = ({ addressData }: AddressesProps) => {
   };
 
   const onSubmitAddAddress = (data: AddressData, customerId?: string) => {
-    dispatch(addAddressApi({ customerId: customerId ?? '', body: data }));
+    dispatch(addAddressApi({ customerId: customerId ?? customerRefId, body: data }));
   };
 
   return (
@@ -45,6 +46,7 @@ const Addresses = ({ addressData }: AddressesProps) => {
         open={openAddAddressModal}
         onClose={() => setOpenAddAddressModal(false)}
         onSubmit={onSubmitAddAddress}
+        heading="Add"
       />
     </List>
   );

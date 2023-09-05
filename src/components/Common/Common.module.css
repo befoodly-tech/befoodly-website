@@ -132,10 +132,8 @@
 }
 
 .loadingBar {
-  color: rgb(2, 104, 2);
-  margin: auto;
-  position: absolute;
-  width: auto;
+  color: rgb(0, 131, 0) !important;
+  padding: 4px;
 }
 
 .emptyCard {

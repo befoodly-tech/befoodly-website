@@ -11,7 +11,6 @@ import { GenericApiResponse } from '../types/ApiActions';
 import { AddressData } from '../types/CommonType';
 
 interface UserStateProps {
-  isLoggedIn: boolean;
   customerData: GenericApiResponse;
   addressData: GenericApiResponse;
   isLoading: boolean;
@@ -19,7 +18,6 @@ interface UserStateProps {
 }
 
 const initialState: UserStateProps = {
-  isLoggedIn: false,
   customerData: {},
   addressData: {},
   isLoading: false,
@@ -53,15 +51,18 @@ const userStateSlice = createSlice({
     });
     builder.addCase(editCustomerDataApi.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.customerData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
-      state.isLoggedIn = isApiStatusSuccess(action.payload);
+
+      if (action.payload?.errorMessage) {
+        state.customerData.errorMessage = action.payload?.errorMessage;
+      } else {
+        state.customerData = action.payload;
+      }
     });
     builder.addCase(fetchCustomerDataApi.fulfilled, (state, action) => {
       state.isLoading = false;
       state.customerData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
-      state.isLoggedIn = isApiStatusSuccess(action.payload);
     });
     builder.addCase(fetchAllAddressesApi.fulfilled, (state, action) => {
       state.isLoading = false;

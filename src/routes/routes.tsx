@@ -6,21 +6,9 @@ import About from '../pages/About/About';
 import Blog from '../pages/Blog/Blog';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
-import Landing from '../pages/Landing/Landing';
 import Profile from '../pages/Profile/Profile';
 import Checkout from '../pages/Checkout/Checkout';
-import { getCookie } from '../utils/CookieHelper';
-import { GenericGlobalData } from '../types/CommonType';
-import { Box } from '@mui/material';
-import NavbarApp from '../components/NavbarApp/NavbarApp';
-import Footer from '../components/Footer/Footer';
-
-const commonGlobalData: GenericGlobalData = {
-  phoneNumber: getCookie('phone'),
-  sessionToken: getCookie('session'),
-  customerId: getCookie('customerId'),
-  s3Url: window.config?.S3_URL
-};
+import AppHome from '../pages/AppHome';
 
 const router = createBrowserRouter([
   {
@@ -68,16 +56,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/app',
-    element: (
-      <Box>
-        <NavbarApp
-          customerId={commonGlobalData.customerId}
-          session={commonGlobalData.sessionToken}
-        />
-        <Landing {...commonGlobalData} />
-        <Footer />
-      </Box>
-    ),
+    element: <AppHome />,
     children: [
       {
         path: '/app/Login',

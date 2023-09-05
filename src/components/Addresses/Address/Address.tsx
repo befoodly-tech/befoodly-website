@@ -54,6 +54,7 @@ const Address = (props: AddressProp) => {
         onClose={handleOnClose}
         address={props?.address}
         onSubmit={onSubmitEditAddress}
+        heading="Edit"
       />
     </Box>
   );

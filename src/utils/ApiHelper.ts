@@ -3,7 +3,7 @@ import { MethodType, ParamData } from '../types/ApiHelperFile';
 const BASE_URL = window.config.BASE_URL;
 
 export const API_URLS = {
-  HEALTH_CHECK: '/ping',
+  SESSION_CHECK: '/v1/check',
   LOGIN_USER: '/v1/login',
   SIGN_UP_USER: '/v1/signup',
   VERIFY_OTP: '/v1/otp-verify',
@@ -13,7 +13,8 @@ export const API_URLS = {
   FETCH_ACTIVE_ITEMS: '/v1/product/fetch/all',
   FETCH_ALL_ADDRESSES: '/v1/address',
   ADD_ADDRESS: '/v1/address',
-  EDIT_ADDRESS: '/v1/address/edit'
+  EDIT_ADDRESS: '/v1/address/edit',
+  ADD_TO_CART: '/v1/order/add-to-cart'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {
@@ -60,7 +61,7 @@ const ApiHelper = async (url: string, method?: MethodType, body?: string) => {
       return data;
     })
     .catch(err => {
-      throw err;
+      throw err.error;
     });
 
   return data;
