@@ -44,7 +44,7 @@ const ModalForm = (props: ModalFormProps) => {
   }, [props.loginData]);
 
   const handleOnSubmit = (data: OtpRequest) => {
-    if (isValidPhoneNumber(data?.phoneNumber) && !data?.otp) {
+    if (isValidPhoneNumber(data?.phoneNumber) && data.phoneNumber && !data?.otp) {
       props.handleOnSendOtp(data?.phoneNumber);
       setShowOtp(true);
     }

@@ -7,6 +7,7 @@ import Filters from '../../components/Filters/Filters';
 import Dishes from '../../components/Dishes/Dishes';
 import { GenericGlobalData } from '../../types/CommonType';
 import { useOutlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const MainLandingBody = (url: string, customerId: string) => {
   return (
@@ -20,11 +21,25 @@ const MainLandingBody = (url: string, customerId: string) => {
   );
 };
 
-const Landing = (props: GenericGlobalData) => {
+interface LandingProps {
+  globalData: GenericGlobalData;
+  isSessionExpired: boolean;
+}
+
+const Landing = (props: LandingProps) => {
   const outlet = useOutlet();
+  const [customerId, setCustomerId] = useState(props.globalData?.customerId);
+
+  useEffect(() => {
+    if (props?.isSessionExpired) {
+      setCustomerId('');
+    }
+  }, [props.isSessionExpired]);
 
   return (
-    <Box className={styles.main}>{outlet || MainLandingBody(props.s3Url, props.customerId)}</Box>
+    <Box className={styles.main}>
+      {outlet || MainLandingBody(props.globalData?.s3Url, customerId)}
+    </Box>
   );
 };
 

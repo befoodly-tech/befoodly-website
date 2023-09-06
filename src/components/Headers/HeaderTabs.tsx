@@ -13,7 +13,6 @@ import { theme } from '../../ui/theme';
 import ShoppingCart from '../../assets/svgs/shopping_cart.svg';
 import DeliveryScotter from '../../assets/svgs/DeliveryScooter.svg';
 import ChefCap from '../../assets/svgs/ChefCap.svg';
-import Separator from '../Common/Separator';
 
 interface HeaderTabsProps {
   customerId: string;

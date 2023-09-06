@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { healthCheckApi, logInUserApi, signUpUserApi, verifyOtpApi } from '../actions/LoginActions';
 import { GenericApiResponse } from '../types/ApiActions';
 import { isApiStatusSuccess } from '../utils/GenericApiResponse';
-import { setCookie } from '../utils/CookieHelper';
+import { removeCookie, setCookie } from '../utils/CookieHelper';
 
 interface LoginSliceProp {
   isLoading: boolean;
@@ -56,21 +56,11 @@ const loginSlice = createSlice({
       state.isLoading = false;
       state.sessionData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
-
-      if (action.payload?.data) {
-        setCookie('session', action.payload?.data?.sessionToken, 30);
-        setCookie('phone', action.payload?.data?.phoneNumber, 30);
-      }
     });
     builder.addCase(logInUserApi.fulfilled, (state, action) => {
       state.isLoading = false;
       state.sessionData = action.payload;
       state.isError = !isApiStatusSuccess(action.payload);
-
-      if (action.payload?.data) {
-        setCookie('session', action.payload?.data?.sessionToken, 30);
-        setCookie('phone', action.payload?.data?.phoneNumber, 30);
-      }
     });
     builder.addCase(verifyOtpApi.fulfilled, (state, action) => {
       state.isLoading = false;
@@ -78,7 +68,11 @@ const loginSlice = createSlice({
       state.isError = !isApiStatusSuccess(action.payload);
 
       if (action.payload?.data) {
+        setCookie('session', action.payload?.data?.customerData?.sessionToken, 30);
+        setCookie('phone', action.payload?.data?.customerData?.phoneNumber, 30);
         setCookie('customerId', action.payload?.data?.customerData?.referenceId, 30);
+        state.isSessionExpired = false;
+        location.reload();
       }
     });
     builder.addCase(healthCheckApi.fulfilled, (state, action) => {
@@ -87,6 +81,10 @@ const loginSlice = createSlice({
 
       if (action.payload?.data) {
         state.isSessionExpired = action.payload?.data;
+        removeCookie('session');
+        removeCookie('phone');
+        removeCookie('customerId');
+        location.reload();
       }
     });
     builder.addCase(signUpUserApi.rejected, state => {

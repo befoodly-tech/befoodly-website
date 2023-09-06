@@ -68,7 +68,7 @@ const StyledMenu = styled((props: MenuProps) => (
 
 interface NavbarAppProps {
   customerId: string;
-  session: string;
+  isLoggedOut: boolean;
 }
 
 const locations: Location[] = [{ id: 1, title: 'Green Glen', address: 'Bellandur, Bangalore' }];
@@ -86,10 +86,11 @@ const NavbarApp = (props: NavbarAppProps) => {
   const { customerData, isLoading, isError } = useAppSelector(state => state.user);
 
   useEffect(() => {
-    if (props.customerId?.length > 0) {
+    if (props.customerId?.length > 0 && !props.isLoggedOut) {
       dispatch(fetchCustomerDataApi(props.customerId));
     }
   }, []);
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -128,7 +129,7 @@ const NavbarApp = (props: NavbarAppProps) => {
     navigate('/app/profile');
   }
 
-  const forUserLoggedIn = props?.customerId ? (
+  const forUserLoggedIn = customerData?.data ? (
     <Button onClick={onProfileClicked}>
       <Box component={'img'} className={styles.profileImg} src={Panda} alt="Profile Image"></Box>
       <Typography color={'#696969'}>

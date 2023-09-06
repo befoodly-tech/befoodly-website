@@ -9,6 +9,15 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile/Profile';
 import Checkout from '../pages/Checkout/Checkout';
 import AppHome from '../pages/AppHome';
+import { GenericGlobalData } from '../types/CommonType';
+import { getCookie } from '../utils/CookieHelper';
+
+const commonGlobalData: GenericGlobalData = {
+  phoneNumber: getCookie('phone'),
+  sessionToken: getCookie('session'),
+  customerId: getCookie('customerId'),
+  s3Url: window.config?.S3_URL
+};
 
 const router = createBrowserRouter([
   {
@@ -56,7 +65,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/app',
-    element: <AppHome />,
+    element: <AppHome {...commonGlobalData} />,
     children: [
       {
         path: '/app/Login',

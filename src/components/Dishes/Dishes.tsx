@@ -18,7 +18,7 @@ const Dishes = (props: DishesProps) => {
 
   useEffect(() => {
     dispatch(fetchActiveMenuDataApi());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box className={styles.FoodGallery}>

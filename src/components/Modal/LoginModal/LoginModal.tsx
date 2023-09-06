@@ -8,6 +8,7 @@ import EmailLoginForm from '../Common/EmailLoginForm/EmailLoginForm';
 import { OtpRequest } from '../../../types/ApiActions';
 import LoadingCircle from '../../Common/LoadingCircle';
 import { isValidEmail } from '../../../utils/Validation';
+import { useEffect } from 'react';
 
 interface LoginModalProps {
   open: boolean;
@@ -18,6 +19,12 @@ interface LoginModalProps {
 const LoginModal = (props: LoginModalProps) => {
   const dispatch = useAppDispatch();
   const { isLoading, isError, loginData, sessionData } = useAppSelector(state => state.login);
+
+  useEffect(() => {
+    if (loginData?.data) {
+      props.handleClose();
+    }
+  }, [loginData]);
 
   function handleOnVerify(data: OtpRequest): void {
     dispatch(verifyOtpApi({ phoneNumber: sessionData?.data?.phoneNumber, otp: data.otp }));

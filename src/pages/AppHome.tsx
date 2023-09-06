@@ -2,21 +2,25 @@ import { Box } from '@mui/material';
 import NavbarApp from '../components/NavbarApp/NavbarApp';
 import Landing from './Landing/Landing';
 import Footer from '../components/Footer/Footer';
-import { getCookie } from '../utils/CookieHelper';
 import { GenericGlobalData } from '../types/CommonType';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useEffect } from 'react';
+import { healthCheckApi } from '../actions/LoginActions';
 
-const commonGlobalData: GenericGlobalData = {
-  phoneNumber: getCookie('phone'),
-  sessionToken: getCookie('session'),
-  customerId: getCookie('customerId'),
-  s3Url: window.config?.S3_URL
-};
+const AppHome = (props: GenericGlobalData) => {
+  const { isSessionExpired } = useAppSelector(state => state.login);
+  const dispatch = useAppDispatch();
 
-const AppHome = () => {
+  useEffect(() => {
+    if (props.sessionToken) {
+      dispatch(healthCheckApi(props.sessionToken));
+    }
+  }, [props.sessionToken]);
+
   return (
     <Box>
-      <NavbarApp customerId={commonGlobalData.customerId} session={commonGlobalData.sessionToken} />
-      <Landing {...commonGlobalData} />
+      <NavbarApp customerId={props.customerId} isLoggedOut={isSessionExpired} />
+      <Landing globalData={props} isSessionExpired={isSessionExpired} />
       <Footer />
     </Box>
   );

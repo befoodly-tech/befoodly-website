@@ -16,7 +16,7 @@ const offerCards: OfferCardProps[] = [
       'linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),linear-gradient(140deg, #4fa0ff 0%, #434bff 100%)'
   },
   {
-    disPercentage: 25,
+    disPercentage: 30,
     disDescription: 'Flat Discount',
     disIcon: SvgDiet,
     disRule: 'On order above ₹ 299',

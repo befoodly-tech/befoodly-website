@@ -16,7 +16,7 @@ const Chefs = (props: ChefsProps) => {
 
   useEffect(() => {
     dispatch(fetchPopularCookDataApi());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Box className={styles.mainSection}>
