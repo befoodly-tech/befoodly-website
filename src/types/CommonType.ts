@@ -114,3 +114,15 @@ export interface GenericGlobalData {
   sessionToken: string;
   s3Url: string;
 }
+
+export enum DiscountType {
+  PERCENTAGE,
+  AMOUNT
+}
+
+export interface CartItem {
+  productId: number;
+  productName: string;
+  orderCount: number;
+  cost: number;
+}

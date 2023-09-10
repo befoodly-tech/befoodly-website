@@ -13,11 +13,10 @@ import styles from './Dish.module.css';
 import Clock from '../../../assets/svgs/clock.svg';
 import Calendar from '../../../assets/svgs/Calendar.svg';
 import { CurrencyRupee } from '@mui/icons-material';
-import { addToCart } from '../../../features/cartSlice';
+import { addToCart, removeFromCart } from '../../../features/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import CartButton from '../../Common/CartButton';
-import { Cart } from '../../Cart/Cart';
-import { ProductData } from '../../../types/CommonType';
+import { CartItem, ProductData } from '../../../types/CommonType';
 import {
   combineTwoStrings,
   convertBigNumbers,
@@ -27,6 +26,8 @@ import {
 import DetailModal from '../../Modal/DetailModal/DetailModal';
 import { useState } from 'react';
 import { theme } from '../../../ui/theme';
+import { addItemToCart, removeItemFromCart } from '../../../actions/CartActions';
+import { getCookie } from '../../../utils/CookieHelper';
 
 export interface DishProp {
   itemData: ProductData;
@@ -34,27 +35,59 @@ export interface DishProp {
 }
 
 const Dish = (props: DishProp) => {
-  const dispatch = useAppDispatch();
-  const cartItems = useAppSelector(state => state.cart);
   const { itemData, bucketUrl } = props;
-  const quantity = cartItems.find(x => x.id === itemData?.id)?.quantity;
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
   const [modalOpen, setModalOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const customerId = getCookie('customerId');
+  const { cartData } = useAppSelector(state => state.cart);
+
+  const quantity = cartData?.data?.productList?.find(
+    (x: CartItem) => x.productId === itemData?.id
+  )?.orderCount;
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   function handleModalClose() {
     setModalOpen(false);
   }
 
-  function handleAddCart(id: number, dishName: string, price: number): void {
-    dispatch(addToCart({ id, dishName, price }));
-  }
+  const handleAddToCart = () => {
+    dispatch(addToCart(cartItem));
+    if (customerId) {
+      dispatch(
+        addItemToCart({
+          customerId: customerId,
+          body: {
+            productId: cartItem.productId,
+            productName: cartItem.productName,
+            cost: cartItem.cost
+          }
+        })
+      );
+    }
+  };
 
-  const cart: Cart = {
-    id: itemData?.id,
-    dishName: itemData?.title,
-    price: itemData?.price,
-    quantity: quantity || 0
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(cartItem));
+    if (customerId) {
+      dispatch(
+        removeItemFromCart({
+          customerId: customerId,
+          body: {
+            productId: cartItem.productId,
+            productName: cartItem.productName,
+            cost: cartItem.cost
+          }
+        })
+      );
+    }
+  };
+
+  const cartItem: CartItem = {
+    productId: itemData?.id,
+    productName: itemData?.title,
+    cost: itemData?.price,
+    orderCount: quantity || 0
   };
 
   return (
@@ -141,12 +174,13 @@ const Dish = (props: DishProp) => {
               </Typography>
             </Box>
             {quantity ? (
-              <CartButton {...cart} />
+              <CartButton
+                cartData={cartItem}
+                handleAddToCart={handleAddToCart}
+                handleRemoveFromCart={handleRemoveFromCart}
+              />
             ) : (
-              <Button
-                onClick={() => handleAddCart(itemData?.id, itemData?.title, itemData?.price)}
-                className={styles.cardButton}
-              >
+              <Button onClick={handleAddToCart} className={styles.cardButton}>
                 {isMobile ? '+Add' : 'Add to cart'}
               </Button>
             )}

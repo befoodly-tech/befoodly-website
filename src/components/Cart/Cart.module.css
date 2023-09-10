@@ -1,6 +1,7 @@
 .cartContainer {
   padding: 16px;
-  .cart {
+
+  .cartTitle {
     color: #feba10;
     font-family: Outfit;
     font-size: 16px;
@@ -9,20 +10,46 @@
     line-height: 124%;
   }
 
-  .items {
-    color: #191919;
-    font-family: Outfit;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 124%; /* 24.8px */
-  }
+  .cartBox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 
-  .checkoutBtn {
-    background: #feba10;
+    .cartSummary {
+      flex: 1;
 
-    &:hover {
-      background: #75a057;
+      .itemsTitle {
+        color: #191919;
+        font-family: Outfit;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 124%;
+      }
+      
+      
+    }
+
+    .otherSection {
+      .headingStyle {
+        font-family: Outfit-SemiBold;
+        color: #191919;
+        margin-bottom: 8px;
+      }
+
+      .couponSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .addressSection {
+        min-width: 240px;
+      }
     }
   }
+
+  
 }

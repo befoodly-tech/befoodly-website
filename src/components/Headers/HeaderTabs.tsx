@@ -13,6 +13,9 @@ import { theme } from '../../ui/theme';
 import ShoppingCart from '../../assets/svgs/shopping_cart.svg';
 import DeliveryScotter from '../../assets/svgs/DeliveryScooter.svg';
 import ChefCap from '../../assets/svgs/ChefCap.svg';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useEffect } from 'react';
+import { fetchActiveCartData } from '../../actions/CartActions';
 
 interface HeaderTabsProps {
   customerId: string;
@@ -33,7 +36,17 @@ const headerTabsOptions = [
 
 const HeaderTabs = (props: HeaderTabsProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { cartData } = useAppSelector(state => state.cart);
+
+  useEffect(() => {
+    if (props.customerId) {
+      dispatch(fetchActiveCartData(props.customerId));
+    }
+  }, [dispatch]);
+
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
     <Container>
       <Box className={styles.bar}>
@@ -61,7 +74,7 @@ const HeaderTabs = (props: HeaderTabsProps) => {
           onClick={() => navigate('/app/checkout')}
           className={styles.cart}
         >
-          <Badge badgeContent={4} color="secondary">
+          <Badge badgeContent={cartData?.data?.productList?.length || 0} color="secondary">
             <img src={ShoppingCart}></img>
           </Badge>
           {!isMobile && <span className={styles.cartText}>View Cart</span>}

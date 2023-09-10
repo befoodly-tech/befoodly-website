@@ -7,3 +7,9 @@ export const fetchActiveMenuDataApi = createAsyncThunk('fetch/activeMenuData', (
 
   return ApiHelper(url, MethodType.GET);
 });
+
+export const fetchTrendingProductsApi = createAsyncThunk('fetch/trendingItems', () => {
+  const url = getApiUrl(API_URLS.FETCH_POPULAR_PRODUCTS);
+
+  return ApiHelper(url, MethodType.GET);
+});

@@ -11,10 +11,13 @@ export const API_URLS = {
   FETCH_CUSTOMER_DATA: '/v1/customer',
   FETCH_COOK_DATA: '/v1/cook/fetch/popular',
   FETCH_ACTIVE_ITEMS: '/v1/product/fetch/all',
+  FETCH_POPULAR_PRODUCTS: '/v1/product/fetch/popular',
   FETCH_ALL_ADDRESSES: '/v1/address',
   ADD_ADDRESS: '/v1/address',
   EDIT_ADDRESS: '/v1/address/edit',
-  ADD_TO_CART: '/v1/order/add-to-cart'
+  ADD_TO_CART: '/v1/order/add-to-cart',
+  FETCH_CART_DATA: '/v1/order/fetch',
+  EDIT_CART: '/v1/order/edit-cart'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {

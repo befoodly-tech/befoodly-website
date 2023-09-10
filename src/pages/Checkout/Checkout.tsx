@@ -1,14 +1,18 @@
+import { Box } from '@mui/material';
 import Cart from '../../components/Cart/Cart';
 import Dishes from '../../components/Dishes/Dishes';
-import styles from './Checkout.module.css';
 
-const Checkout = () => {
-  const S3_URL = window.config?.S3_URL;
+interface CheckoutProps {
+  customerId: string;
+  s3Url: string;
+}
+
+const Checkout = (props: CheckoutProps) => {
   return (
-    <>
-      <Cart />
-      <Dishes bucketUrl={S3_URL} />
-    </>
+    <Box>
+      <Cart customerId={props.customerId} />
+      <Dishes bucketUrl={props.s3Url} isTrending />
+    </Box>
   );
 };
 

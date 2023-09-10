@@ -1,35 +1,101 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { Cart } from '../components/Cart/Cart';
+import { addItemToCart, fetchActiveCartData, removeItemFromCart } from '../actions/CartActions';
+import { GenericApiResponse } from '../types/ApiActions';
+import { isApiStatusSuccess } from '../utils/GenericApiResponse';
+import { CartItem } from '../types/CommonType';
 
-const initialState: Cart[] = [];
+interface CartSliceProps {
+  isLoading: boolean;
+  cartData: GenericApiResponse;
+  totalCost: number;
+  isError: boolean;
+}
+
+const initialState: CartSliceProps = {
+  isLoading: false,
+  cartData: {},
+  totalCost: 0,
+  isError: false
+};
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<{ id: number; dishName: string; price: number }>) => {
-      if (state.find(x => x.id == action.payload.id)) {
-        const ind = state.findIndex(x => x.id == action.payload.id);
-        state[ind].quantity++;
+    addToCart: (state, action: PayloadAction<CartItem>) => {
+      if (!state.cartData?.data && !state.cartData?.data?.productList) {
+        state.cartData.data = {};
+        state.cartData.data['productList'] = [];
+      }
+      const cartItems = state.cartData?.data?.productList;
+      if (cartItems?.find((x: CartItem) => x.productId == action.payload.productId)) {
+        const ind = cartItems?.findIndex((x: CartItem) => x.productId == action.payload.productId);
+        cartItems[ind].orderCount++;
       } else {
-        state.push({
-          id: action.payload.id,
-          dishName: action.payload.dishName,
-          quantity: 1,
-          price: action.payload.price
+        cartItems.push({
+          productId: action.payload.productId,
+          productName: action.payload.productName,
+          orderCount: 1,
+          cost: action.payload.cost
         });
       }
+      state.totalCost += action.payload.cost;
     },
-    removeFromCart: (state, action: PayloadAction<number>) => {
-      if (state.find(x => x.id == action.payload)) {
-        const ind = state.findIndex(x => x.id == action.payload);
-        if (state[ind].quantity > 1) {
-          state[ind].quantity--;
+    removeFromCart: (state, action: PayloadAction<CartItem>) => {
+      const cartItems = state.cartData?.data?.productList;
+      if (cartItems?.find((x: CartItem) => x.productId == action.payload.productId)) {
+        const ind = cartItems?.findIndex((x: CartItem) => x.productId == action.payload.productId);
+        if (cartItems[ind].orderCount > 1) {
+          cartItems[ind].orderCount--;
         } else {
-          state.splice(ind, 1);
+          cartItems.splice(ind, 1);
         }
       }
+      state.totalCost -= action.payload.cost;
     }
+  },
+  extraReducers: builder => {
+    builder.addCase(fetchActiveCartData.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(addItemToCart.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(removeItemFromCart.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
+    builder.addCase(fetchActiveCartData.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.cartData = action.payload;
+      state.isError = !isApiStatusSuccess(action.payload.data);
+
+      if (action.payload?.data) {
+        state.totalCost = action.payload?.data?.totalCost;
+      }
+    });
+    builder.addCase(addItemToCart.fulfilled, state => {
+      state.isLoading = false;
+      state.isError = false;
+    });
+    builder.addCase(removeItemFromCart.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.isError = !isApiStatusSuccess(action.payload.data);
+    });
+    builder.addCase(fetchActiveCartData.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(addItemToCart.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(removeItemFromCart.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
   }
 });
 

@@ -1,11 +1,9 @@
 .cartList {
-  /* display: flex;
-  flex-direction: row; */
-  width: 70%;
+  width: 80%;
+
   .cartListItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    margin-top: 0;
     align-items: center;
+    font-family: Outfit;
   }
 }

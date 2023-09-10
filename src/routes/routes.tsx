@@ -81,7 +81,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/app/checkout',
-        element: <Checkout />
+        element: (
+          <Checkout customerId={commonGlobalData.customerId} s3Url={commonGlobalData.s3Url} />
+        )
       }
     ]
   }

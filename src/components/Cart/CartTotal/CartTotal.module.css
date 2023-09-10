@@ -1,0 +1,53 @@
+.cartTotalContainer {
+    width: 80%;
+
+    .deliveryTime {
+        position: absolute;
+        color: #434343;
+        margin-top: 8px;
+
+        .timeButtons {
+            margin: 4px;
+        }
+    }
+
+    .dataField {
+        width: 240px;
+        margin-left: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #434343;
+        font-family: Outfit-SemiBold;
+        margin-bottom: 8px;
+
+        .dataTitle {
+            font-size: 14px;
+        }
+
+        .dataFinalTitle {
+            color: black;
+            font-size: 16px;
+        }
+
+        .dataValue {
+            color: green;
+        }
+
+        .hrLine {
+            width: 240px;
+        }
+    }
+
+    .checkoutBtn {
+        padding: 8px 16px;
+        background: #feba10;
+        float: right;
+        width: 240px;
+        margin-top: 8px;
+    
+        &:hover {
+          background: #75a057;
+        }
+    }
+}

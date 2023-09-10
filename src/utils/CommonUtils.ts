@@ -50,3 +50,19 @@ export const makeYourOwnMeal = {
     location: ''
   }
 };
+
+export interface DeliveryTime {
+  title: string;
+  timeInterval: string;
+}
+
+export const deliverySlot: DeliveryTime[] = [
+  {
+    title: 'Lunch',
+    timeInterval: '12-2 PM'
+  },
+  {
+    title: 'Dinner',
+    timeInterval: '8-10 PM'
+  }
+];

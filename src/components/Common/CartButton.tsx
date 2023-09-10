@@ -1,23 +1,23 @@
 import { Paper, Typography } from '@mui/material';
-import { useAppDispatch } from '../../store/hooks';
-import { addToCart, removeFromCart } from '../../features/cartSlice';
-import { Cart } from '../Cart/Cart';
 import styles from './Common.module.css';
+import { CartItem } from '../../types/CommonType';
 
-const CartButton = (props: Cart) => {
-  const dispatch = useAppDispatch();
+interface CartButtonProps {
+  cartData: CartItem;
+  handleAddToCart: () => void;
+  handleRemoveFromCart: () => void;
+}
+
+const CartButton = (props: CartButtonProps) => {
+  const { cartData, handleAddToCart, handleRemoveFromCart } = props;
+
   return (
     <Paper className={styles.cartBtn}>
-      <Typography className={styles.addition} onClick={() => dispatch(removeFromCart(props.id))}>
+      <Typography className={styles.addition} onClick={handleRemoveFromCart}>
         -
       </Typography>
-      <Typography>{props.quantity}</Typography>
-      <Typography
-        className={styles.addition}
-        onClick={() =>
-          dispatch(addToCart({ id: props.id, dishName: props.dishName, price: props.price }))
-        }
-      >
+      <Typography>{cartData.orderCount}</Typography>
+      <Typography className={styles.addition} onClick={handleAddToCart}>
         +
       </Typography>
     </Paper>

@@ -1,25 +1,37 @@
-import { Box, Button, List, ListItem, Paper, Typography } from '@mui/material';
-import { Cart } from '../Cart';
+import { Box, Grid } from '@mui/material';
 import styles from './CartItems.module.css';
-import { useAppDispatch } from '../../../store/hooks';
-import { addToCart, removeFromCart } from '../../../features/cartSlice';
 import CartButton from '../../Common/CartButton';
+import { CartItem } from '../../../types/CommonType';
 
 interface CartItemsProp {
-  cartItems: Cart[];
+  cartItems: CartItem[];
+  handleAddToCart: (data: CartItem) => void;
+  handleRemoveFromCart: (data: CartItem) => void;
 }
 
 const CartItems = (props: CartItemsProp) => {
+  const { cartItems, handleAddToCart, handleRemoveFromCart } = props;
+
   return (
-    <List className={styles.cartList}>
-      {props.cartItems.map(cart => (
-        <ListItem key={cart.id} divider className={styles.cartListItem}>
-          <Box>{cart.dishName}</Box>
-          <CartButton {...cart} />
-          <Typography>{cart.price * cart.quantity} Rs</Typography>
-        </ListItem>
+    <Box className={styles.cartList}>
+      {cartItems?.map(cartItem => (
+        <Grid container spacing={2} key={cartItem.productId} className={styles.cartListItem}>
+          <Grid item xs={6}>
+            {cartItem.productName}
+          </Grid>
+          <Grid item xs={3}>
+            <CartButton
+              cartData={cartItem}
+              handleAddToCart={() => handleAddToCart(cartItem)}
+              handleRemoveFromCart={() => handleRemoveFromCart(cartItem)}
+            />
+          </Grid>
+          <Grid item xs={3} textAlign={'right'}>
+            ₹ {cartItem.cost * cartItem.orderCount}
+          </Grid>
+        </Grid>
       ))}
-    </List>
+    </Box>
   );
 };
 
