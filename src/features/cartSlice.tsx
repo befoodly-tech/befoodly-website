@@ -1,5 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { addItemToCart, fetchActiveCartData, removeItemFromCart } from '../actions/CartActions';
+import {
+  addItemToCart,
+  confirmOrderForDelivery,
+  fetchActiveCartData,
+  removeItemFromCart
+} from '../actions/CartActions';
 import { GenericApiResponse } from '../types/ApiActions';
 import { isApiStatusSuccess } from '../utils/GenericApiResponse';
 import { CartItem } from '../types/CommonType';
@@ -7,6 +12,7 @@ import { CartItem } from '../types/CommonType';
 interface CartSliceProps {
   isLoading: boolean;
   cartData: GenericApiResponse;
+  orderConfirmData: GenericApiResponse;
   totalCost: number;
   isError: boolean;
 }
@@ -14,6 +20,7 @@ interface CartSliceProps {
 const initialState: CartSliceProps = {
   isLoading: false,
   cartData: {},
+  orderConfirmData: {},
   totalCost: 0,
   isError: false
 };
@@ -67,10 +74,14 @@ const cartSlice = createSlice({
       state.isLoading = true;
       state.isError = false;
     });
+    builder.addCase(confirmOrderForDelivery.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
     builder.addCase(fetchActiveCartData.fulfilled, (state, action) => {
       state.isLoading = false;
       state.cartData = action.payload;
-      state.isError = !isApiStatusSuccess(action.payload.data);
+      state.isError = !isApiStatusSuccess(action.payload);
 
       if (action.payload?.data) {
         state.totalCost = action.payload?.data?.totalCost;
@@ -82,7 +93,16 @@ const cartSlice = createSlice({
     });
     builder.addCase(removeItemFromCart.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.isError = !isApiStatusSuccess(action.payload.data);
+      state.isError = !isApiStatusSuccess(action.payload);
+    });
+    builder.addCase(confirmOrderForDelivery.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.orderConfirmData = action.payload;
+      state.isError = !isApiStatusSuccess(action.payload);
+
+      if (action.payload?.data) {
+        state.cartData = {};
+      }
     });
     builder.addCase(fetchActiveCartData.rejected, state => {
       state.isLoading = false;
@@ -93,6 +113,10 @@ const cartSlice = createSlice({
       state.isError = true;
     });
     builder.addCase(removeItemFromCart.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(confirmOrderForDelivery.rejected, state => {
       state.isLoading = false;
       state.isError = true;
     });

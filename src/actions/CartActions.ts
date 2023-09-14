@@ -30,3 +30,12 @@ export const removeItemFromCart = createAsyncThunk(
     return ApiHelper(apiUrl, MethodType.PUT, JSON.stringify(data.body));
   }
 );
+
+export const confirmOrderForDelivery = createAsyncThunk(
+  'confirm/orderForDelivery',
+  (data: CartRequestProps) => {
+    const apiUrl = getApiUrl(API_URLS.PLACE_ORDER, data?.customerId);
+
+    return ApiHelper(apiUrl, MethodType.POST, JSON.stringify(data.body));
+  }
+);

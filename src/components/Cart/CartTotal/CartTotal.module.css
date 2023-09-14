@@ -1,16 +1,6 @@
 .cartTotalContainer {
     width: 80%;
 
-    .deliveryTime {
-        position: absolute;
-        color: #434343;
-        margin-top: 8px;
-
-        .timeButtons {
-            margin: 4px;
-        }
-    }
-
     .dataField {
         width: 240px;
         margin-left: auto;

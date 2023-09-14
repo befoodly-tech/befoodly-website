@@ -1,4 +1,5 @@
 import { MethodType, ParamData } from '../types/ApiHelperFile';
+import { isApiStatusSuccess } from './GenericApiResponse';
 
 const BASE_URL = window.config.BASE_URL;
 
@@ -17,7 +18,8 @@ export const API_URLS = {
   EDIT_ADDRESS: '/v1/address/edit',
   ADD_TO_CART: '/v1/order/add-to-cart',
   FETCH_CART_DATA: '/v1/order/fetch',
-  EDIT_CART: '/v1/order/edit-cart'
+  EDIT_CART: '/v1/order/edit-cart',
+  PLACE_ORDER: '/v1/order/confirm'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {

@@ -4,26 +4,16 @@ import styles from './CartTotal.module.css';
 interface CartTotalProps {
   totalCost: number;
   discountCost: number;
-  deliveryCost?: number;
+  deliveryCost: number;
+  handlePlaceOrder: () => void;
 }
 
 const CartTotal = (props: CartTotalProps) => {
-  const { totalCost, discountCost, deliveryCost = 20 } = props;
+  const { totalCost, discountCost, deliveryCost, handlePlaceOrder } = props;
 
   return (
     <div className={styles.cartTotalContainer}>
       <hr />
-      {/* <div className={styles.deliveryTime}>
-        Select Delivery Time
-        <br />
-        {deliverySlot.map((slot: DeliveryTime) => {
-          return (
-            <Button variant="outlined" color="info" className={styles.timeButtons} key={slot.title}>
-              {slot.timeInterval}
-            </Button>
-          );
-        })}
-      </div> */}
       <Typography className={styles.dataField}>
         <span className={styles.dataTitle}>Total:</span>
         <span>₹ {totalCost}</span>
@@ -45,7 +35,10 @@ const CartTotal = (props: CartTotalProps) => {
         <span className={styles.dataFinalTitle}>Final Cost:</span>
         <span>₹ {totalCost - discountCost + deliveryCost}</span>
       </Typography>
-      <Button className={styles.checkoutBtn}>Place Order</Button>
+
+      <Button className={styles.checkoutBtn} onClick={handlePlaceOrder}>
+        Place Order
+      </Button>
     </div>
   );
 };

@@ -125,12 +125,6 @@
   }
 }
 
-.errorMessage {
-  color: rgb(255, 43, 43);
-  font-size: 12px;
-  padding-top: 4px;
-}
-
 .loadingBar {
   color: rgb(0, 131, 0) !important;
   padding: 4px;
@@ -173,4 +167,18 @@
       color: #434343;
     }
   }
+}
+
+.dialogDescription {
+  font-family: Outfit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.apiStatusDialog {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
