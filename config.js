@@ -1,4 +1,4 @@
 window.config = {
-  BASE_URL: 'http://localhost:8080/customer-service',
+  BASE_URL: 'http://befoodly-lb-553210014.ap-south-1.elb.amazonaws.com/customer-service',
   S3_URL: 'https://webapp-befoodly.s3.ap-south-1.amazonaws.com/'
 };
