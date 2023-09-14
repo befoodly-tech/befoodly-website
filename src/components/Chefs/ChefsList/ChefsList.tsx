@@ -13,6 +13,7 @@ interface ChefsListProps {
 const ChefsList = ({ chefs, bucketUrl }: ChefsListProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [page, setPage] = useState(0);
+
   const handleOnChange = (event: React.ChangeEvent<unknown>, value: number) => {
     value = value - 1;
     setPage(value);

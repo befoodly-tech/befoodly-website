@@ -1,30 +1,44 @@
 import { Box } from '@mui/material';
 import styles from './Landing.module.css';
-import NavbarApp from '../../components/NavbarApp/NavbarApp';
 import HeaderTabs from '../../components/Headers/HeaderTabs';
 import OfferBanner from '../../components/OfferBanner/OfferBanner';
 import Chefs from '../../components/Chefs/Chefs';
 import Filters from '../../components/Filters/Filters';
 import Dishes from '../../components/Dishes/Dishes';
-import Footer from '../../components/Footer/Footer';
-import { getCookie } from '../../utils/CookieHelper';
+import { GenericGlobalData } from '../../types/CommonType';
+import { useOutlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-const Landing = () => {
-  const phoneNumber = getCookie('phone');
-  const sessionToken = getCookie('session');
-  const customerId = getCookie('customerId');
+const MainLandingBody = (url: string, customerId: string) => {
+  return (
+    <>
+      <HeaderTabs customerId={customerId} />
+      <OfferBanner />
+      <Chefs bucketUrl={url} />
+      <Filters />
+      <Dishes bucketUrl={url} />
+    </>
+  );
+};
 
-  const S3_URL = window.config?.S3_URL;
+interface LandingProps {
+  globalData: GenericGlobalData;
+  isSessionExpired: boolean;
+}
+
+const Landing = (props: LandingProps) => {
+  const outlet = useOutlet();
+  const [customerId, setCustomerId] = useState(props.globalData?.customerId);
+
+  useEffect(() => {
+    if (props?.isSessionExpired) {
+      setCustomerId('');
+    }
+  }, [props.isSessionExpired]);
 
   return (
     <Box className={styles.main}>
-      <NavbarApp customerId={customerId} session={sessionToken} />
-      <HeaderTabs customerId={customerId} />
-      <OfferBanner />
-      <Chefs bucketUrl={S3_URL} />
-      <Filters />
-      <Dishes bucketUrl={S3_URL} />
-      <Footer />
+      {outlet || MainLandingBody(props.globalData?.s3Url, customerId)}
     </Box>
   );
 };

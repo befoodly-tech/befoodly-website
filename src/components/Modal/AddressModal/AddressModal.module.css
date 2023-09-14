@@ -10,17 +10,22 @@
   .inputBoxes {
     padding: 4px 0px;
     .inputLable {
+      font-family: Outfit;
     }
     .inputTextField {
+      input {
+        background-color: #f9f9f9;
+      }
     }
   }
 
   .saveAddressBtn {
     background-color: #feba10;
     margin: 16px 0px;
+    min-height: 56px;
 
     &:hover {
-      background-color: #feba10;
+      background-color: #75a057;
     }
   }
 

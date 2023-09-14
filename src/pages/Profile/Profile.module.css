@@ -5,6 +5,8 @@
 
   .myProfile {
     display: flex;
+    margin: auto;
+    margin-top: 20px;
 
     .myText {
       color: #393939;
@@ -21,6 +23,8 @@
   }
 
   .profileForm {
+    max-width: 400px;
+
     .Info {
       padding: 24px 0px;
       color: #000;

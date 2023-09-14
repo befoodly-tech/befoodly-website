@@ -1,35 +1,10 @@
 import { Box, Grid, Pagination, useMediaQuery } from '@mui/material';
 import styles from './OfferBanner.module.css';
-import OfferCard, { OfferCardProps } from './OfferCard/OfferCard';
-import SvgDiet from '../../assets/svgs/Diet.svg';
+import OfferCard from './OfferCard/OfferCard';
 import { theme } from '../../ui/theme';
 import { useState } from 'react';
-
-const offerCards: OfferCardProps[] = [
-  {
-    disRupee: 50,
-    disDescription: 'Flat Discount',
-    disIcon: SvgDiet,
-    disRule: 'On order above ₹ 199',
-    background:
-      'linear-gradient(136deg, #15ca6a 0%, #14ae5c 88.81%),linear-gradient(140deg, #4fa0ff 0%, #434bff 100%)'
-  },
-  {
-    disPercentage: 25,
-    disDescription: 'Flat Discount',
-    disIcon: SvgDiet,
-    disRule: 'On order above ₹ 299',
-    background: 'linear-gradient(140deg, #4FA0FF 0%, #434BFF 100%)'
-  },
-  {
-    disRupee: 20,
-    disDescription: 'Only For Delivery',
-    disIcon: SvgDiet,
-    disRule: 'On every order, COD :)',
-    background:
-      'linear-gradient(136deg, #C94217 0%, #EE682F 88.81%), linear-gradient(140deg, #4FA0FF 0%, #434BFF 100%)'
-  }
-];
+import { Container } from '@mui/system';
+import { offerCards } from '../../utils/Coupons';
 
 const Offer = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -41,20 +16,22 @@ const Offer = () => {
   };
 
   return (
-    <Box>
+    <Box className={styles.bannerContainer}>
       {isMobile ? (
         <Box className={styles.outerBox}>
           <OfferCard {...offerCards[page]} />
           <Pagination count={offerCards.length} page={page + 1} onChange={handleOnChange} />
         </Box>
       ) : (
-        <Grid container className={styles.outerBox}>
-          {offerCards.map((offerCard, index) => (
-            <Grid item key={index}>
-              <OfferCard {...offerCard} />
-            </Grid>
-          ))}
-        </Grid>
+        <Container>
+          <Grid container className={styles.outerBox}>
+            {offerCards.map((offerCard, index) => (
+              <Grid item key={index}>
+                <OfferCard {...offerCard} />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       )}
     </Box>
   );

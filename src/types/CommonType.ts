@@ -41,6 +41,20 @@ export interface FeedbackData {
   reviews: number;
 }
 
+export interface CustomerData {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+  version: number;
+  referenceId: string;
+  name: string;
+  phoneNumber: string;
+  sessionToken: string;
+  email: string;
+  address: string;
+  isActive: boolean;
+}
+
 export interface ProductData {
   id: number;
   referenceId: string;
@@ -50,12 +64,28 @@ export interface ProductData {
   orderNo: number;
   price: number;
   acceptingTime: string;
-  deliveryTime: string;
+  deliveryTime?: string;
   feedback: FeedbackData;
   vendorId: number;
   providerData: VendorData;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface AddressData {
+  id: number;
   createdAt: string;
   updatedAt: string;
+  version: number;
+  referenceId: string;
+  customerReferenceId: string;
+  title: string;
+  phoneNumber: string;
+  addressFirst: string;
+  addressSecond: string;
+  pinCode: string;
+  city: string;
+  state: string;
 }
 
 export interface VendorData {
@@ -77,3 +107,22 @@ export const Month = [
   'Nov',
   'Dec'
 ];
+
+export interface GenericGlobalData {
+  phoneNumber: string;
+  customerId: string;
+  sessionToken: string;
+  s3Url: string;
+}
+
+export enum DiscountType {
+  PERCENTAGE,
+  AMOUNT
+}
+
+export interface CartItem {
+  productId: number;
+  productName: string;
+  orderCount: number;
+  cost: number;
+}

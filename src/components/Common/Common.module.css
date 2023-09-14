@@ -56,14 +56,14 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  height: 36.5px;
+  height: 36px;
   padding: 2px 0px;
   background: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
 
   .addition {
     padding: 16px;
+    cursor: pointer;
   }
 }
 
@@ -125,15 +125,60 @@
   }
 }
 
-.errorMessage {
-  color: rgb(255, 43, 43);
-  font-size: 12px;
-  padding-top: 4px;
+.loadingBar {
+  color: rgb(0, 131, 0) !important;
+  padding: 4px;
 }
 
-.loadingBar {
-  color: rgb(2, 104, 2);
-  margin: auto;
-  position: absolute;
-  width: auto;
+.emptyCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  margin: 24px 0;
+
+  .textMessage {
+    font-size: 20px;
+    margin-top: 8px;
+    color: rgb(112, 112, 112);
+  }
+}
+
+.dataLoadingCircle {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.couponCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+
+  .couponContent {
+    font-family: Outfit;
+    font-size: 12px;
+    color: #feba10;
+
+    .couponHead {
+      font-family: Outfit-SemiBold;
+      font-size: 14px;
+      color: #434343;
+    }
+  }
+}
+
+.dialogDescription {
+  font-family: Outfit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.apiStatusDialog {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }

@@ -3,8 +3,8 @@ import ApiHelper, { API_URLS, getApiUrl } from '../utils/ApiHelper';
 import { MethodType } from '../types/ApiHelperFile';
 import { OtpRequest } from '../types/ApiActions';
 
-export const healthCheckApi = createAsyncThunk('fetch/healthCheck', () => {
-  const url = getApiUrl(API_URLS.HEALTH_CHECK);
+export const healthCheckApi = createAsyncThunk('fetch/healthCheck', (sessionToken: string) => {
+  const url = getApiUrl(API_URLS.SESSION_CHECK, sessionToken);
 
   return ApiHelper(url, MethodType.GET);
 });

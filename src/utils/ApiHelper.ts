@@ -1,16 +1,25 @@
 import { MethodType, ParamData } from '../types/ApiHelperFile';
+import { isApiStatusSuccess } from './GenericApiResponse';
 
 const BASE_URL = window.config.BASE_URL;
 
 export const API_URLS = {
-  HEALTH_CHECK: '/ping',
+  SESSION_CHECK: '/v1/check',
   LOGIN_USER: '/v1/login',
   SIGN_UP_USER: '/v1/signup',
   VERIFY_OTP: '/v1/otp-verify',
   EDIT_CUSTOMER: '/v1/customer/edit',
   FETCH_CUSTOMER_DATA: '/v1/customer',
   FETCH_COOK_DATA: '/v1/cook/fetch/popular',
-  FETCH_ACTIVE_ITEMS: '/v1/product/fetch/all'
+  FETCH_ACTIVE_ITEMS: '/v1/product/fetch/all',
+  FETCH_POPULAR_PRODUCTS: '/v1/product/fetch/popular',
+  FETCH_ALL_ADDRESSES: '/v1/address',
+  ADD_ADDRESS: '/v1/address',
+  EDIT_ADDRESS: '/v1/address/edit',
+  ADD_TO_CART: '/v1/order/add-to-cart',
+  FETCH_CART_DATA: '/v1/order/fetch',
+  EDIT_CART: '/v1/order/edit-cart',
+  PLACE_ORDER: '/v1/order/confirm'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {
@@ -57,7 +66,7 @@ const ApiHelper = async (url: string, method?: MethodType, body?: string) => {
       return data;
     })
     .catch(err => {
-      throw err;
+      throw err.error;
     });
 
   return data;

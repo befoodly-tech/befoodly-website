@@ -7,8 +7,8 @@
   background: #ececec;
 
   .chefsBox {
-    min-width: 1200px;
-    margin: auto;
+    min-height: 200px;
+
     .popular {
       color: #191919;
       font-family: Outfit;

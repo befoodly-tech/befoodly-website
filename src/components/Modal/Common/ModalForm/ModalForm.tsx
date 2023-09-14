@@ -1,10 +1,13 @@
 import { Box, Button, FormControl, InputAdornment, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { MuiOtpInput } from 'mui-one-time-password-input';
 import styles from './ModalForm.module.css';
 import { GenericApiResponse, OtpRequest } from '../../../../types/ApiActions';
-import ApiErrorMessage from '../../../Common/ApiErrorMessage';
+import { isValidPhoneNumber } from '../../../../utils/Validation';
+import { ChevronRight } from '@mui/icons-material';
+import { useAppDispatch } from '../../../../store/hooks';
+import { removeLoginErrorData, removeSessionErrorData } from '../../../../features/loginSlice';
 
 interface ModalFormProps {
   sessionData: GenericApiResponse;
@@ -15,53 +18,73 @@ interface ModalFormProps {
 
 const ModalForm = (props: ModalFormProps) => {
   const form = useForm<OtpRequest>();
-  const { register, control, formState, handleSubmit } = form;
+  const { register, setError, control, formState, handleSubmit } = form;
   const { errors } = formState;
-  const [phoneNumber, setPhoneNumber] = useState('');
   const [showOtp, setShowOtp] = useState(false);
+  const dispatch = useAppDispatch();
 
-  const handleOnSendOTP = () => {
-    props.handleOnSendOtp(phoneNumber);
-    setShowOtp(true);
+  useEffect(() => {
+    if (props.sessionData?.errorMessage) {
+      setError('phoneNumber', {
+        type: 'manual',
+        message: props.sessionData?.errorMessage
+      });
+      dispatch(removeSessionErrorData());
+    }
+  }, [props.sessionData]);
+
+  useEffect(() => {
+    if (props.loginData?.errorMessage) {
+      setError('otp', {
+        type: 'manual',
+        message: props.loginData?.errorMessage
+      });
+      dispatch(removeLoginErrorData());
+    }
+  }, [props.loginData]);
+
+  const handleOnSubmit = (data: OtpRequest) => {
+    if (isValidPhoneNumber(data?.phoneNumber) && data.phoneNumber && !data?.otp) {
+      props.handleOnSendOtp(data?.phoneNumber);
+      setShowOtp(true);
+    }
+    if (data?.otp) {
+      props.handleOnVerify(data);
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(props.handleOnVerify)} className={styles.loginForm}>
+    <form onSubmit={handleSubmit(handleOnSubmit)} className={styles.loginForm}>
       <FormControl className={styles.phoneInput} defaultValue={''} required>
-        <Typography>Enter Mobile Number</Typography>
+        <Typography className={styles.inputLabel}>Enter Mobile Number</Typography>
         <Box className={styles.phoneInputArea}>
           <TextField
             id="standard-start-adornment"
             sx={{ m: 1, width: '25ch' }}
             className={styles.enterNo}
-            value={phoneNumber}
             InputProps={{
               startAdornment: <InputAdornment position="start">+91</InputAdornment>
             }}
             inputProps={{ maxLength: 10, type: 'tel' }}
             {...register('phoneNumber', {
-              onChange: e => setPhoneNumber(e.target.value),
               required: {
                 value: true,
                 message: 'Phone Number is required'
               },
-              validate: {
-                minLength: v => v.length >= 10 || 'Min 10 digits are required',
-                matchPattern: v => /^\d+$/.test(v) || 'Invalid Phone Number'
-              }
+              validate: v => isValidPhoneNumber(v) || 'Phone Number is Invalid'
             })}
+            error={!!errors?.phoneNumber}
+            helperText={errors?.phoneNumber?.message}
           />
-          <Button className={styles.sendOtp} onClick={handleOnSendOTP}>
+          <Button type="submit" className={styles.sendOtp}>
             Send OTP
+            <ChevronRight sx={{ color: '#191919' }} />
           </Button>
         </Box>
-        {props.sessionData?.errorMessage && (
-          <ApiErrorMessage message={props.sessionData?.errorMessage} />
-        )}
       </FormControl>
       {showOtp && props.sessionData?.data && (
         <FormControl className={styles.phoneInput} defaultValue={''} required>
-          <Typography>Enter OTP</Typography>
+          <Typography className={styles.inputLabel}>Enter OTP</Typography>
           <Box className={styles.phoneInputArea}>
             <Controller
               name="otp"
@@ -71,18 +94,16 @@ const ModalForm = (props: ModalFormProps) => {
                 <Box>
                   <MuiOtpInput id="otp" length={4} className={styles.otpInput} {...field} />
                   {fieldState.invalid ? (
-                    <Typography className={styles.errors}>OTP invalid</Typography>
+                    <Typography className={styles.errors}>Invalid OTP</Typography>
                   ) : null}
                 </Box>
               )}
             />
             <Button type="submit" className={styles.sendOtp}>
               Verify
+              <ChevronRight sx={{ color: '#191919' }} />
             </Button>
           </Box>
-          {props.loginData?.errorMessage && (
-            <ApiErrorMessage message={props.loginData?.errorMessage} />
-          )}
         </FormControl>
       )}
     </form>

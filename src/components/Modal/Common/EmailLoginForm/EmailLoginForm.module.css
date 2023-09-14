@@ -1,19 +1,31 @@
 .loginForm {
   width: fit-content;
+
   .phoneInput {
     display: flex;
-    padding-top: 46px;
+    padding-top: 40px;
     width: 25rem;
+
+    .inputLabel {
+      color: #696969;
+      margin-left: 8px;
+      font-family: Outfit;
+    }
+
     .phoneInputArea {
       display: flex;
       flex-direction: row;
+
       .sendOtp {
         display: flex;
-        padding: 24px;
         justify-content: center;
         align-items: center;
-        /* gap: 4px; */
-
+        font-family: Outfit;
+        color: #191919;
+        font-size: 16px;
+        margin: 8px;
+        max-height: 56px;
+        padding: 0 20px;
         border-radius: 8px;
         background: #feba10;
 
@@ -33,6 +45,7 @@
     .errors {
       color: red;
       font-size: smaller;
+      margin-left: 16px;
     }
   }
 }
