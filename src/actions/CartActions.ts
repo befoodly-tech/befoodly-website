@@ -39,3 +39,9 @@ export const confirmOrderForDelivery = createAsyncThunk(
     return ApiHelper(apiUrl, MethodType.POST, JSON.stringify(data.body));
   }
 );
+
+export const fetchOrderItemById = createAsyncThunk('fetch/orderItemById', (orderId: number) => {
+  const apiUrl = getApiUrl(API_URLS.FETCH_ORDER_ITEMS, orderId.toString());
+
+  return ApiHelper(apiUrl, MethodType.GET);
+});

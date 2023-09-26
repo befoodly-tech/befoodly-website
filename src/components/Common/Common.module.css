@@ -32,7 +32,7 @@
 
     .memberTitle {
       font-size: 16px;
-      color: rgb(94, 94, 94);
+      color: rgb(112, 112, 112);
       margin-bottom: 8px;
     }
 
@@ -181,4 +181,17 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+
+.helpButtonContainer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  .helpText {
+    font-size: 12px;
+    font-family: Outfit;
+  }
 }

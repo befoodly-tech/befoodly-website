@@ -16,6 +16,8 @@ import ChefCap from '../../assets/svgs/ChefCap.svg';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { useEffect } from 'react';
 import { fetchActiveCartData } from '../../actions/CartActions';
+import { ShareLocation } from '@mui/icons-material';
+import { fetchPendingDeliveryData } from '../../actions/DeliveryActions';
 
 interface HeaderTabsProps {
   customerId: string;
@@ -38,10 +40,12 @@ const HeaderTabs = (props: HeaderTabsProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { cartData } = useAppSelector(state => state.cart);
+  const { deliveryDetails } = useAppSelector(state => state.delivery);
 
   useEffect(() => {
     if (props.customerId) {
       dispatch(fetchActiveCartData(props.customerId));
+      dispatch(fetchPendingDeliveryData(props.customerId));
     }
   }, [dispatch]);
 
@@ -69,16 +73,24 @@ const HeaderTabs = (props: HeaderTabsProps) => {
             </Button>
           ))}
         </ButtonGroup>
-        <Button
-          variant="contained"
-          onClick={() => navigate('/app/checkout')}
-          className={styles.cart}
-        >
-          <Badge badgeContent={cartData?.data?.productList?.length || 0} color="secondary">
-            <img src={ShoppingCart}></img>
-          </Badge>
-          {!isMobile && <span className={styles.cartText}>View Cart</span>}
-        </Button>
+        <div className={styles.orderButtons}>
+          {deliveryDetails?.data && (
+            <Button onClick={() => navigate('/app/track-order')} className={styles.trackOrderBtn}>
+              <ShareLocation sx={{ color: 'rgb(20, 174, 92)' }} />
+              {!isMobile && <>Track Order</>}
+            </Button>
+          )}
+          <Button
+            variant="contained"
+            onClick={() => navigate('/app/checkout')}
+            className={styles.cart}
+          >
+            <Badge badgeContent={cartData?.data?.productList?.length || 0} color="secondary">
+              <img src={ShoppingCart}></img>
+            </Badge>
+            {!isMobile && <span className={styles.cartText}>View Cart</span>}
+          </Button>
+        </div>
       </Box>
     </Container>
   );

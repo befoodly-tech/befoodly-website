@@ -1,0 +1,49 @@
+.orderSummary {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 20px;
+  gap: 8px;
+
+  .deliveryDetails {
+    width: 320px;
+
+    .orderContent {
+      font-family: Outfit;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+
+      .dataPoint {
+        display: flex;
+        justify-content: space-between;
+        color: rgb(112, 112, 112);
+        font-size: 16px;
+
+        span {
+          color: black;
+          font-family: Outfit-SemiBold;
+          text-align: right;
+        }
+      }
+
+      .orderItemDetail {
+        color: #feba10;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.orderHistoryDialog {
+  padding: 16px;
+
+  .orderItemList {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(112, 112, 112);
+    font-family: Outfit;
+    font-size: 14px;
+  }
+}

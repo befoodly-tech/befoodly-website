@@ -3,6 +3,7 @@ import {
   addItemToCart,
   confirmOrderForDelivery,
   fetchActiveCartData,
+  fetchOrderItemById,
   removeItemFromCart
 } from '../actions/CartActions';
 import { GenericApiResponse } from '../types/ApiActions';
@@ -13,6 +14,7 @@ interface CartSliceProps {
   isLoading: boolean;
   cartData: GenericApiResponse;
   orderConfirmData: GenericApiResponse;
+  orderItems: GenericApiResponse;
   totalCost: number;
   isError: boolean;
 }
@@ -21,6 +23,7 @@ const initialState: CartSliceProps = {
   isLoading: false,
   cartData: {},
   orderConfirmData: {},
+  orderItems: {},
   totalCost: 0,
   isError: false
 };
@@ -78,6 +81,10 @@ const cartSlice = createSlice({
       state.isLoading = true;
       state.isError = false;
     });
+    builder.addCase(fetchOrderItemById.pending, state => {
+      state.isLoading = true;
+      state.isError = false;
+    });
     builder.addCase(fetchActiveCartData.fulfilled, (state, action) => {
       state.isLoading = false;
       state.cartData = action.payload;
@@ -104,6 +111,11 @@ const cartSlice = createSlice({
         state.cartData = {};
       }
     });
+    builder.addCase(fetchOrderItemById.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.orderItems = action.payload;
+      state.isError = !isApiStatusSuccess(action.payload);
+    });
     builder.addCase(fetchActiveCartData.rejected, state => {
       state.isLoading = false;
       state.isError = true;
@@ -117,6 +129,10 @@ const cartSlice = createSlice({
       state.isError = true;
     });
     builder.addCase(confirmOrderForDelivery.rejected, state => {
+      state.isLoading = false;
+      state.isError = true;
+    });
+    builder.addCase(fetchOrderItemById.rejected, state => {
       state.isLoading = false;
       state.isError = true;
     });

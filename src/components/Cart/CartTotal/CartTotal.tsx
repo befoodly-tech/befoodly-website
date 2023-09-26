@@ -5,7 +5,7 @@ interface CartTotalProps {
   totalCost: number;
   discountCost: number;
   deliveryCost: number;
-  handlePlaceOrder: () => void;
+  handlePlaceOrder?: () => void;
 }
 
 const CartTotal = (props: CartTotalProps) => {
@@ -36,9 +36,11 @@ const CartTotal = (props: CartTotalProps) => {
         <span>₹ {totalCost - discountCost + deliveryCost}</span>
       </Typography>
 
-      <Button className={styles.checkoutBtn} onClick={handlePlaceOrder}>
-        Place Order
-      </Button>
+      {handlePlaceOrder && (
+        <Button className={styles.checkoutBtn} onClick={handlePlaceOrder}>
+          Place Order
+        </Button>
+      )}
     </div>
   );
 };

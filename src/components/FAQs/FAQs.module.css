@@ -1,0 +1,15 @@
+.faqContainer {
+  font-family: Outfit;
+  margin: 24px 0;
+
+  .faqHeading {
+    font-family: Outfit-SemiBold;
+    font-size: 24px;
+    color: #434343;
+    margin-bottom: 8px;
+  }
+
+  .faqQuestion {
+    color: rgb(112, 112, 112);
+  }
+}
