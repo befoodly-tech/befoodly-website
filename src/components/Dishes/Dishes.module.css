@@ -2,8 +2,7 @@
   background-color: #f0f0f0;
 
   display: flex;
-  padding: 36px 0px 10px 0px;
-  /* justify-content: center; */
+  padding: 2.5rem 2.5rem 0rem 2.5rem;
   align-items: center;
 
   .FoodDisplay {
@@ -12,11 +11,16 @@
   }
 
   .FoodGalleryHeading {
-    color: #1c1c1c;
+    color: #191919;
     font-family: Outfit;
-    font-size: 30px;
-    font-style: normal;
+    font-size: 1.875rem;
     font-weight: 600;
-    line-height: 36px; /* 120% */
+    line-height: 120%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .FoodGallery {
+    padding: 1rem;
   }
 }

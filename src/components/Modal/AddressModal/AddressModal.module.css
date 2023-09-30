@@ -44,7 +44,10 @@
 @media screen and (max-width: 600px) {
   .addressModal {
     padding: 16px;
-    top: 50%;
+    transform: none;
+    margin: 8px;
+    top: auto;
+    left: auto;
 
     .addressLabel {
       font-size: 24px;

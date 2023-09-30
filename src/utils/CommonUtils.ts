@@ -1,4 +1,4 @@
-import { Month } from '../types/CommonType';
+import { AddressData } from '../types/CommonType';
 
 export const combineTwoStrings = (data1: string, data2: string) => data1 + data2;
 
@@ -13,21 +13,33 @@ export const convertBigNumbers = (data: number) => {
 export const formatStringToDate = (data: string) => {
   const date = new Date(data);
 
-  return `${date.getDate()}-${Month[date.getMonth()]}`;
+  return `${date.getDate()}-${MonthName[date.getMonth()]}`;
 };
 
 export const formatStringToTime = (data: string) => {
   const date = new Date(data);
 
+  const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+
   const hours = date.getHours();
 
   if (hours < 12) {
-    return `${hours}:${date.getMinutes()} AM`;
+    return `${hours}:${minutes} AM`;
   } else if (hours == 12) {
-    return `${hours}:${date.getMinutes()} PM`;
+    return `${hours}:${minutes} PM`;
   } else {
-    return `${hours - 12}:${date.getMinutes()} PM`;
+    return `${hours - 12}:${minutes} PM`;
   }
+};
+
+export const formatStringToDateTime = (data: string) => {
+  if (data == null) {
+    return '';
+  }
+  const date = formatStringToDate(data);
+  const time = formatStringToTime(data);
+
+  return time + ', ' + date;
 };
 
 export const makeYourOwnMeal = {
@@ -66,3 +78,31 @@ export const deliverySlot: DeliveryTime[] = [
     timeInterval: '8-10 PM'
   }
 ];
+
+export const MonthName = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
+export const addressInLine = (address: AddressData) => {
+  let currentAddress = address?.addressFirst;
+
+  if (address?.addressSecond) {
+    currentAddress += ', ' + address?.addressSecond;
+  }
+
+  currentAddress += ', ' + address?.pinCode;
+  currentAddress += ', ' + address?.city;
+
+  return currentAddress;
+};

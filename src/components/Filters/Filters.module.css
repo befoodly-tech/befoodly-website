@@ -88,6 +88,9 @@
     }
 
     .secondaryFilters {
+      .filterSecondaryBtn {
+        gap: 4px;
+      }
       .filterSecondaryTxt {
         font-size: 12px;
       }

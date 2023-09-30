@@ -94,7 +94,6 @@
         .cardPrice {
           color: #393939;
           text-align: right;
-          font-family: Outfit;
           font-size: 24px;
           font-style: normal;
           font-weight: 600;
@@ -134,33 +133,26 @@
 
 @media screen and (max-width: 600px) {
   .dishCard {
-    display: flex;
     border-radius: 1rem;
 
     .cardMedia {
-      height: 11rem;
-      border-radius: 1rem 0rem 0rem 1rem;
+      height: 12rem;
     }
     .cardContentArea {
-      flex: 2;
-
       .cardContentLeft {
         padding: 4px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
-        .cardFood {
-          font-size: 1rem;
+        .cardItem {
+          flex-direction: column;
+          .cardFood {
+            font-size: 1rem;
+          }
         }
         .cardAddress {
           font-size: 0.75rem;
-        }
-        .cardRating {
-          font-family: Outfit;
-          font-size: 0.625rem;
-          font-weight: 400;
-          line-height: 1.125rem; /* 180% */
         }
         .cardTiming {
           .timing {
@@ -174,8 +166,19 @@
 
       .cardContentRight {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: flex-end;
+
+        .cardRating {
+          color: #1a1a1a;
+          font-family: Outfit;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 21.6px; /* 180% */
+          display: flex;
+          align-items: center;
+        }
 
         .cardValue {
           .cardPrice {

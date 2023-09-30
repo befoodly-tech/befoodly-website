@@ -1,4 +1,4 @@
-import { Button, Container, MenuItem, TextField, Typography } from '@mui/material';
+import { Button, Container, MenuItem, TextField, Typography, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -21,6 +21,7 @@ import { addToCart, removeFromCart } from '../../features/cartSlice';
 import LoadingCircle from '../Common/LoadingCircle';
 import ConfirmationDialog from '../Common/ConfirmationDialog';
 import ApiStatusDialog from '../Common/ApiStatusDialog';
+import { theme } from '../../ui/theme';
 
 interface CartProps {
   customerId: string;
@@ -37,6 +38,8 @@ const Cart = (props: CartProps) => {
   const deliveryAmount = 20;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     if (!cartData?.data && props.customerId) {
@@ -133,12 +136,15 @@ const Cart = (props: CartProps) => {
               handleAddToCart={handleAddToCart}
               handleRemoveFromCart={handleRemoveFromCart}
             />
-            <CartTotal
-              totalCost={totalCost}
-              discountCost={discountAmount}
-              deliveryCost={deliveryAmount}
-              handlePlaceOrder={handlePlaceOrder}
-            />
+            {isMobile && <hr />}
+            {!isMobile && (
+              <CartTotal
+                totalCost={totalCost}
+                discountCost={discountAmount}
+                deliveryCost={deliveryAmount}
+                handlePlaceOrder={handlePlaceOrder}
+              />
+            )}
           </div>
           <div className={styles.otherSection}>
             <Typography className={styles.headingStyle}>Active Offer</Typography>
@@ -190,6 +196,14 @@ const Cart = (props: CartProps) => {
                 </Button>
               </>
             )}
+            {isMobile && (
+              <CartTotal
+                totalCost={totalCost}
+                discountCost={discountAmount}
+                deliveryCost={deliveryAmount}
+                handlePlaceOrder={handlePlaceOrder}
+              />
+            )}
           </div>
         </div>
       ) : (
@@ -209,6 +223,9 @@ const Cart = (props: CartProps) => {
       />
       {orderConfirmData?.data && (
         <ApiStatusDialog isApiResponse message={'Order placed successfully!'} />
+      )}
+      {orderConfirmData?.errorMessage && (
+        <ApiStatusDialog isApiResponse isSuccess={false} message={'Order failed :('} />
       )}
     </Container>
   );

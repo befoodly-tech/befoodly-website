@@ -47,11 +47,11 @@ const Dishes = (props: DishesProps) => {
         <Box className={styles.FoodDisplay}>
           {currentProductData?.data ? (
             <Grid container className={styles.FoodGrid} rowSpacing={2.5} columnSpacing={2}>
-              {!isTrending && (
+              {/* {!isTrending && (
                 <Grid key={makeYourOwnMeal.id} item md={4} sm={6} xs={12}>
                   <Dish itemData={makeYourOwnMeal} bucketUrl={bucketUrl} />
                 </Grid>
-              )}
+              )} */}
               {currentProductData?.data?.map((dish: ProductData) => (
                 <Grid key={dish.id} item md={4} sm={6} xs={12}>
                   <Dish itemData={dish} bucketUrl={bucketUrl} />

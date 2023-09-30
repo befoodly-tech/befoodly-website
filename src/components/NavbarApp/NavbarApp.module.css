@@ -53,7 +53,6 @@
 
     .checkin {
       display: flex;
-      align-items: flex-start;
       gap: 2.25rem;
 
       .checkinBtn {
@@ -86,13 +85,15 @@
       .mobileFlex {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 4px;
         width: 100%;
       }
       .find {
-        width: 80vw;
-        height: none;
+        width: 90vw;
         flex-direction: row;
-        padding: none;
+      }
+      .checkin {
+        gap: 4px;
       }
     }
   }

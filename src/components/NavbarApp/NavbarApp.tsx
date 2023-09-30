@@ -71,7 +71,9 @@ interface NavbarAppProps {
   isLoggedOut: boolean;
 }
 
-const locations: Location[] = [{ id: 1, title: 'Green Glen', address: 'Bellandur, Bangalore' }];
+export const locations: Location[] = [
+  { id: 1, title: 'Green Glen', address: 'Bellandur, Bangalore' }
+];
 
 const buttons: string[] = ['Login', 'SignUp'];
 

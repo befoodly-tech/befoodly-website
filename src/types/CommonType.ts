@@ -93,21 +93,6 @@ export interface VendorData {
   location: string;
 }
 
-export const Month = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec'
-];
-
 export interface GenericGlobalData {
   phoneNumber: string;
   customerId: string;
@@ -125,4 +110,36 @@ export interface CartItem {
   productName: string;
   orderCount: number;
   cost: number;
+}
+
+export enum DeliveryStatus {
+  INITIATED = 'INITIATED',
+  PENDING = 'PENDING',
+  ON_WAY = 'ON_WAY',
+  COMPLETED = 'COMPLETED',
+  REJECTED = 'REJECTED',
+  WAITING = 'WAITING'
+}
+
+export interface DeliveryManType {
+  name: string;
+  phoneNumber: string;
+}
+
+export interface OrderDataType {
+  orderId: number;
+  finalCost: number;
+  discountCost: number;
+  deliveryCost: number;
+  status: DeliveryStatus;
+  deliveryManData: DeliveryManType;
+  deliveryAddress: AddressData;
+  deliveryTime: string;
+  orderTime: string;
+  description?: string;
+}
+
+export interface FAQsType {
+  question: string;
+  answer: string;
 }

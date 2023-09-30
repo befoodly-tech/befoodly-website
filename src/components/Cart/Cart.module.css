@@ -49,3 +49,21 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cartContainer {
+    .cartBox {
+      .otherSection {
+        width: 100%;
+
+        .couponSection {
+          justify-content: center;
+        }
+
+        .addressSection {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

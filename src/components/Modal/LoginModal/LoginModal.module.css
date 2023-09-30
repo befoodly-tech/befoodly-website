@@ -32,39 +32,31 @@
       }
     }
   }
-  .phoneInput {
-    display: flex;
-    padding-top: 46px;
-    width: 25rem;
-    .phoneInputArea {
-      display: flex;
-      flex-direction: row;
-      .sendOtp {
-        display: flex;
-        padding: 24px;
-        justify-content: center;
-        align-items: center;
-        /* gap: 4px; */
+}
 
-        border-radius: 8px;
-        background: #feba10;
+@media screen and (max-width: 600px) {
+  .loginModal {
+    padding: 16px;
+    transform: none;
+    margin: 8px;
+    width: -webkit-fill-available;
+    top: auto;
+    left: auto;
 
-        /* shadow yellow */
-        box-shadow: 0px 4px 20px 0px rgba(255, 202, 32, 0.25);
-      }
-
-      .otpInput {
-        width: 270px;
-        padding: 8px;
-        .MuiOtpInput-TextField {
-          background-color: #f6f6f6;
-        }
-      }
+    @media screen and (max-width: 330px) {
+      margin: 4px;
+      padding: 8px;
     }
 
-    .errors {
-      color: red;
-      font-size: smaller;
+    .login {
+      .loginTitle {
+        .loginLabel {
+          font-size: 24px;
+        }
+        .createAccount {
+          font-size: 14px;
+        }
+      }
     }
   }
 }

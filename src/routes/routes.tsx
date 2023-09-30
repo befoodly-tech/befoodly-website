@@ -11,6 +11,7 @@ import Checkout from '../pages/Checkout/Checkout';
 import AppHome from '../pages/AppHome';
 import { GenericGlobalData } from '../types/CommonType';
 import { getCookie } from '../utils/CookieHelper';
+import TrackOrder from '../pages/TrackOrder/TrackOrder';
 
 const commonGlobalData: GenericGlobalData = {
   phoneNumber: getCookie('phone'),
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
         element: (
           <Checkout customerId={commonGlobalData.customerId} s3Url={commonGlobalData.s3Url} />
         )
+      },
+      {
+        path: '/app/track-order',
+        element: <TrackOrder customerId={commonGlobalData.customerId} />
       }
     ]
   }

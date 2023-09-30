@@ -51,15 +51,18 @@ const SignupModal = (props: SignupModalProps) => {
       <Modal
         open={props.open}
         onClose={() => handleSignUpClosed()}
+        sx={{ overflowY: 'scroll' }}
         aria-labelledby="signup-modal-title"
         aria-describedby="signup-modal-description"
       >
         <Box className={styles.signupModal}>
           <Box id="signup-modal-title" className={styles.signupTitle}>
             <Typography className={styles.signupLabel}>SignUp</Typography>
-            <Box>
-              <Button startIcon={<SvgCancleIcon />} onClick={() => handleSignUpClosed()} />
-            </Box>
+            {onSignIn && (
+              <Box>
+                <Button startIcon={<SvgCancleIcon />} onClick={() => handleSignUpClosed()} />
+              </Box>
+            )}
           </Box>
           <Box id="signup-modal-description">
             {onSignIn ? (
