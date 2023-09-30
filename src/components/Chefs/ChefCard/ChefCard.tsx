@@ -23,8 +23,10 @@ const ChefCard = ({ chefData, bucketUrl }: ChefCardProps) => {
         src={combineTwoStrings(bucketUrl, chefData.imgUrl)}
         alt={chefData.name}
         onClick={() => setOpenDetailModal(true)}
-      ></Box>
-      <Typography className={styles.chefName}>{chefData.name}</Typography>
+      />
+      <Typography className={styles.chefName} onClick={() => setOpenDetailModal(true)}>
+        {chefData.name}
+      </Typography>
       <Box className={styles.review}>
         <StarIcon sx={{ color: '#15ca6a', height: 20 }} />
         <Typography className={styles.rating}>

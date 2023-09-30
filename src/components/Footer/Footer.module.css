@@ -43,3 +43,17 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .footer {
+    .bottomNav {
+      flex-wrap: nowrap;
+      padding: 16px;
+
+      .webNavConnect {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  }
+}

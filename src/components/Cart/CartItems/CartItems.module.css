@@ -7,3 +7,9 @@
     font-family: Outfit;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cartList {
+    width: 100%;
+  }
+}

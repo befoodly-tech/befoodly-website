@@ -45,3 +45,25 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .signupModal {
+    padding: 16px;
+    transform: none;
+    margin: 8px;
+    width: -webkit-fill-available;
+    top: auto;
+    left: auto;
+
+    @media screen and (max-width: 330px) {
+      margin: 4px;
+      padding: 8px;
+    }
+
+    .signupTitle {
+      .signupLabel {
+        font-size: 24px;
+      }
+    }
+  }
+}

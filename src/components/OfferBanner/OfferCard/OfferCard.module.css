@@ -45,6 +45,18 @@
 
 @media screen and (max-width: 600px) {
   .cardOuter {
-    margin: 0.75rem 0.75rem;
+    margin: 1rem;
+    margin-bottom: 0;
+    max-width: none;
+
+    .cardVal {
+      .cardPer {
+        font-size: 2rem;
+      }
+
+      .cardDesc {
+        font-size: 1.5rem;
+      }
+    }
   }
 }

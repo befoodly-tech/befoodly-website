@@ -4,7 +4,6 @@
   .phoneInput {
     display: flex;
     padding-top: 40px;
-    width: 25rem;
 
     .inputLabel {
       color: #696969;
@@ -15,6 +14,11 @@
     .phoneInputArea {
       display: flex;
       flex-direction: row;
+      align-items: center;
+
+      .enterNo {
+
+      }
 
       .sendOtp {
         display: flex;
@@ -24,13 +28,17 @@
         color: #191919;
         font-size: 16px;
         margin: 8px;
-        max-height: 56px;
+        height: 56px;
         padding: 0 20px;
         border-radius: 8px;
         background: #feba10;
 
         /* shadow yellow */
         box-shadow: 0px 4px 20px 0px rgba(255, 202, 32, 0.25);
+
+        .rightArrow {
+
+        }
       }
 
       .otpInput {
@@ -46,6 +54,37 @@
       color: red;
       font-size: smaller;
       margin-left: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .loginForm {
+    .phoneInput {
+      padding-top: 16px;
+
+      .phoneInputArea {
+        @media screen and (max-width: 380px) {
+          width: 300px;
+        }
+        
+        .enterNo {
+          width: 240px;
+        }
+        .sendOtp {
+          font-size: 14px;
+          padding: 0 12px;
+
+          .rightArrow {
+            font-size: 1rem;
+          }
+        }
+
+        .otpInput {
+          width: 200px;
+          gap: 12px;
+        }
+      }
     }
   }
 }

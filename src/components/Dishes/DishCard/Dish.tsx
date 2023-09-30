@@ -101,77 +101,50 @@ const Dish = (props: DishProp) => {
           ></CardMedia>
         </CardActionArea>
         <CardContent className={styles.cardContentArea}>
-          {isMobile ? (
-            <Box className={styles.cardContentLeft}>
-              <Box>
-                <Typography noWrap className={styles.cardFood}>
-                  {itemData?.title}
-                </Typography>
-                <Typography className={styles.cardAddress}>
-                  {itemData?.providerData.providerName}
-                </Typography>
-              </Box>
-              <Box>
-                <Typography className={styles.unitsLeft}>
-                  {itemData?.orderNo} units left!
-                </Typography>
-              </Box>
-              <Box sx={{ display: 'flex' }}>
-                <img src={Star}></img>
-                <Typography className={styles.cardRating}>
-                  {Math.abs(itemData?.feedback.rating).toFixed(1)} (
-                  {convertBigNumbers(itemData?.feedback?.reviews)})
-                </Typography>
-              </Box>
-              <Box className={styles.cardTiming}>
-                <Box className={styles.timing}>
-                  <img src={Clock}></img>
-                  <Typography className={styles.cardClock}>
-                    Accepting Till {itemData?.acceptingTime}
-                  </Typography>
-                </Box>
-              </Box>
+          <Box className={styles.cardContentLeft}>
+            <Box>
+              <Typography className={styles.cardAddress}>
+                {itemData?.providerData?.providerName}
+              </Typography>
             </Box>
-          ) : (
-            <Box className={styles.cardContentLeft}>
-              <Box>
-                <Typography className={styles.cardAddress}>
-                  {itemData?.providerData?.providerName}
-                </Typography>
-              </Box>
-              <Box className={styles.cardItem}>
-                <Typography className={styles.cardFood}>{itemData?.title}</Typography>
+            <Box className={styles.cardItem}>
+              <Typography className={styles.cardFood}>{itemData?.title}</Typography>
+              {!isMobile && (
                 <Typography className={styles.cardRating}>
                   <img src={Star}></img>
                   {Math.abs(itemData?.feedback.rating).toFixed(1)} (
                   {convertBigNumbers(itemData?.feedback?.reviews)})
                 </Typography>
+              )}
+            </Box>
+            <Box>
+              <Typography className={styles.unitsLeft}>{itemData.orderNo} units left!</Typography>
+            </Box>
+            <Box className={styles.cardTiming}>
+              <Box className={styles.timing}>
+                <img src={Clock}></img>
+                <Typography className={styles.cardClock}>
+                  Accepting Till {formatStringToTime(itemData?.acceptingTime)}
+                </Typography>
               </Box>
-              <Box>
-                <Typography className={styles.unitsLeft}>{itemData.orderNo} units left!</Typography>
-              </Box>
-              <Box className={styles.cardTiming}>
-                <Box className={styles.timing}>
-                  <img src={Clock}></img>
-                  <Typography className={styles.cardClock}>
-                    Accepting Till {formatStringToTime(itemData?.acceptingTime)}
-                  </Typography>
-                </Box>
-                <Box className={styles.timing}>
-                  <img src={Calendar}></img>
-                  <Typography className={styles.cardClock}>
-                    {formatStringToDate(itemData?.acceptingTime)}
-                  </Typography>
-                </Box>
+              <Box className={styles.timing}>
+                <img src={Calendar}></img>
+                <Typography className={styles.cardClock}>
+                  {formatStringToDate(itemData?.acceptingTime)}
+                </Typography>
               </Box>
             </Box>
-          )}
+          </Box>
           <Box className={styles.cardContentRight}>
-            <Box className={styles.cardValue}>
-              <Typography className={styles.cardPrice}>
-                <CurrencyRupee />
-                {itemData?.price}
+            {isMobile && (
+              <Typography className={styles.cardRating}>
+                <img src={Star}></img>
+                {Math.abs(itemData?.feedback.rating).toFixed(1)} (
+                {convertBigNumbers(itemData?.feedback?.reviews)})
               </Typography>
+            )}
+            <Box className={styles.cardValue}>
+              <Typography className={styles.cardPrice}>₹ {itemData?.price}</Typography>
             </Box>
             {quantity ? (
               <CartButton
@@ -181,7 +154,7 @@ const Dish = (props: DishProp) => {
               />
             ) : (
               <Button onClick={handleAddToCart} className={styles.cardButton}>
-                {isMobile ? '+Add' : 'Add to cart'}
+                {isMobile ? '+ Add' : 'Add to cart'}
               </Button>
             )}
           </Box>

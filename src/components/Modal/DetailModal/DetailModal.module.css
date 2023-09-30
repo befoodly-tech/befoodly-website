@@ -81,22 +81,34 @@
 
 @media screen and (max-width: 600px) {
   .modalBox {
+    padding: 16px;
+
     .foodModalTitle {
       .foodLable {
+        font-size: 24px;
       }
     }
 
     .modalDescription {
       width: 20rem;
-      padding-top: 1.94rem;
+
+      @media screen and (max-width: 400px) {
+        width: 18rem;
+      }
+      padding: 1rem 0;
+
       .modalDescriptionTitle {
+        font-size: 20px;
       }
 
       .modalDescriptionSection {
+        padding-top: 1rem;
+        font-size: 16px;
       }
     }
 
     .modalCategory {
+      margin-top: 1rem;
     }
   }
 }

@@ -23,7 +23,7 @@ const Chefs = (props: ChefsProps) => {
   return (
     <Box className={styles.mainSection}>
       <Container className={styles.chefsBox}>
-        <Typography className={styles.popular}>Meet Our Popular Chefs!</Typography>
+        <Typography className={styles.popular}>Meet Our Chefs!</Typography>
         <DataLoadingCircle isLoading={isLoading} />
         {chefData?.data ? (
           <Box>

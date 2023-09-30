@@ -41,3 +41,22 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .cartTotalContainer {
+    width: 100%;
+
+    .dataField {
+      width: 100%;
+
+      .hrLine {
+        width: 100%;
+      }
+    }
+
+    .checkoutBtn {
+      width: 100%;
+    }
+  }
+}
+

@@ -36,6 +36,7 @@ const AddressModal = (props: AddressModalProps) => {
     <Modal
       open={props.open}
       onClose={props.onClose}
+      sx={{ overflowY: 'scroll' }}
       aria-labelledby="address-modal-title"
       aria-describedby="address-modal-description"
     >

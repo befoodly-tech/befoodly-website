@@ -41,12 +41,14 @@ const Profile = () => {
         ? profileData?.email
         : undefined;
 
-      dispatch(
-        editCustomerDataApi({
-          customerId: customerData?.data?.referenceId,
-          body: { name: newName, email: newEmail }
-        })
-      );
+      if (newName || newEmail) {
+        dispatch(
+          editCustomerDataApi({
+            customerId: customerData?.data?.referenceId,
+            body: { name: newName, email: newEmail }
+          })
+        );
+      }
     } else {
       setErrorMessage('Invalid Email entered!');
     }

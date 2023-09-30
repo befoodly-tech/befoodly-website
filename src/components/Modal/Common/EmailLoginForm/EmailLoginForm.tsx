@@ -65,7 +65,7 @@ const EmailLoginForm = (props: EmailLoginFormProps) => {
             onClick={() => props.handleOnSendOtp(email)}
           >
             Send OTP
-            <ChevronRight sx={{ color: '#191919' }} />
+            <ChevronRight className={styles.rightArrow} />
           </Button>
         </Box>
       </FormControl>
@@ -87,7 +87,7 @@ const EmailLoginForm = (props: EmailLoginFormProps) => {
           />
           <Button type="submit" className={styles.sendOtp}>
             Verify
-            <ChevronRight sx={{ color: '#191919' }} />
+            <ChevronRight className={styles.rightArrow} />
           </Button>
         </Box>
       </FormControl>
