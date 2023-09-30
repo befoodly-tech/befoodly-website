@@ -17,7 +17,6 @@
       align-items: center;
 
       .enterNo {
-
       }
 
       .sendOtp {
@@ -37,7 +36,6 @@
         box-shadow: 0px 4px 20px 0px rgba(255, 202, 32, 0.25);
 
         .rightArrow {
-
         }
       }
 
@@ -67,7 +65,7 @@
         @media screen and (max-width: 380px) {
           width: 300px;
         }
-        
+
         .enterNo {
           width: 240px;
         }
