@@ -1,6 +1,8 @@
 import { MethodType, ParamData } from '../types/ApiHelperFile';
+import prodConfig from '../config.prod.json';
 
-const BASE_URL = window.config.BASE_URL;
+const BASE_URL =
+  process.env?.NODE_ENV === 'production' ? prodConfig.BASE_URL : window.config.BASE_URL;
 
 export const API_URLS = {
   SESSION_CHECK: '/v1/check',
