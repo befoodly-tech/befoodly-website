@@ -110,13 +110,13 @@ const Dish = (props: DishProp) => {
             </Box>
             <Box className={styles.cardItem}>
               <Typography className={styles.cardFood}>{itemData?.title}</Typography>
-              {!isMobile && (
+              {/* {!isMobile && (
                 <Typography className={styles.cardRating}>
                   <img src={Star}></img>
                   {Math.abs(itemData?.feedback.rating).toFixed(1)} (
                   {convertBigNumbers(itemData?.feedback?.reviews)})
                 </Typography>
-              )}
+              )} */}
             </Box>
             <Box>
               <Typography className={styles.unitsLeft}>{itemData.orderNo} units left!</Typography>
@@ -137,13 +137,13 @@ const Dish = (props: DishProp) => {
             </Box>
           </Box>
           <Box className={styles.cardContentRight}>
-            {isMobile && (
+            {/* {isMobile && (
               <Typography className={styles.cardRating}>
                 <img src={Star}></img>
                 {Math.abs(itemData?.feedback.rating).toFixed(1)} (
                 {convertBigNumbers(itemData?.feedback?.reviews)})
               </Typography>
-            )}
+            )} */}
             <Box className={styles.cardValue}>
               <Typography className={styles.cardPrice}>₹ {itemData?.price}</Typography>
             </Box>

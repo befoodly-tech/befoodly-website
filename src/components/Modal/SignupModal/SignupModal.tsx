@@ -47,7 +47,7 @@ const SignupModal = (props: SignupModalProps) => {
 
   return (
     <>
-      {<LoadingCircle isLoading={isLoading} />}
+      <LoadingCircle isLoading={isLoading} />
       <Modal
         open={props.open}
         onClose={() => handleSignUpClosed()}
