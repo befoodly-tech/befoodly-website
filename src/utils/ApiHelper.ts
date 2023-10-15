@@ -20,7 +20,8 @@ export const API_URLS = {
   EDIT_CART: '/v1/order/edit-cart',
   PLACE_ORDER: '/v1/order/confirm',
   FETCH_PENDING_ORDERS: '/v1/delivery/pending-orders',
-  FETCH_ORDER_ITEMS: '/v1/order/order-details'
+  FETCH_ORDER_ITEMS: '/v1/order/order-details',
+  FETCH_AVAILABLE_TIME_SLOTS: '/v1/delivery/available-slots'
 };
 
 export const getApiUrl = (uri: string, path?: string, params?: ParamData[]) => {

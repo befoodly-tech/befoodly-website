@@ -28,6 +28,7 @@ import { useState } from 'react';
 import { theme } from '../../../ui/theme';
 import { addItemToCart, removeItemFromCart } from '../../../actions/CartActions';
 import { getCookie } from '../../../utils/CookieHelper';
+import LoginModal from '../../Modal/LoginModal/LoginModal';
 
 export interface DishProp {
   itemData: ProductData;

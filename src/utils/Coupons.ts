@@ -22,7 +22,7 @@ export const offerCards: OfferCardProps[] = [
     disRupee: 20,
     disDescription: 'Delivery Fee',
     disIcon: SvgDiet,
-    disRule: 'If distance > 2km, COD :)',
+    disRule: 'If distance > 2km :)',
     background:
       'linear-gradient(136deg, #C94217 0%, #EE682F 88.81%), linear-gradient(140deg, #4FA0FF 0%, #434BFF 100%)'
   }
