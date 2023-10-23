@@ -41,6 +41,8 @@ const EmailLoginForm = (props: EmailLoginFormProps) => {
         message: props.loginData?.errorMessage
       });
       dispatch(removeLoginErrorData());
+    } else {
+      location.reload();
     }
   }, [props.loginData]);
 

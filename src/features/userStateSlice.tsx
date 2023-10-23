@@ -58,6 +58,7 @@ const userStateSlice = createSlice({
       } else {
         state.customerData = action.payload;
       }
+      location.reload();
     });
     builder.addCase(fetchCustomerDataApi.fulfilled, (state, action) => {
       state.isLoading = false;
