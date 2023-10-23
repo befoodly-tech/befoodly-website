@@ -47,7 +47,7 @@ const SignupModal = (props: SignupModalProps) => {
 
   return (
     <>
-      {<LoadingCircle isLoading={isLoading} />}
+      <LoadingCircle isLoading={isLoading} />
       <Modal
         open={props.open}
         onClose={() => handleSignUpClosed()}
@@ -58,11 +58,9 @@ const SignupModal = (props: SignupModalProps) => {
         <Box className={styles.signupModal}>
           <Box id="signup-modal-title" className={styles.signupTitle}>
             <Typography className={styles.signupLabel}>SignUp</Typography>
-            {onSignIn && (
-              <Box>
-                <Button startIcon={<SvgCancleIcon />} onClick={() => handleSignUpClosed()} />
-              </Box>
-            )}
+            <Box>
+              <Button startIcon={<SvgCancleIcon />} onClick={() => handleSignUpClosed()} />
+            </Box>
           </Box>
           <Box id="signup-modal-description">
             {onSignIn ? (

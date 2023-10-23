@@ -72,7 +72,6 @@ const loginSlice = createSlice({
         setCookie('phone', action.payload?.data?.customerData?.phoneNumber, 30);
         setCookie('customerId', action.payload?.data?.customerData?.referenceId, 30);
         state.isSessionExpired = false;
-        location.reload();
       }
     });
     builder.addCase(healthCheckApi.fulfilled, (state, action) => {

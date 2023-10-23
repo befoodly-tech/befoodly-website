@@ -37,6 +37,21 @@ const Dishes = (props: DishesProps) => {
     }
   }, [productData, trendingProductData]);
 
+  const validDishData = (dish: ProductData) => {
+    const acceptingTime = new Date(dish?.acceptingTime);
+    const currentTime = new Date();
+
+    if (acceptingTime < currentTime) {
+      return false;
+    }
+
+    if (dish?.orderNo == 0) {
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <Box className={styles.FoodGallery}>
       <Container>
@@ -45,7 +60,7 @@ const Dishes = (props: DishesProps) => {
         </Typography>
         <DataLoadingCircle isLoading={isLoading} />
         <Box className={styles.FoodDisplay}>
-          {currentProductData?.data ? (
+          {currentProductData?.data?.length > 0 ? (
             <Grid container className={styles.FoodGrid} rowSpacing={2.5} columnSpacing={2}>
               {/* {!isTrending && (
                 <Grid key={makeYourOwnMeal.id} item md={4} sm={6} xs={12}>
@@ -54,7 +69,7 @@ const Dishes = (props: DishesProps) => {
               )} */}
               {currentProductData?.data?.map((dish: ProductData) => (
                 <Grid key={dish.id} item md={4} sm={6} xs={12}>
-                  <Dish itemData={dish} bucketUrl={bucketUrl} />
+                  {validDishData(dish) && <Dish itemData={dish} bucketUrl={bucketUrl} />}
                 </Grid>
               ))}
             </Grid>

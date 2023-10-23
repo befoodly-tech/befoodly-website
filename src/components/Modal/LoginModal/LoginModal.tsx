@@ -38,7 +38,7 @@ const LoginModal = (props: LoginModalProps) => {
 
   return (
     <>
-      {<LoadingCircle isLoading={isLoading} />}
+      <LoadingCircle isLoading={isLoading} />
       <Modal
         open={props.open}
         onClose={props.handleClose}

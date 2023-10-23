@@ -12,12 +12,13 @@ import AppHome from '../pages/AppHome';
 import { GenericGlobalData } from '../types/CommonType';
 import { getCookie } from '../utils/CookieHelper';
 import TrackOrder from '../pages/TrackOrder/TrackOrder';
+import prodConfig from '../config.prod.json';
 
 const commonGlobalData: GenericGlobalData = {
   phoneNumber: getCookie('phone'),
   sessionToken: getCookie('session'),
   customerId: getCookie('customerId'),
-  s3Url: window.config?.S3_URL
+  s3Url: process.env.NODE_ENV === 'production' ? prodConfig.S3_URL : window.config?.S3_URL
 };
 
 const router = createBrowserRouter([

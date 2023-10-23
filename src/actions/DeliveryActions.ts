@@ -10,3 +10,12 @@ export const fetchPendingDeliveryData = createAsyncThunk(
     return ApiHelper(apiUrl, MethodType.GET);
   }
 );
+
+export const fetchAvailableDeliverySlots = createAsyncThunk(
+  'fetch/availableDeliveryTimeSlot',
+  () => {
+    const apiUrl = getApiUrl(API_URLS.FETCH_AVAILABLE_TIME_SLOTS);
+
+    return ApiHelper(apiUrl, MethodType.GET);
+  }
+);

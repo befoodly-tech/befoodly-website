@@ -1,6 +1,5 @@
-import { Button, Container, MenuItem, TextField, Typography, useMediaQuery } from '@mui/material';
+import { Container, MenuItem, TextField, Typography, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import CartItems from './CartItems/CartItems';
 import styles from './Cart.module.css';
@@ -14,7 +13,7 @@ import EmptyDataCard from '../Common/EmptyDataCard';
 import { RemoveShoppingCart } from '@mui/icons-material';
 import CouponCard from '../Common/CouponCard';
 import { offerCards } from '../../utils/Coupons';
-import { AddressData, CartItem, DiscountType } from '../../types/CommonType';
+import { AddressData, CartItem, DeliverySlotType, DiscountType } from '../../types/CommonType';
 import CartTotal from './CartTotal/CartTotal';
 import { fetchAllAddressesApi } from '../../actions/CustomerActions';
 import { addToCart, removeFromCart } from '../../features/cartSlice';
@@ -22,6 +21,7 @@ import LoadingCircle from '../Common/LoadingCircle';
 import ConfirmationDialog from '../Common/ConfirmationDialog';
 import ApiStatusDialog from '../Common/ApiStatusDialog';
 import { theme } from '../../ui/theme';
+import { fetchAvailableDeliverySlots } from '../../actions/DeliveryActions';
 
 interface CartProps {
   customerId: string;
@@ -31,17 +31,19 @@ const Cart = (props: CartProps) => {
   const { isLoading, cartData, totalCost, orderConfirmData, isError } = useAppSelector(
     state => state.cart
   );
+  const { availableDeliverySlots } = useAppSelector(state => state.delivery);
   const { addressData } = useAppSelector(state => state.user);
   const [discountAmount, setDiscountAmount] = useState(0);
   const [deliveryAddress, setDeliveryAddress] = useState<AddressData>();
+  const [deliverySlot, setDeliverySlot] = useState<string>();
   const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
-  const deliveryAmount = 20;
+  const deliveryAmount = 0;
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
+    dispatch(fetchAvailableDeliverySlots());
     if (!cartData?.data && props.customerId) {
       dispatch(fetchActiveCartData(props.customerId));
     }
@@ -59,6 +61,12 @@ const Cart = (props: CartProps) => {
       setDeliveryAddress(addressData?.data[0]);
     }
   }, [addressData]);
+
+  useEffect(() => {
+    if (availableDeliverySlots?.data?.length > 0) {
+      setDeliverySlot(availableDeliverySlots?.data[0]?.value);
+    }
+  }, [availableDeliverySlots]);
 
   const handleAddToCart = (cartItem: CartItem) => {
     dispatch(addToCart(cartItem));
@@ -102,8 +110,12 @@ const Cart = (props: CartProps) => {
     );
   };
 
+  const handleDeliverySlotChange = (slotDateTime: string) => {
+    setDeliverySlot(slotDateTime);
+  };
+
   const handlePlaceOrder = () => {
-    if (deliveryAddress) {
+    if (deliveryAddress && deliverySlot) {
       setOpenConfirmDialog(true);
     }
   };
@@ -117,7 +129,8 @@ const Cart = (props: CartProps) => {
           finalCost: Math.abs(totalCost + deliveryAmount - discountAmount),
           deliveryCost: deliveryAmount,
           discountAmount: discountAmount,
-          addressId: deliveryAddress?.id
+          addressId: deliveryAddress?.id,
+          deliverySlot: deliverySlot
         }
       })
     );
@@ -167,7 +180,7 @@ const Cart = (props: CartProps) => {
               />
             </div>
             <Typography className={styles.headingStyle}>Delivery Address</Typography>
-            {addressData?.data && (
+            {addressData?.data ? (
               <TextField
                 select
                 className={styles.addressSection}
@@ -181,20 +194,30 @@ const Cart = (props: CartProps) => {
                   </MenuItem>
                 ))}
               </TextField>
+            ) : (
+              <Typography color="red" fontSize={12}>
+                Address is required!
+              </Typography>
             )}
-            {!addressData?.data && (
-              <>
-                <Typography color="red" fontSize={12}>
-                  Address is required!
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="warning"
-                  onClick={() => navigate('/app/profile')}
-                >
-                  Add Address
-                </Button>
-              </>
+            <Typography className={styles.headingStyle}>Delivery Slot</Typography>
+            {availableDeliverySlots?.data?.length > 0 ? (
+              <TextField
+                select
+                className={styles.addressSection}
+                defaultValue={availableDeliverySlots?.data[0]?.value}
+                helperText="*Please select your delivery slot"
+                onChange={e => handleDeliverySlotChange(e.target.value)}
+              >
+                {availableDeliverySlots?.data?.map((slot: DeliverySlotType) => (
+                  <MenuItem key={slot.value} value={slot.value}>
+                    {slot.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            ) : (
+              <Typography color="grey" fontSize={12}>
+                No Available Slot
+              </Typography>
             )}
             {isMobile && (
               <CartTotal

@@ -143,3 +143,13 @@ export interface FAQsType {
   question: string;
   answer: string;
 }
+
+export interface HourMinuteTimeType {
+  hour: number;
+  minutes: number;
+}
+
+export interface DeliverySlotType {
+  label: string;
+  value: string;
+}
