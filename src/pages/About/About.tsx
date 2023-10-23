@@ -10,6 +10,8 @@ import DeepakImg from '../../assets/images/deepak.jpg';
 import { CustomCardProps, TeamCardProps } from '../../types/CommonType';
 import Separator from '../../components/Common/Separator';
 import TeamCard from '../../components/Common/TeamCard';
+import FAQs from '../../components/FAQs/FAQs';
+import { aboutPageFAQs } from '../../utils/GeneralFAQs';
 
 const allCards: CustomCardProps[] = [
   {
@@ -30,7 +32,7 @@ const allCards: CustomCardProps[] = [
     title: 'Step-by-Step Cooking',
     photoUrl: HomeChef,
     description:
-      '"I have been cooking for a long time, but that doesn\'t mean that you need a ton of cooking experience to make any recipe. I work hard to make my recipes taste delicious and homely. I love to serve homemade food to people and make their day!"',
+      '"Experience the magic of freshly prepared meals right with our step-by-step cooking. We ensure that every dish is created with care and precision. Discover the convenience and deliciousness of having quality meals without leaving your home. Trust us to bring the joy of homemade cooking to your doorstep, one step at a time"',
     author: 'The HomeChef'
   }
 ];
@@ -81,6 +83,9 @@ const About = () => {
             return <TeamCard key={index} {...data} />;
           })}
         </Box>
+      </Container>
+      <Container>
+        <FAQs faqs={aboutPageFAQs} />
       </Container>
     </>
   );

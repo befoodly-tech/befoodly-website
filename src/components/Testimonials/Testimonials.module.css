@@ -1,0 +1,42 @@
+.testimony {
+  text-align: center;
+
+  .testimonyHead {
+    font-family: Roboto-Black;
+    color: rgb(161, 151, 37);
+  }
+
+  .testimonyGrid {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .testimony {
+    text-align: center;
+
+    .testimonyHead {
+      font-family: Roboto-Black;
+      color: rgb(161, 151, 37);
+    }
+
+    .testimonyGrid {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .testimony {
+    text-align: center;
+
+    .testimonyHead {
+      font-family: Roboto-Black;
+      color: rgb(161, 151, 37);
+    }
+
+    .testimonyGrid {
+      width: 100%;
+    }
+  }
+}

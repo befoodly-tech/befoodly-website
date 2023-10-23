@@ -1,4 +1,3 @@
-import React from 'react';
 import { Grid, Typography } from '@mui/material';
 import HomeChef from '../../assets/images/home-chef.jpg';
 import Vegetable from '../../assets/images/fresh-veggies.jpg';
@@ -22,22 +21,27 @@ const Middle = () => {
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Looking For Homemade Food?
+            Craving Homemade Food?
           </Typography>
           <Typography className={styles.textFrame2}>
-            Explore our food menu, all the recipes are made by our home-chefs inside their kitchen
-            with the homely flavour and ingredients.
+            We believe in the power of homely flavors and ingredients that make every bite a
+            nostalgic journey back to your roots. From Grandma&#39;s secret recipes to innovative
+            twists on classic favorites, our chefs pour their love and expertise into every dish.
+            It&#39;s more than just a meal; it&#39;s a taste of home, a celebration of tradition,
+            and a feast for your senses.
           </Typography>
         </Grid>
         {/* Part 2 */}
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 4, md: 4 }}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Fear Of Quality And Hygiene?
+            Worried About Quality and Hygiene?
           </Typography>
           <Typography className={styles.textFrame2}>
-            All the kitchens are verified as per govt. regulations, and as per our terms &
-            conditions. Every home-chef cleans the kitchen before cooking any meal, we trust into
-            using fresh veggies and fruits.
+            We understand that when it comes to food, quality and hygiene are of utmost importance.
+            Rest assured, we take your concerns seriously. We source handpicked ingredients and our
+            chefs maintain clean and sanitized kitchens. If ever you&#39;re not completely satisfied
+            with your order, please don&#39;t hesitate to reach out. Your satisfaction is our top
+            priority.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 3, md: 4 }}>
@@ -52,8 +56,8 @@ const Middle = () => {
             Want Home Delivery?
           </Typography>
           <Typography className={styles.textFrame2}>
-            Yes, you can place food order with your favourite home chef. Once the food is prepared,
-            we will assign a delivery partner to pick your order and deliver on time at your home.
+            Yes, you can place food order with your favourite chef. Once the food is prepared, we
+            will assign a delivery partner to pick your order and deliver on time at your home.
           </Typography>
         </Grid>
       </Grid>
