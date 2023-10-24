@@ -1,6 +1,5 @@
 // createBrowserRouter,
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import ComingSoon from '../pages/ComingSoon';
 import Layout from '../components/Layout/Layout';
 import About from '../pages/About/About';
 import Blog from '../pages/Blog/Blog';
@@ -12,6 +11,7 @@ import AppHome from '../pages/AppHome';
 import { GenericGlobalData } from '../types/CommonType';
 import { getCookie } from '../utils/CookieHelper';
 import TrackOrder from '../pages/TrackOrder/TrackOrder';
+import ComingSoon from '../pages/ComingSoon/ComingSoon';
 
 const commonGlobalData: GenericGlobalData = {
   phoneNumber: getCookie('phone'),
@@ -53,16 +53,16 @@ const router = createBrowserRouter([
             <Blog />
           </>
         )
+      },
+      {
+        path: '/comingsoon',
+        element: (
+          <>
+            <ComingSoon />
+          </>
+        )
       }
     ]
-  },
-  {
-    path: '/comingsoon',
-    element: (
-      <>
-        <ComingSoon />
-      </>
-    )
   },
   {
     path: '/app',
