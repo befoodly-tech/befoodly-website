@@ -10,7 +10,7 @@ const Top = () => {
         <Typography className={styles.detailsMain}>
           Join us in our love for homemade food & drink
         </Typography>
-        <Button variant="contained" href="/app" className={styles.exploreBtn}>
+        <Button variant="contained" href="/comingsoon" className={styles.exploreBtn}>
           Explore Menu
         </Button>
       </Box>

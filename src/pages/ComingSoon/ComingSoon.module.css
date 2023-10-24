@@ -1,0 +1,16 @@
+.comingSoonContainer {
+    padding: 16px;
+    text-align: center;
+
+    .mainText {
+        font-family: Outfit;
+        color: #434343;
+        padding: 16px 0;
+    }
+
+    .secondaryText {
+        font-family: Outfit;
+        color: #5d5d5d;
+        padding: 16px 0;
+    }
+}

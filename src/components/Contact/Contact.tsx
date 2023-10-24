@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import styles from './Contact.module.css';
 import Separator from '../Common/Separator';
-import WhatsAppQR from '../../assets/images/BefoodlyWhatsapp.jpg';
+import WhatsAppQR from '../../assets/images/BefoodlyWhatsapp.jpeg';
 
 const Contact = () => {
   return (
@@ -18,7 +18,7 @@ const Contact = () => {
           We love our customers, so feel free to contact us 24 hours.
         </Typography>
         <Typography variant="h6" padding={'20px'}>
-          Scan the QR to join our community
+          Scan the QR code to order food.
         </Typography>
         <img src={WhatsAppQR} width={'200px'}></img>
       </Box>
