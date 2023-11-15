@@ -4,7 +4,7 @@ import styles from './About.module.css';
 import CustomCard from '../../components/CustomCard/CustomCard';
 import IndianFood from '../../assets/images/indian-food.jpg';
 import HomeKitchen from '../../assets/images/home-kitchen.jpg';
-import HomeChef from '../../assets/images/home-chef2.jpg';
+import HomeChef from '../../assets/images/cook.jpeg';
 import PiyushImg from '../../assets/images/Piyush.jpg';
 import DeepakImg from '../../assets/images/deepak.jpg';
 import { CustomCardProps, TeamCardProps } from '../../types/CommonType';

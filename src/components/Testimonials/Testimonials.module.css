@@ -8,6 +8,20 @@
 
   .testimonyGrid {
     width: 60%;
+    
+    .testimonialCard {
+      border-radius: 40px;
+
+      .testimonialMessage {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .quotesStyle {
+          width: 80px;
+        }
+      }
+    }
   }
 }
 

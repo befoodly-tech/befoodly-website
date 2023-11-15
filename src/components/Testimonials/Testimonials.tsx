@@ -7,6 +7,7 @@ import rightQuotes from '../../assets/svgs/StyleRight.svg';
 import { testimonials } from '../../utils/Testimony';
 import styles from './Testimonials.module.css';
 import Separator from '../Common/Separator';
+import { grey } from '@mui/material/colors';
 
 const TestimonialSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,22 +33,22 @@ const TestimonialSlider = () => {
       <Separator />
       <Grid container direction="column" alignItems="center" spacing={2}>
         <Grid item className={styles.testimonyGrid}>
-          <Card sx={{ borderRadius: '42px' }}>
+          <Card className={styles.testimonialCard}>
             <CardContent>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={leftQuotes}></img>
-                <Typography>&#34;{testimonials[currentIndex].message}&#34;</Typography>
-                <img src={rightQuotes} style={{ alignContent: 'left' }}></img>
+              <Box className={styles.testimonialMessage}>
+                <img className={styles.quotesStyle} src={leftQuotes} />
+                <Typography color={grey}>{testimonials[currentIndex].message}</Typography>
+                <img
+                  className={styles.quotesStyle}
+                  src={rightQuotes}
+                  style={{ alignContent: 'left' }}
+                />
               </Box>
               <Typography variant="h6" textAlign={'center'} padding={'10px'}>
-                {testimonials[currentIndex].name}
+                - {testimonials[currentIndex].name}
               </Typography>
             </CardContent>
           </Card>
-          {/* <Typography variant="h6">{testimonials[currentIndex].name}</Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant="body1">{testimonials[currentIndex].message}</Typography> */}
         </Grid>
         <Grid item>
           <IconButton onClick={prevTestimonial}>
