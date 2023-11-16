@@ -1,5 +1,23 @@
+import { AppBar, Container, Toolbar } from '@mui/material';
+import styles from './Kitchen.module.css';
+
 const Kitchen = () => {
-  return <div />;
+  const bucketUrl = 'https://webapp-befoodly.s3.ap-south-1.amazonaws.com/kitchen-gallery/';
+
+  const kitchenGallery = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  return (
+    <>
+      <AppBar sx={{ zIndex: 1, backgroundColor: 'black', padding: '16px 0', position: 'relative' }}>
+        <Toolbar />
+      </AppBar>
+      <Container className={styles.galleryContainer}>
+        {kitchenGallery.map(index => (
+          <img className={styles.imageCard} src={bucketUrl + index + '.jpg'} key={index} />
+        ))}
+      </Container>
+    </>
+  );
 };
 
 export default Kitchen;

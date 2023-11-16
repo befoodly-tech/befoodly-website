@@ -21,7 +21,7 @@ const Middle = () => {
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Craving Homemade Food?
+            Craving For Homemade Food?
           </Typography>
           <Typography className={styles.textFrame2}>
             We believe in the power of homely flavors and ingredients that make every bite a
@@ -56,8 +56,10 @@ const Middle = () => {
             Want Home Delivery?
           </Typography>
           <Typography className={styles.textFrame2}>
-            Yes, you can place food order with your favourite chef. Once the food is prepared, we
-            will assign a delivery partner to pick your order and deliver on time at your home.
+            Yes, you can order food from any nearby BeFoodly Kitchen. We work on pre-order model and
+            batching delivery model. You have to book your meal before the deadline, and select your
+            preferred delivery timing. Once the food is prepared, we will assign a delivery partner
+            to pick your order and deliver on time at your doorstep.
           </Typography>
         </Grid>
       </Grid>

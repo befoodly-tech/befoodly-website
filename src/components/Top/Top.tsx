@@ -1,5 +1,6 @@
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
+import cx from 'classnames';
 import styles from './Top.module.css';
 
 const Top = () => {
@@ -10,9 +11,18 @@ const Top = () => {
         <Typography className={styles.detailsMain}>
           Join us in our love for homemade food & drink
         </Typography>
-        <Button variant="contained" href="/comingsoon" className={styles.exploreBtn}>
-          Explore Menu
-        </Button>
+        <div className={styles.homeButton}>
+          <Button variant="contained" href="/ourkitchen" className={styles.exploreBtn}>
+            Visit Our Kitchen
+          </Button>
+          <Button
+            variant="contained"
+            href="/comingsoon"
+            className={cx(styles.exploreBtn, styles.kitchenBtn)}
+          >
+            Explore Menu
+          </Button>
+        </div>
       </Box>
     </Box>
   );

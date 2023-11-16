@@ -35,20 +35,31 @@
       text-align: center;
     }
 
-    .exploreBtn {
-      background-color: #feba10;
-      font-size: 14px;
-      margin-top: 32px;
-      font-family: Roboto-Bold;
-      color: rgb(26, 26, 24);
-      border-radius: 4px;
-      min-height: 56px;
-      padding: 8px 32px;
-      text-align: center;
-      letter-spacing: 0.071em;
+    .homeButton {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
 
-      &:hover {
-        background-color: rgb(247, 247, 247);
+      .exploreBtn {
+        background-color: #feba10;
+        font-size: 14px;
+        margin-top: 32px;
+        font-family: Roboto-Bold;
+        color: rgb(26, 26, 24);
+        border-radius: 4px;
+        min-height: 56px;
+        padding: 8px 32px;
+        text-align: center;
+        letter-spacing: 0.071em;
+
+        &:hover {
+          background-color: rgb(247, 247, 247);
+        }
+      }
+
+      .kitchenBtn {
+        background-color: #14ae5c;
       }
     }
   }
@@ -68,8 +79,10 @@
         padding: 0 12px;
       }
 
-      .exploreBtn {
-        min-height: 48px;
+      .homeButton {
+        .exploreBtn {
+          min-height: 48px;
+        }
       }
     }
   }
@@ -89,8 +102,10 @@
         padding: 0 12px;
       }
 
-      .exploreBtn {
-        min-height: 48px;
+      .homeButton {
+        .exploreBtn {
+          min-height: 48px;
+        }
       }
     }
   }
@@ -102,7 +117,7 @@
       url(../../assets/images/food-banner-img-mobile.jpg);
 
     .intro {
-      top: 8rem;
+      top: 6rem;
 
       .headingMain {
         font-size: 40px;
@@ -114,8 +129,11 @@
         font-size: 20px;
       }
 
-      .exploreBtn {
-        min-height: 48px;
+      .homeButton {
+        .exploreBtn {
+          margin-top: 8px;
+          min-height: 40px;
+        }
       }
     }
   }

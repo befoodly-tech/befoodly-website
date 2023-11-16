@@ -12,6 +12,7 @@ import { GenericGlobalData } from '../types/CommonType';
 import { getCookie } from '../utils/CookieHelper';
 import TrackOrder from '../pages/TrackOrder/TrackOrder';
 import ComingSoon from '../pages/ComingSoon/ComingSoon';
+import Kitchen from '../pages/Kitchen/Kitchen';
 
 const commonGlobalData: GenericGlobalData = {
   phoneNumber: getCookie('phone'),
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
         element: (
           <>
             <ComingSoon />
+          </>
+        )
+      },
+      {
+        path: '/ourkitchen',
+        element: (
+          <>
+            <Kitchen />
           </>
         )
       }

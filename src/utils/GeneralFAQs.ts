@@ -22,13 +22,13 @@ export const postOrderFAQs: FAQsType[] = [
 
 export const aboutPageFAQs: FAQsType[] = [
   {
-    question: 'What is preorder?',
+    question: 'What is preorder model?',
     answer:
       'Preorder is a service that allows you to reserve products in advance and select a preferred delivery time. By placing an order ahead of time, you ensure availability and gain the convenience of planning deliveries or experiences according to your schedule.'
   },
   {
     question: 'What all locations do you serve?',
-    answer: 'We serve in a radius of 3kms of Bellandur.'
+    answer: 'We serve in a radius of 3kms from Sarjapur Signal.'
   },
   {
     question: 'How do you maintain quality and hygiene?',
