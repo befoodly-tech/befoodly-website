@@ -4,18 +4,18 @@ import styles from './Kitchen.module.css';
 const Kitchen = () => {
   const bucketUrl = 'https://webapp-befoodly.s3.ap-south-1.amazonaws.com/kitchen-gallery/';
 
-  const kitchenGallery = Array.from({ length: 10 }, (_, i) => i + 1);
+  const kitchenGallery = Array.from({ length: 33 }, (_, i) => i + 1);
 
   return (
     <>
       <AppBar sx={{ zIndex: 1, backgroundColor: 'black', padding: '16px 0', position: 'relative' }}>
         <Toolbar />
       </AppBar>
-      <Container className={styles.galleryContainer}>
+      <div className={styles.galleryContainer}>
         {kitchenGallery.map(index => (
           <img className={styles.imageCard} src={bucketUrl + index + '.jpg'} key={index} />
         ))}
-      </Container>
+      </div>
     </>
   );
 };

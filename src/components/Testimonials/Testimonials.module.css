@@ -35,7 +35,15 @@
     }
 
     .testimonyGrid {
-      width: 100%;
+      width: 90%;
+
+      .testimonialCard {
+        .testimonialMessage {
+          .quotesStyle {
+            width: 40px;
+          }
+        }
+      }
     }
   }
 }
@@ -50,7 +58,15 @@
     }
 
     .testimonyGrid {
-      width: 100%;
+      width: 90%;
+
+      .testimonialCard {
+        .testimonialMessage {
+          .quotesStyle {
+            width: 40px;
+          }
+        }
+      }
     }
   }
 }

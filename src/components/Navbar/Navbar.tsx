@@ -48,7 +48,7 @@ const Navbar = (props: NavbarProps) => {
       <Container className={styles.navContainer}>
         <Toolbar className={styles.toolbar}>
           <Box>
-            <Button variant="text" className={styles.logo} href={options[0]}>
+            <Button variant="text" className={styles.logo} onClick={() => onTabSwitch(options[0])}>
               BeFoodly
             </Button>
           </Box>

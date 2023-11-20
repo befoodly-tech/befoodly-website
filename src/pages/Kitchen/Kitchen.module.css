@@ -2,9 +2,21 @@
   padding: 24px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 
   .imageCard {
     padding: 12px;
-    max-width: 100%;
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .galleryContainer {
+    padding: 12px;
+
+    .imageCard {
+      padding: 8px;
+      max-width: 40%;
+    }
   }
 }
