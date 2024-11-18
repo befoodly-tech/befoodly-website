@@ -21,27 +21,31 @@ const Middle = () => {
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Craving For Homemade Food?
+            Craving For Homely Food In Bangalore?
           </Typography>
           <Typography className={styles.textFrame2}>
-            We believe in the power of homely flavors and ingredients that make every bite a
-            nostalgic journey back to your roots. From Grandma&#39;s secret recipes to innovative
-            twists on classic favorites, our chefs pour their love and expertise into every dish.
-            It&#39;s more than just a meal; it&#39;s a taste of home, a celebration of tradition,
-            and a feast for your senses.
+            At BeFoodly, we believe there&#39;s nothing quite like the taste of home. Our chefs
+            recreate the comforting flavours of traditional home-cooked meals, ensuring every bite
+            brings back the warmth and nostalgia of a family meals. Whether you&#39;re missing your
+            mom&#39;s delicacies or facing a lazy or hectic day at work, we&#39;re here to give you
+            the feel of home. Be it North Indian classics or South Indian delicacies, our diverse
+            menu has something special for everyone. So, order now and enjoy the wholesome goodness
+            of &quot;Ghar Jaisa Khana&quot; without stepping out of your home!
           </Typography>
         </Grid>
         {/* Part 2 */}
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 4, md: 4 }}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Worried About Quality and Hygiene?
+            How Do We Ensure Quality and Hygiene?
           </Typography>
           <Typography className={styles.textFrame2}>
             We understand that when it comes to food, quality and hygiene are of utmost importance.
             Rest assured, we take your concerns seriously. We source handpicked ingredients and our
-            chefs maintain clean and sanitized kitchens. If ever you&#39;re not completely satisfied
-            with your order, please don&#39;t hesitate to reach out. Your satisfaction is our top
-            priority.
+            helpers maintain clean and sanitized kitchens. Our kitchen adheres to the highest
+            standards of cleanliness and food safety, adding a touch of mom&#39;s magic to ensure
+            every dish is not only delicious but also safe and nutritious. If ever you&#39;re not
+            completely satisfied with your order, please don&#39;t hesitate to reach out. Your
+            satisfaction is our top priority.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 3, md: 4 }}>
@@ -53,13 +57,18 @@ const Middle = () => {
         </Grid>
         <Grid item xs={12} md={6} className={styles.gridItem} order={{ xs: 5, md: 6 }}>
           <Typography variant="h5" className={styles.textFrame1}>
-            Want Home Delivery?
+            Need Convenient Home Delivery?
           </Typography>
           <Typography className={styles.textFrame2}>
-            Yes, you can order food from any nearby BeFoodly Kitchen. We work on pre-order model and
-            batching delivery model. You have to book your meal before the deadline, and select your
-            preferred delivery timing. Once the food is prepared, we will assign a delivery partner
-            to pick your order and deliver on time at your doorstep.
+            Yes, We know how busy life can get in Bangalore, which is why we offer a seamless home
+            delivery service. We work on pre-order model and batching delivery model. You have to
+            book your meal atleast 45 mins before your lunch/dinner time, and select your preferred
+            delivery timing slot. Once the food is prepared, we will assign a delivery partner to
+            pick your order and deliver on time at your doorstep. With BeFoodly, you can have your
+            favorite meals delivered right to your doorstep, hassle-free. Whether it&#39;s lunch at
+            the office or dinner at home, our reliable delivery ensures your food arrives fresh and
+            on time. Join our membership program for even more convenience and benefits, including
+            customizable meal plans and flexible scheduling.
           </Typography>
         </Grid>
       </Grid>

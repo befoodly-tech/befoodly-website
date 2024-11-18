@@ -5,7 +5,6 @@ import CustomCard from '../../components/CustomCard/CustomCard';
 import IndianFood from '../../assets/images/indian-food.jpg';
 import HomeKitchen from '../../assets/images/home-kitchen.jpg';
 import HomeChef from '../../assets/images/cook.jpeg';
-import PiyushImg from '../../assets/images/Piyush.jpg';
 import DeepakImg from '../../assets/images/deepak.jpg';
 import { CustomCardProps, TeamCardProps } from '../../types/CommonType';
 import Separator from '../../components/Common/Separator';
@@ -45,15 +44,15 @@ const allTeamMembers: TeamCardProps[] = [
       'A Food and Tech Lover, trying to build a food tech. Through Befoodly, we want to make it easy for people to order homemade healthy food at very affordable prices.',
     title: 'The Creator',
     linkedinLink: 'https://www.linkedin.com/in/deepak8504/'
-  },
-  {
-    name: 'Piyush Chouhan',
-    photoUrl: PiyushImg,
-    description:
-      'A Passionate Foodie, trying to fill a gap in the F&B marketplace. To empower, small and medium food service providers to deliver homemade food to our customers.',
-    title: 'The Creator',
-    linkedinLink: 'https://www.linkedin.com/in/piyush-chouhan-041050130/'
   }
+  // {
+  //   name: 'Piyush Chouhan',
+  //   photoUrl: PiyushImg,
+  //   description:
+  //     'A Passionate Foodie, trying to fill a gap in the F&B marketplace. To empower, small and medium food service providers to deliver homemade food to our customers.',
+  //   title: 'The Creator',
+  //   linkedinLink: 'https://www.linkedin.com/in/piyush-chouhan-041050130/'
+  // }
 ];
 
 const About = () => {

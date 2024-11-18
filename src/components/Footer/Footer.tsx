@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import styles from './Footer.module.css';
 import { Link } from 'react-router-dom';
-import { Email, Instagram, LinkedIn, Phone } from '@mui/icons-material';
+import { Email, Instagram, LinkedIn, WhatsApp } from '@mui/icons-material';
 import { Container } from '@mui/system';
 
 const Footer = () => {
@@ -25,7 +25,10 @@ const Footer = () => {
             <span>support@befoodly.com</span>
           </div>
           <div className={styles.socialMediaConnect}>
-            <Phone sx={{ color: '#3DDC84', height: 32, width: 32 }} />
+            <WhatsApp
+              sx={{ color: '#3DDC84', height: 32, width: 32, cursor: 'pointer' }}
+              onClick={() => window.open('https://wa.me/message/YKJMQEA5XXL7O1', '_blank')}
+            />
             <span>+91-8755509017</span>
           </div>
           <div className={styles.socialMediaConnect}>

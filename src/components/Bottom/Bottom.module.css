@@ -1,22 +1,11 @@
 .intro {
   background-color: #feba10;
   text-align: center;
-  padding: 50px;
+  padding: 50px 20px;
   height: auto;
 
   .heading {
     font-family: Roboto-Black;
-  }
-
-  .separator {
-    border-color: rgb(212, 200, 56);
-    margin-bottom: 16px;
-  }
-
-  .endOfSection {
-    border-color: rgb(212, 200, 56);
-    border-bottom-width: 1px;
-    width: 100%;
   }
 
   .mid {
@@ -28,13 +17,19 @@
 
     .midblock {
       text-align: left;
-      padding: 16px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
 
       .subtext {
         color: rgb(71, 69, 56);
         margin-top: 16px;
+      }
+
+      .bookSlotBtn {
+        margin-top: 16px;
+        font-family: Roboto-Black;
+        width: 120px;
       }
     }
   }

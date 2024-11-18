@@ -55,11 +55,21 @@
 
         &:hover {
           background-color: rgb(247, 247, 247);
+          color: rgb(26, 26, 24);
         }
       }
 
       .kitchenBtn {
-        background-color: #14ae5c;
+        background-color: #25D366;
+      }
+
+      .swiggyBtn {
+        background-color: #fc8019;
+      }
+
+      .zomatoBtn {
+        background-color: #e23744;
+        color: #fff;
       }
     }
   }

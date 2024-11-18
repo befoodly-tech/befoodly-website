@@ -13,7 +13,7 @@ const Kitchen = () => {
       </AppBar>
       <div className={styles.galleryContainer}>
         {kitchenGallery.map(index => (
-          <img className={styles.imageCard} src={bucketUrl + index + '.jpg'} key={index} />
+          <img src={bucketUrl + index + '.jpg'} key={index} />
         ))}
       </div>
     </>
