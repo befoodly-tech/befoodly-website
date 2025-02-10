@@ -28,7 +28,7 @@ const Top = () => {
         <div className={styles.homeButton}>
           <Button
             variant="contained"
-            href="https://www.swiggy.com/direct/brand/493424?source=swiggy-direct&subSource=google"
+            href="https://www.swiggy.com/city/bangalore/befoodly-gsr-estates-bellandur-sarjapur-rest828977"
             target="_blank"
             className={cx(styles.exploreBtn, styles.swiggyBtn)}
           >
