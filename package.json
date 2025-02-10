@@ -1,7 +1,7 @@
 {
   "homepage": "https://befoodly-tech.github.io/befoodly-website/",
   "name": "befoodly-website",
-  "private": true,
+  "private": true, 
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -13,7 +13,9 @@
     "lint": "eslint \"**/?*.{ts,tsx,js}\"",
     "lint:fix": "eslint --fix \"**/?*.{ts,tsx,cjs,js}\"",
     "prettier-check": "prettier --check \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\""
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md}\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",

@@ -11,6 +11,7 @@
     cursor: pointer;
     border: 4.8px solid #15ca6a;
     background: url(<path-to-image>), lightgray -50.118px -893.574px / 545.455% 1212.121% no-repeat;
+    object-fit: cover;
   }
 
   .chefName {

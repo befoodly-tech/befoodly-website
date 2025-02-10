@@ -15,10 +15,10 @@ const Contact = () => {
       <Box className={styles.contentBox}>
         <Typography variant="h6">It&#39;s always nice hearing from you</Typography>
         <Typography className={styles.description}>
-          We love our customers, so feel free to contact us 24 hours.
+          We love our customers, so feel free to contact us 24x7.
         </Typography>
         <Typography variant="h6" padding={'20px'}>
-          Scan the QR code to order food.
+          Scan the QR code for customer support.
         </Typography>
         <img src={WhatsAppQR} width={'200px'}></img>
       </Box>
