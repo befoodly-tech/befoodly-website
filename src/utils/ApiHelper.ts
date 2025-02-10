@@ -1,6 +1,6 @@
 import { MethodType, ParamData } from '../types/ApiHelperFile';
 
-const BASE_URL = window.config.BASE_URL;
+const BASE_URL = window?.config?.BASE_URL;
 
 export const API_URLS = {
   SESSION_CHECK: '/v1/check',

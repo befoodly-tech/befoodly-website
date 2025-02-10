@@ -18,7 +18,7 @@ const commonGlobalData: GenericGlobalData = {
   phoneNumber: getCookie('phone'),
   sessionToken: getCookie('session'),
   customerId: getCookie('customerId'),
-  s3Url: window.config?.S3_URL
+  s3Url: window?.config?.S3_URL
 };
 
 const router = createBrowserRouter([
