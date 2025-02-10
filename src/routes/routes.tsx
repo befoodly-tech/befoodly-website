@@ -72,35 +72,35 @@ const router = createBrowserRouter([
         )
       }
     ]
-  },
-  {
-    path: '/app',
-    element: <AppHome {...commonGlobalData} />,
-    children: [
-      {
-        path: '/app/Login',
-        element: <Navigate to="/app"></Navigate>
-      },
-      {
-        path: '/app/SignUp',
-        element: <Navigate to="/app"></Navigate>
-      },
-      {
-        path: '/app/profile',
-        element: <Profile />
-      },
-      {
-        path: '/app/checkout',
-        element: (
-          <Checkout customerId={commonGlobalData.customerId} s3Url={commonGlobalData.s3Url} />
-        )
-      },
-      {
-        path: '/app/track-order',
-        element: <TrackOrder customerId={commonGlobalData.customerId} />
-      }
-    ]
   }
+  // {
+  //   path: '/app',
+  //   element: <AppHome {...commonGlobalData} />,
+  //   children: [
+  //     {
+  //       path: '/app/Login',
+  //       element: <Navigate to="/app"></Navigate>
+  //     },
+  //     {
+  //       path: '/app/SignUp',
+  //       element: <Navigate to="/app"></Navigate>
+  //     },
+  //     {
+  //       path: '/app/profile',
+  //       element: <Profile />
+  //     },
+  //     {
+  //       path: '/app/checkout',
+  //       element: (
+  //         <Checkout customerId={commonGlobalData.customerId} s3Url={commonGlobalData.s3Url} />
+  //       )
+  //     },
+  //     {
+  //       path: '/app/track-order',
+  //       element: <TrackOrder customerId={commonGlobalData.customerId} />
+  //     }
+  //   ]
+  // }
 ]);
 
 export default router;
