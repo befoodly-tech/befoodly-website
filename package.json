@@ -8,7 +8,7 @@
     "dev": "vite",
     "clean": "rm -rf dist",
     "copy-config": "cp config.template.js dist/config.js",
-    "build": "npm run clean && tsc && vite build && npm run copy-config",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint \"**/?*.{ts,tsx,js}\"",
     "lint:fix": "eslint --fix \"**/?*.{ts,tsx,cjs,js}\"",
