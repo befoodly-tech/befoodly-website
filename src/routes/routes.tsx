@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/befoodly-website',
+        path: '/home',
         element: (
           <>
             <Home />
