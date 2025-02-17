@@ -12,13 +12,17 @@ const Top = () => {
           Join us in our love for homemade food & munchies
         </Typography>
         <div className={styles.homeButton}>
-          <Button variant="contained" href="/ourkitchen" className={styles.exploreBtn}>
+          <Button
+            variant="contained"
+            href="https://wa.me/c/918755509017"
+            className={styles.exploreBtn}
+          >
             Visit Our Kitchen
           </Button>
           <Button
             variant="contained"
             // href="/comingsoon"
-            href="https://wa.me/c/918755509017"
+            href="https://befoodly.petpooja.com/"
             target="_blank"
             className={cx(styles.exploreBtn, styles.kitchenBtn)}
           >
